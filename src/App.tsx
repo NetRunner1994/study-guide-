@@ -63,7 +63,29 @@ export function App() {
   if (loading) {
     return (
       <div className="splash">
-        <img className="splash__mark" src="./icons/icon.svg" alt="" width={72} height={72} />
+        <svg className="splash__mark" viewBox="0 0 512 512" width={72} height={72} aria-hidden="true">
+          <defs>
+            <linearGradient id="splashMark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#22d3ee" />
+              <stop offset="1" stopColor="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M256 92l124 50v112c0 92-52 142-124 166-72-24-124-74-124-166V142z"
+            fill="none"
+            stroke="url(#splashMark)"
+            strokeWidth={26}
+            strokeLinejoin="round"
+          />
+          <path
+            d="M198 258l40 42 78-86"
+            fill="none"
+            stroke="url(#splashMark)"
+            strokeWidth={30}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
         <div>
           <h1 style={{ fontSize: 20 }}>SecPlus Arcade</h1>
           <p className="small muted">Loading the question bank…</p>

@@ -12,7 +12,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   </StrictMode>,
 )
 
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+const standalone = location.protocol === 'file:'
+
+if ('serviceWorker' in navigator && import.meta.env.PROD && !standalone) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {
       /* Offline support is optional; the app works without it. */

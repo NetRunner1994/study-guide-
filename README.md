@@ -41,16 +41,34 @@ It installs to a phone home screen, runs offline, and keeps all progress on the 
 
 ## Running it
 
+> **Do not open the `index.html` at the repo root in a browser.** That is Vite's *source*
+> entry — it points at `/src/main.tsx`, raw TypeScript no browser can execute, so you get a
+> blank white page. Use one of the three routes below instead.
+
+**1. One file, no install.** Build a single self-contained HTML file and open it directly —
+no server, no Node, works offline. Everything including the question bank is inlined.
+
+```bash
+npm install
+npm run build:standalone   # -> dist-standalone/index.html, just open it
+```
+
+**2. Hosted.** Pushing to `main` builds and publishes to GitHub Pages via
+`.github/workflows/deploy.yml`. Enable it once under **Settings → Pages → Source: GitHub
+Actions**. A real HTTPS URL is what lets the PWA install to a phone home screen.
+
+**3. Local development.**
+
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # production bundle in dist/
+npm run build      # production bundle in dist/ — serve this, don't open it from disk
 npm run preview    # serve the built bundle
 npm test           # 15 data-integrity and scoring tests
 ```
 
-The question bank is a lazily-loaded chunk (~200 KB gzipped), so the shell paints before it
-arrives.
+In the hosted and dev builds the question bank is a lazily-loaded chunk (~200 KB gzipped), so
+the shell paints before it arrives. The standalone build inlines it into one ~960 KB file.
 
 ## Regenerating the question bank
 
