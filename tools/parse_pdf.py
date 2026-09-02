@@ -1,17 +1,23 @@
-"""Parse the CompTIA Security+ SY0-701 practice-question PDF into questions.json.
+"""Parse a CompTIA practice-question PDF into the app's questions JSON.
 
-Usage: python tools/parse_pdf.py <source.pdf> <out.json>
+Usage: python tools/parse_pdf.py <exam-id> <source.pdf> <out.json>
+
+`exam-id` selects the objective taxonomy used to tag questions; see
+tools/taxonomies.py for the exams that are supported.
+
 Requires: pypdf
 """
 import json
 import re
 import sys
 
+from taxonomies import TAXONOMIES, classify
+
 ANSWER_RE = re.compile(
-    r"(?m)^\s*Correct Answer[s]?:\s*([A-G](?:\s*,\s*[A-G])*)\s*(?:—\s*(.*?))?\s*✅\s*$"
+    r"(?m)^\s*Correct Answer[s]?:\s*([A-H](?:\s*,\s*[A-H])*)\s*(?:—\s*(.*?))?\s*✅\s*$"
 )
 COMPLETED_RE = re.compile(r"(?m)^\s*Completed Answer\s*✅\s*$")
-OPTION_RE = re.compile(r"(?m)^([A-G])\.\s+")
+OPTION_RE = re.compile(r"(?m)^([A-H])\.\s+")
 WHY_RE = re.compile(r"(?m)^\s*Why The Other Options Are Incorrect\s*$")
 HOWTO_RE = re.compile(r"(?m)^\s*How To Work It Out\s*$")
 PAIR_RE = re.compile(r"^(.*?)\s+→\s+(.*)$")
@@ -86,7 +92,7 @@ def split_options(pre):
     return stem, options
 
 
-LEAD_ANSWER_RE = re.compile(r"(?m)\A(?:\s*[A-G]\.\s+[^\n]*\n)+")
+LEAD_ANSWER_RE = re.compile(r"(?m)\A(?:\s*[A-H]\.\s+[^\n]*\n)+")
 
 
 def strip_lead_answers(post, letters):
@@ -114,90 +120,7 @@ def split_why(post):
     return explanation, why
 
 
-DOMAINS = [
-    ("1.0 General Security Concepts", [
-        "cia triad", "confidentiality", "non-repudiation", "aaa", "authentication",
-        "authorization", "gap analysis", "zero trust", "control plane", "data plane",
-        "policy engine", "honeypot", "honeytoken", "honeyfile", "deceptive",
-        "change management", "certificate", "public key", "private key", "pki",
-        "encryption", "cryptograph", "hashing", "salting", "key exchange",
-        "digital signature", "tpm", "hsm", "key escrow", "obfuscation", "tokenization",
-        "steganography", "blockchain", "secure enclave", "cipher", "aes", "rsa",
-        "physical control", "deterrent control", "compensating control", "directive",
-    ]),
-    ("2.0 Threats, Vulnerabilities & Mitigations", [
-        "threat actor", "nation-state", "hacktivist", "insider threat", "shadow it",
-        "phishing", "vishing", "smishing", "pretexting", "impersonation",
-        "business email compromise", "watering hole", "typosquatting",
-        "social engineering", "malware", "ransomware", "trojan", "worm", "spyware",
-        "rootkit", "keylogger", "logic bomb", "virus", "botnet", "backdoor",
-        "vulnerability", "zero-day", "buffer overflow", "race condition",
-        "sql injection", "xss", "cross-site", "privilege escalation", "replay attack",
-        "ddos", "dos attack", "dns poisoning", "on-path", "arp poisoning",
-        "brute-force", "brute force", "password spray", "downgrade attack",
-        "side channel", "supply chain attack", "misconfiguration", "jailbreak",
-        "sideload", "indicator of compromise", "exploit", "patching", "hardening",
-        "segmentation", "least privilege", "attack surface",
-    ]),
-    ("3.0 Security Architecture", [
-        "cloud", "iaas", "paas", "saas", "hybrid", "on-premises", "virtualization",
-        "container", "serverless", "microservice", "iot", "scada", "ics", "embedded",
-        "rtos", "infrastructure as code", "high availability", "load balanc",
-        "clustering", "failover", "site resilienc", "hot site", "cold site",
-        "warm site", "backup", "snapshot", "replication", "journaling",
-        "disaster recovery", "capacity planning", "power", "generator", "ups",
-        "firewall", "waf", "ids", "ips", "proxy", "vpn", "ipsec", "sd-wan", "sase",
-        "network appliance", "port security", "802.1x", "eap", "vlan", "screened subnet",
-        "dlp", "data sovereignty", "data classification", "data at rest",
-        "data in transit", "geographic restriction", "masking", "resilience",
-        "architecture", "topology", "air gap", "jump server", "tunneling",
-    ]),
-    ("4.0 Security Operations", [
-        "baseline", "hardening", "mobile device management", "mdm", "byod", "cope",
-        "cyod", "wpa3", "wireless", "sase", "asset management", "inventory",
-        "disposal", "sanitization", "certification of destruction",
-        "vulnerability scan", "penetration test", "bug bounty", "cvss", "cve",
-        "false positive", "false negative", "remediation", "monitoring", "alerting",
-        "siem", "soar", "netflow", "log aggregation", "syslog", "antivirus", "edr",
-        "xdr", "dns filtering", "email security", "dkim", "spf", "dmarc",
-        "user behavior analytics", "firewall rule", "acl", "web filter",
-        "operating system security", "group policy", "selinux", "automation",
-        "orchestration", "scripting", "incident response", "forensic", "chain of custody",
-        "e-discovery", "legal hold", "root cause analysis", "tabletop", "simulation exercise",
-        "identity", "provisioning", "deprovisioning", "sso", "saml", "oauth", "ldap",
-        "federation", "mfa", "multifactor", "biometric", "token", "password manager",
-        "just-in-time permission", "privileged access", "vault", "rbac", "abac",
-        "mandatory access control", "discretionary access", "playbook", "ticket",
-    ]),
-    ("5.0 Security Program Management & Oversight", [
-        "governance", "policy", "standard", "procedure", "guideline", "acceptable use",
-        "board", "committee", "regulatory", "compliance", "gdpr", "pci dss", "hipaa",
-        "sox", "attestation", "audit", "internal audit", "external audit",
-        "risk assessment", "risk register", "risk appetite", "risk tolerance",
-        "risk analysis", "qualitative", "quantitative", "ale", "aro", "sle",
-        "risk transfer", "risk acceptance", "risk avoidance", "risk mitigation",
-        "business impact analysis", "rto", "rpo", "mttr", "mtbf",
-        "third-party", "vendor", "supply chain", "due diligence", "sla", "mou", "moa",
-        "nda", "sow", "master service agreement", "bpa", "vendor monitoring",
-        "questionnaire", "right-to-audit", "penetration testing agreement",
-        "privacy", "data owner", "data controller", "data processor", "data custodian",
-        "data steward", "retention", "security awareness", "training", "phishing campaign",
-        "reporting", "metrics", "attestation",
-    ]),
-]
-
-
-def classify(text):
-    low = text.lower()
-    scores = []
-    for name, keywords in DOMAINS:
-        score = sum(len(k) for k in keywords if k in low)
-        scores.append((score, name))
-    scores.sort(reverse=True)
-    return scores[0][1] if scores[0][0] else "1.0 General Security Concepts"
-
-
-def main(pdf_path, out_path):
+def main(exam_id, pdf_path, out_path):
     from pypdf import PdfReader
 
     reader = PdfReader(pdf_path)
@@ -227,7 +150,7 @@ def main(pdf_path, out_path):
                 "answerText": "; ".join(restated) if restated else (answer.group(2) or "").strip(),
                 "explanation": explanation,
                 "why": why,
-                "domain": classify(" ".join(stem) + " " + " ".join(t for _, t in options)),
+                "domain": classify(exam_id, " ".join(stem) + " " + " ".join(t for _, t in options)),
             })
             continue
 
@@ -264,19 +187,28 @@ def main(pdf_path, out_path):
             "summary": lead,
             "pairs": pairs,
             "steps": steps,
-            "domain": classify(" ".join(stem)),
+            "domain": classify(exam_id, " ".join(stem)),
         })
 
     questions.sort(key=lambda q: q["id"])
     with open(out_path, "w") as handle:
         json.dump(questions, handle, indent=1, ensure_ascii=False)
 
-    kinds = {}
+    kinds, by_domain = {}, {}
     for q in questions:
         kinds[q["type"]] = kinds.get(q["type"], 0) + 1
-    print("parsed:", len(questions), kinds)
-    print("problems:", problems)
+        by_domain[q["domain"]] = by_domain.get(q["domain"], 0) + 1
+    print(f"{exam_id}: parsed {len(questions)}", kinds)
+    for name, _ in TAXONOMIES[exam_id]:
+        print(f"   {by_domain.get(name, 0):4d}  {name}")
+    if problems:
+        print("   problems:", problems)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    if len(sys.argv) != 4 or sys.argv[1] not in TAXONOMIES:
+        sys.exit(
+            "usage: parse_pdf.py <exam-id> <source.pdf> <out.json>\n"
+            f"exam-id is one of: {', '.join(TAXONOMIES)}"
+        )
+    main(sys.argv[1], sys.argv[2], sys.argv[3])

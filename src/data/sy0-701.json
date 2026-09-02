@@ -191,7 +191,7 @@
    "C": "MFA adds authentication factors but doesn't reduce the number of credential sets required.",
    "D": "PEAP is a wireless authentication protocol, not a SaaS credential management solution."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 6,
@@ -874,7 +874,7 @@
    "C": "A WAF protects web applications but is not designed for securing administrative access to internal resources.",
    "D": "Single sign-on addresses authentication convenience but does not minimize traffic through security boundaries or provide the access control mechanisms of a bastion host."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 23,
@@ -913,7 +913,7 @@
    "B": "IPS/IDS logs capture network-level signatures and anomalies but don't contain information about specific executables running on local systems.",
    "C": "Network logs show traffic patterns but lack visibility into which executables are running and their behavior on the endpoint itself."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 24,
@@ -1549,7 +1549,7 @@
    "C": "The cloud provider handles infrastructure; database security is the client's responsibility in IaaS.",
    "D": "DBAs are staff roles that work for the client organization implementing security controls."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 40,
@@ -3868,7 +3868,7 @@
    "C": "Application vulnerabilities are in software applications, not in system firmware.",
    "D": "Operating system vulnerabilities are in the OS layer, which loads after BIOS firmware."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 98,
@@ -3906,7 +3906,7 @@
    "C": "CIA (Confidentiality, Integrity, Availability) is a security model, not a quantitative measurement scale.",
    "D": "CERT is an organization that issues security advisories but is not itself a quantitative measurement system."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 99,
@@ -5017,7 +5017,7 @@
    "B": "Content filtering restricts content types, not file access permissions.",
    "C": "Data loss prevention monitors and prevents data exfiltration, not access control."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 127,
@@ -5962,7 +5962,7 @@
    "C": "Assigning individual user IDs is good practice but doesn't prevent compromise of the administrator account itself.",
    "D": "Reviewing logs more frequently detects intrusions after they occur but doesn't prevent unauthorized access in the first place."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 151,
@@ -7163,7 +7163,7 @@
    "B": "Sensor refers to the IPS hardware component, not an operational mode.",
    "C": "Audit mode logs events for review but doesn't actively block attacks."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 181,
@@ -7202,7 +7202,7 @@
    "B": "SPF (Sender Policy Framework) is an email authentication protocol, not relevant to data exfiltration prevention.",
    "D": "DMARC is an email authentication standard, not a data exfiltration prevention tool."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 182,
@@ -7627,7 +7627,7 @@
    "C": "Change management governs how modifications to systems and processes are implemented, not emergency operations.",
    "D": "Disaster recovery focuses on restoring systems after failure, not maintaining ongoing operations during an incident."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 193,
@@ -8564,7 +8564,7 @@
    "C": "A phishing email is a social engineering attack best mitigated by user awareness training and email filtering, not input sanitization.",
    "D": "A browser security warning about connection privacy is a TLS/SSL certificate validation issue, mitigated by proper certificate management, not input sanitization."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 217,
@@ -9080,7 +9080,7 @@
    "C": "ACL (Access Control List) is a security mechanism for controlling resource access, not specifically what RADIUS implements.",
    "D": "PEM (Privacy Enhanced Mail) is a file format for cryptographic keys and certificates, unrelated to RADIUS functionality."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 230,
@@ -9656,7 +9656,7 @@
    "C": "Limiting third-party libraries doesn't address reverse engineering vulnerability; attackers can reverse engineer either way.",
    "D": "Compile flags may optimize performance but don't obfuscate code or prevent reverse engineering."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 244,
@@ -9941,7 +9941,7 @@
    "B": "Digital signatures do not affect email delivery rates.",
    "C": "Signatures authenticate the sender but do not directly block phishing attacks; email filtering addresses that."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 251,
@@ -10096,7 +10096,7 @@
    "C": "SSDs retain data after power loss, making them less volatile than RAM.",
    "D": "Temporary files, while volatile, reside on storage media that persists longer than RAM without power."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 255,
@@ -11019,7 +11019,7 @@
    "C": "SoC (System-on-Chip) is a hardware architecture concept, not related to these protocols.",
    "D": "HVAC (Heating, Ventilation, Air Conditioning) is a building management system unrelated to VoIP."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 278,
@@ -11578,7 +11578,7 @@
    "B": "OSINT is open-source intelligence gathering, not a severity measurement tool.",
    "C": "SOAR is for security orchestration and automation, not for determining vulnerability severity."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 292,
@@ -11755,7 +11755,7 @@
    "E": "Content filtering is irrelevant to preventing unauthorized user logins from external networks.",
    "F": "Reviewing permissions doesn't prevent attackers from logging in with compromised credentials in the first place."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 296,
@@ -11804,7 +11804,7 @@
    "D": "HIPS (host-based) protects individual endpoints but doesn't address network-level web application threats.",
    "F": "SIEM is for log aggregation and analysis, not a preventive control for web application attacks."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 297,
@@ -11883,7 +11883,7 @@
    "C": "Patching unused systems that may not be updatable doesn't address fundamental non-compliance.",
    "D": "Isolating unused desktops leaves them on the network as potential liabilities; decommissioning is the proper lifecycle action."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 299,
@@ -11963,7 +11963,7 @@
    "B": "Biometrics require specific device hardware, violating the manufacturer-agnostic requirement.",
    "C": "SMS verification requires network connectivity and cannot work offline as required."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 301,
@@ -13174,7 +13174,7 @@
    "C": "IDS/IPS logs monitor network intrusions, not application-level fraud.",
    "D": "Firewall logs track network traffic, not application-specific fraudulent activities."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 331,
@@ -13372,7 +13372,7 @@
    "C": "Phishing awareness protects against external email threats, not insider IP theft.",
    "D": "Business continuity planning focuses on operational resilience, not IP protection."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 336,
@@ -13767,7 +13767,7 @@
    "C": "Integrity protects data from unauthorized modification; DDoS attacks target availability, not data integrity.",
    "D": "Confidentiality protects data from unauthorized disclosure; DDoS attacks do not primarily target confidentiality."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 346,
@@ -13806,7 +13806,7 @@
    "B": "Air-gapping is a storage security measure but is not the primary next step in validating incident response procedures.",
    "C": "Data classification review should have been completed before or during documentation creation, not after."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 347,
@@ -14046,7 +14046,7 @@
    "B": "Risk profile is a strategic assessment document, not used for immediate incident response.",
    "D": "SIEM profile is a configuration detail, not a just-in-time reference for SOC operations."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 353,
@@ -14124,7 +14124,7 @@
    "C": "NAC controls which devices connect to the network, not user access behaviors.",
    "D": "DLP prevents unauthorized data movement but does not detect unusual access patterns."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 355,
@@ -15187,7 +15187,7 @@
    "C": "Configuring IPS to block specific attacks and updating signatures is important but doesn't ensure all traffic is encrypted.",
    "D": "EDR software monitors endpoint behavior and threats but doesn't directly secure network traffic in transit."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 382,
@@ -15693,7 +15693,7 @@
    "C": "CVE is an identifier/catalog system, not a scoring mechanism for prioritization.",
    "D": "Industry impact is contextual but lacks the standardized quantification needed for consistent prioritization."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 395,
@@ -15850,7 +15850,7 @@
    "B": "Root of trust certificates are trusted by default and wouldn't trigger warnings.",
    "C": "Third-party CA-issued certificates are trusted and don't generate insecurity prompts."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 399,
@@ -16129,7 +16129,7 @@
    "B": "FIM (File Integrity Monitoring) focuses only on detecting changes to files, not comprehensive logging and monitoring.",
    "C": "NAC (Network Access Control) manages device access to networks but does not provide logging and monitoring capabilities."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 406,
@@ -16286,7 +16286,7 @@
    "C": "Endpoint and application logs for file-sharing programs only reveal the mechanism used, not necessarily the external destination.",
    "D": "External vulnerability scans show potential vulnerabilities but do not directly identify where data was actually exfiltrated to."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 410,
@@ -16402,7 +16402,7 @@
    "C": "Sanitization is the process of securely erasing data from devices before disposal.",
    "D": "Destruction refers to the physical destruction of hardware, not maintaining backups."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 413,
@@ -16631,7 +16631,7 @@
    "C": "Allowing traffic from any port increases risk rather than compensating for it.",
    "D": "Blocking the website entirely is a preventive control, not a compensating control for allowing access."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 419,
@@ -18954,7 +18954,7 @@
    "C": "Patches cannot be installed on legacy systems that no longer receive support",
    "D": "Full disk encryption protects data at rest on the server, not data in transit across the network"
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 477,
@@ -19932,7 +19932,7 @@
    "C": "Risk treatment involves developing responses to risks after they have been identified.",
    "D": "Risk monitoring and review tracks risks throughout the project lifecycle after identification."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 502,
@@ -20987,7 +20987,7 @@
    "C": "FTP is a file transfer protocol that lacks encryption and security controls; it is not suitable for secure remote access.",
    "D": "RADIUS is an authentication protocol used for managing user credentials, not a remote access mechanism itself."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 529,
@@ -21103,7 +21103,7 @@
    "B": "ARO (Annualized Rate of Occurrence) measures how often a specific threat is expected to occur annually.",
    "D": "MTTR (Mean Time To Repair) measures repair duration but does not assess overall business impact of failures."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 532,
@@ -22971,7 +22971,7 @@
    "C": "Tokenization is primarily used for stored data, not data in transit.",
    "D": "Obfuscation is not a reliable security control for protecting data in transit across networks."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 579,
@@ -23208,7 +23208,7 @@
    "C": "User-driven analysis is not a standard risk analysis methodology.",
    "D": "Trend-based analysis examines patterns over time but doesn't specifically measure exposure factors."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 585,
@@ -23634,7 +23634,7 @@
    "B": "Group Policy defines access controls and configurations but doesn't inherently reduce the underlying attack surface of outdated systems.",
    "C": "High availability improves resilience and uptime but doesn't reduce the attack surface or vulnerability footprint."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 596,
@@ -24214,7 +24214,7 @@
    "C": "Blocked content would show blocked or denied actions, not successful VPN authentications across multiple entries.",
    "D": "While concurrent sessions from different locations could be suspicious, impossible travel is the more specific and primary indicator demonstrated by the extreme geographic distance covered in minimal time."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 611,

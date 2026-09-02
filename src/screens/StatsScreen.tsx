@@ -1,14 +1,13 @@
 import { useMemo } from 'react'
-import { DOMAINS } from '../lib/domains'
-import { BADGES, MODES, levelProgress } from '../lib/game'
+import { badgesForExam, MODES, levelProgress } from '../lib/game'
 import { useStore } from '../state'
 
 export function StatsScreen() {
-  const { questions, progress } = useStore()
+  const { exam, questions, progress, current } = useStore()
 
   const perDomain = useMemo(
     () =>
-      DOMAINS.map((domain) => {
+      exam.domains.map((domain) => {
         let correct = 0
         let total = 0
         let seen = 0
@@ -16,7 +15,7 @@ export function StatsScreen() {
         for (const q of questions) {
           if (q.domain !== domain.id) continue
           count += 1
-          const stat = progress.stats[q.id]
+          const stat = current.stats[q.id]
           if (!stat) continue
           if (stat.seen) seen += 1
           correct += stat.correct
@@ -31,16 +30,17 @@ export function StatsScreen() {
           coverage: count ? seen / count : 0,
         }
       }),
-    [questions, progress.stats],
+    [questions, current.stats, exam.domains],
   )
 
-  const level = levelProgress(progress.xp)
+  const level = levelProgress(current.xp)
+  const badges = badgesForExam(exam)
   const totals = useMemo(() => {
-    const stats = Object.values(progress.stats)
+    const stats = Object.values(current.stats)
     const answered = stats.reduce((n, s) => n + s.correct + s.wrong, 0)
     const correct = stats.reduce((n, s) => n + s.correct, 0)
     return { answered, correct, accuracy: answered ? correct / answered : 0 }
-  }, [progress.stats])
+  }, [current.stats])
 
   const last14 = useMemo(() => {
     const days: { day: string; count: number }[] = []
@@ -63,6 +63,7 @@ export function StatsScreen() {
         <div>
           <p className="eyebrow">Your progress</p>
           <h1 className="topbar__title">Stats</h1>
+          <p className="topbar__sub">{exam.name} · {exam.code}</p>
         </div>
         <span className="pill">Lv {level.level}</span>
       </header>
@@ -123,18 +124,20 @@ export function StatsScreen() {
                 }}
               />
             </div>
-            <span className="tiny faint">Exam weight {domain.weight}%</span>
+            <span className="tiny faint">
+              {domain.weight ? `Exam weight ${domain.weight}%` : `${domain.count} in this bank`}
+            </span>
           </div>
         ))}
       </section>
 
       <section className="card stack--sm">
         <span className="eyebrow">
-          Badges · {Object.keys(progress.badges).length}/{BADGES.length}
+          Badges · {Object.keys(current.badges).length}/{badges.length}
         </span>
         <div className="badges-grid">
-          {BADGES.map((badge) => {
-            const earned = Boolean(progress.badges[badge.id])
+          {badges.map((badge) => {
+            const earned = Boolean(current.badges[badge.id])
             return (
               <div
                 key={badge.id}
@@ -151,10 +154,10 @@ export function StatsScreen() {
 
       <section className="card stack--sm">
         <span className="eyebrow">Recent sessions</span>
-        {progress.history.length === 0 ? (
+        {current.history.length === 0 ? (
           <p className="small muted">No runs yet — play a round and it will show up here.</p>
         ) : (
-          progress.history.slice(0, 12).map((run) => (
+          current.history.slice(0, 12).map((run) => (
             <div className="history-row" key={run.id}>
               <span style={{ fontSize: 18 }}>{MODES[run.mode].icon}</span>
               <div className="grow">

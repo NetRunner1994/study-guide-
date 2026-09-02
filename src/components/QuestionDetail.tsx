@@ -1,4 +1,5 @@
-import { domainMeta } from '../lib/domains'
+import { domainMeta } from '../lib/exams'
+import { useStore } from '../state'
 import type { Question } from '../lib/types'
 
 /** The full answer + explanation block, shared by Study mode and the quiz verdict. */
@@ -85,7 +86,8 @@ export function QuestionDetail({ question, showOptions = true }: { question: Que
 }
 
 export function DomainChip({ domain }: { domain: string }) {
-  const meta = domainMeta(domain)
+  const { exam } = useStore()
+  const meta = domainMeta(exam, domain)
   return (
     <span className="chip chip--dot tiny" style={{ ['--dot' as string]: meta.accent }}>
       {meta.short}

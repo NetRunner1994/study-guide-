@@ -23,7 +23,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export function App() {
-  const { questions, loading, progress } = useStore()
+  const { exam, questions, loading, current } = useStore()
   const [tab, setTab] = useState<Tab>('home')
   const [run, setRun] = useState<QuizRun | null>(null)
   const [finished, setFinished] = useState<Finished | null>(null)
@@ -52,12 +52,12 @@ export function App() {
 
   const startRun = useCallback(
     (mode: ModeId, domain?: string) => {
-      const list = buildSession(questions, progress, { mode, domain: domain ?? null })
+      const list = buildSession(questions, current, { mode, domain: domain ?? null })
       setFinished(null)
       setRun({ mode, domain: domain ?? null, questions: list })
       window.scrollTo({ top: 0 })
     },
-    [questions, progress],
+    [questions, current],
   )
 
   if (loading) {
@@ -87,8 +87,8 @@ export function App() {
           />
         </svg>
         <div>
-          <h1 style={{ fontSize: 20 }}>SecPlus Arcade</h1>
-          <p className="small muted">Loading the question bank…</p>
+          <h1 style={{ fontSize: 20 }}>CompTIA Arcade</h1>
+          <p className="small muted">Loading the {exam.code} question bank…</p>
         </div>
       </div>
     )
@@ -113,6 +113,7 @@ export function App() {
   if (run) {
     return (
       <QuizScreen
+        key={exam.id}
         run={run}
         onExit={() => setRun(null)}
         onFinish={(record, outcomes, earned) => {

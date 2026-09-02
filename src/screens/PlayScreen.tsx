@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Sheet } from '../components/Sheet'
-import { DOMAINS } from '../lib/domains'
+
 import { MODES } from '../lib/game'
 import { isDue } from '../lib/srs'
 import { useStore } from '../state'
@@ -13,11 +13,11 @@ interface Props {
 const ORDER: ModeId[] = ['quick', 'sprint', 'survival', 'domain', 'review', 'exam']
 
 export function PlayScreen({ onPlay }: Props) {
-  const { questions, progress } = useStore()
+  const { exam, questions, current } = useStore()
   const [pickDomain, setPickDomain] = useState(false)
 
-  const due = questions.filter((q) => isDue(progress.stats[q.id])).length
-  const bestExam = progress.history
+  const due = questions.filter((q) => isDue(current.stats[q.id])).length
+  const bestExam = current.history
     .filter((h) => h.mode === 'exam' && h.scaled !== null)
     .reduce((best, h) => Math.max(best, h.scaled ?? 0), 0)
 
@@ -27,6 +27,7 @@ export function PlayScreen({ onPlay }: Props) {
         <div>
           <p className="eyebrow">Game modes</p>
           <h1 className="topbar__title">Play</h1>
+          <p className="topbar__sub">{exam.name} · {exam.code}</p>
         </div>
       </header>
 
@@ -71,7 +72,7 @@ export function PlayScreen({ onPlay }: Props) {
       {pickDomain ? (
         <Sheet title="Pick an objective" onClose={() => setPickDomain(false)}>
           <div className="stack--sm">
-            {DOMAINS.map((domain) => {
+            {exam.domains.map((domain) => {
               const count = questions.filter((q) => q.domain === domain.id).length
               return (
                 <button
@@ -96,7 +97,9 @@ export function PlayScreen({ onPlay }: Props) {
                     />
                     {domain.short}
                   </span>
-                  <span className="tiny faint mono">{count} Q · {domain.weight}%</span>
+                  <span className="tiny faint mono">
+                    {count} Q{domain.weight ? ` · ${domain.weight}%` : ''}
+                  </span>
                 </button>
               )
             })}

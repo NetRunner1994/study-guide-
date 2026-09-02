@@ -81,17 +81,24 @@ export interface Settings {
   instantFeedback: boolean
 }
 
-export interface Progress {
-  version: number
+/** Everything tracked for a single exam. Each exam progresses independently. */
+export interface ExamProgress {
   xp: number
   bestStreak: number
-  dayStreak: number
-  lastActiveDay: string
-  daily: Record<string, number>
   stats: Record<string, QuestionStat>
   history: SessionRecord[]
   badges: Record<string, number>
+}
+
+export interface Progress {
+  version: number
+  activeExam: string
+  /** Streak and daily counts are global: studying any exam keeps them alive. */
+  dayStreak: number
+  lastActiveDay: string
+  daily: Record<string, number>
   settings: Settings
+  exams: Record<string, ExamProgress>
 }
 
 export interface AnswerOutcome {

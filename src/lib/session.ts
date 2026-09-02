@@ -1,7 +1,7 @@
 import { MODES } from './game'
 import { isDue } from './srs'
 import { shuffle } from './questions'
-import type { ModeId, Progress, Question } from './types'
+import type { ExamProgress, ModeId, Question } from './types'
 
 export interface SessionRequest {
   mode: ModeId
@@ -13,7 +13,7 @@ export interface SessionRequest {
 /** How many questions to queue for endless modes before they wrap. */
 const ENDLESS_POOL = 120
 
-function weightedPool(questions: Question[], progress: Progress): Question[] {
+function weightedPool(questions: Question[], progress: ExamProgress): Question[] {
   /* Prefer questions that are new or shaky, without ever excluding the rest. */
   const scored = questions.map((q) => {
     const stat = progress.stats[q.id]
@@ -36,7 +36,7 @@ function dedupe(questions: Question[]): Question[] {
 
 export function buildSession(
   all: Question[],
-  progress: Progress,
+  progress: ExamProgress,
   request: SessionRequest,
 ): Question[] {
   const config = MODES[request.mode]

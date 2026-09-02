@@ -1,7 +1,7 @@
 import { useDeferredValue, useMemo, useState } from 'react'
 import { ChevronIcon, FlagIcon } from '../components/Icons'
 import { DomainChip, QuestionDetail } from '../components/QuestionDetail'
-import { DOMAINS } from '../lib/domains'
+
 import { plainText } from '../lib/questions'
 import { isDue, mastery } from '../lib/srs'
 import { useStore } from '../state'
@@ -21,7 +21,7 @@ const FILTERS: { id: Filter; label: string }[] = [
 const PAGE = 25
 
 export function StudyScreen() {
-  const { questions, progress, toggleFlag } = useStore()
+  const { exam, questions, current, toggleFlag } = useStore()
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<Filter>('all')
   const [domain, setDomain] = useState<string | null>(null)
@@ -34,7 +34,7 @@ export function StudyScreen() {
     const needle = deferredQuery.trim().toLowerCase()
     return questions.filter((q) => {
       if (domain && q.domain !== domain) return false
-      const stat = progress.stats[q.id]
+      const stat = current.stats[q.id]
       switch (filter) {
         case 'flagged':
           if (!stat?.flagged) return false
@@ -57,7 +57,7 @@ export function StudyScreen() {
       if (!needle) return true
       return plainText(q).includes(needle)
     })
-  }, [questions, deferredQuery, filter, domain, progress.stats])
+  }, [questions, deferredQuery, filter, domain, current.stats])
 
   const visible = results.slice(0, limit)
 
@@ -67,7 +67,9 @@ export function StudyScreen() {
         <div>
           <p className="eyebrow">Study guide</p>
           <h1 className="topbar__title">Question bank</h1>
-          <p className="topbar__sub">{results.length} of {questions.length} questions</p>
+          <p className="topbar__sub">
+            {exam.code} · {results.length} of {questions.length} questions
+          </p>
         </div>
       </header>
 
@@ -110,7 +112,7 @@ export function StudyScreen() {
         >
           Every objective
         </button>
-        {DOMAINS.map((d) => (
+        {exam.domains.map((d) => (
           <button
             key={d.id}
             type="button"
@@ -139,9 +141,9 @@ export function StudyScreen() {
               question={question}
               open={open === question.id}
               onToggle={() => setOpen(open === question.id ? null : question.id)}
-              flagged={Boolean(progress.stats[question.id]?.flagged)}
+              flagged={Boolean(current.stats[question.id]?.flagged)}
               onFlag={() => toggleFlag(question.id)}
-              masteryValue={mastery(progress.stats[question.id])}
+              masteryValue={mastery(current.stats[question.id])}
             />
           ))}
         </div>
