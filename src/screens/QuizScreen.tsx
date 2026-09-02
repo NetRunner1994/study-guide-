@@ -27,7 +27,7 @@ function formatClock(ms: number): string {
 }
 
 export function QuizScreen({ run, onExit, onFinish }: Props) {
-  const { progress, recordAnswer, finishSession, toggleFlag } = useStore()
+  const { progress, current, recordAnswer, finishSession, toggleFlag } = useStore()
   const config = MODES[run.mode]
   const { settings } = progress
 
@@ -251,7 +251,7 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
     else setPicked([letter])
   }
 
-  const stat = progress.stats[question.id]
+  const stat = current.stats[question.id]
   const totalLabel = config.count ?? '∞'
   const progressRatio = config.count ? outcomes.length / config.count : 0
   const timerRatio =

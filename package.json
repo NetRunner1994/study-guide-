@@ -1,9 +1,9 @@
 {
-  "name": "sy0-701-study-arcade",
+  "name": "comptia-arcade",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A mobile-first React study guide and quiz game for the CompTIA Security+ SY0-701 exam.",
+  "description": "A mobile-first React study guide and quiz game for CompTIA exams (Security+, A+).",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

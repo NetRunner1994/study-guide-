@@ -6,3 +6,5 @@ dist-ssr
 .vite
 *.tsbuildinfo
 dist-standalone
+__pycache__/
+*.pyc

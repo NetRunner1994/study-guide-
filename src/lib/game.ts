@@ -1,4 +1,5 @@
-import type { ModeConfig, ModeId, Progress, Question, SessionRecord } from './types'
+import type { Exam } from './exams'
+import type { ExamProgress, ModeConfig, ModeId, Question, SessionRecord } from './types'
 
 export const MODES: Record<ModeId, ModeConfig> = {
   quick: {
@@ -135,7 +136,7 @@ export interface Badge {
   icon: string
 }
 
-export const BADGES: Badge[] = [
+const BASE_BADGES: Badge[] = [
   { id: 'first-blood', name: 'First Contact', detail: 'Answer your first question', icon: '🌱' },
   { id: 'hot-streak', name: 'Hot Streak', detail: '10 correct in a row', icon: '🔥' },
   { id: 'inferno', name: 'Inferno', detail: '25 correct in a row', icon: '☄️' },
@@ -148,18 +149,32 @@ export const BADGES: Badge[] = [
   { id: 'exam-ace', name: 'Top of the Curve', detail: 'Score 850+ on an Exam Simulation', icon: '👑' },
   { id: 'week-warrior', name: 'Seven Day Streak', detail: 'Study 7 days in a row', icon: '📆' },
   { id: 'librarian', name: 'Librarian', detail: 'See every question in the bank at least once', icon: '📚' },
-  { id: 'domain-1', name: 'Concepts Master', detail: '85% on 20+ General Concepts questions', icon: '🧠' },
-  { id: 'domain-2', name: 'Threat Hunter', detail: '85% on 20+ Threats questions', icon: '🕵️' },
-  { id: 'domain-3', name: 'Architect', detail: '85% on 20+ Architecture questions', icon: '🏗️' },
-  { id: 'domain-4', name: 'Operator', detail: '85% on 20+ Operations questions', icon: '⚙️' },
-  { id: 'domain-5', name: 'Governor', detail: '85% on 20+ Program Management questions', icon: '⚖️' },
 ]
 
-export const BADGE_BY_ID = new Map(BADGES.map((b) => [b.id, b]))
+const DOMAIN_BADGE_ICONS = ['🧠', '🕵️', '🏗️', '⚙️', '⚖️']
 
-/** Returns the badge ids newly earned given the progress state after a session. */
+/** Badges are per exam, so each certification has its own set to complete. */
+export function badgesForExam(exam: Exam): Badge[] {
+  return [
+    ...BASE_BADGES,
+    ...exam.domains.map((domain, i) => ({
+      id: `domain-${i + 1}`,
+      name: `${domain.short} Master`,
+      detail: `85% on 20+ ${domain.short} questions`,
+      icon: DOMAIN_BADGE_ICONS[i % DOMAIN_BADGE_ICONS.length],
+    })),
+  ]
+}
+
+export function badgeById(exam: Exam, id: string): Badge | undefined {
+  return badgesForExam(exam).find((badge) => badge.id === id)
+}
+
+/** Returns the badge ids newly earned given the state after a session. */
 export function evaluateBadges(
-  progress: Progress,
+  exam: Exam,
+  progress: ExamProgress,
+  dayStreak: number,
   questions: Question[],
   lastSession: SessionRecord | null,
   runBestStreak: number,
@@ -176,8 +191,10 @@ export function evaluateBadges(
   if (progress.bestStreak >= 25 || runBestStreak >= 25) add('inferno')
   if (answered >= 100) add('centurion')
   if (answered >= 500) add('half-k')
-  if (progress.dayStreak >= 7) add('week-warrior')
-  if (values.filter((s) => s.seen > 0).length >= questions.length) add('librarian')
+  if (dayStreak >= 7) add('week-warrior')
+  if (questions.length && values.filter((s) => s.seen > 0).length >= questions.length) {
+    add('librarian')
+  }
 
   if (lastSession) {
     const { mode, correct, total, scaled } = lastSession
@@ -188,19 +205,18 @@ export function evaluateBadges(
     if (mode === 'exam' && scaled !== null && scaled >= 850) add('exam-ace')
   }
 
-  const byDomain = new Map<string, { correct: number; total: number }>()
-  for (const q of questions) {
-    const stat = progress.stats[q.id]
-    if (!stat) continue
-    const bucket = byDomain.get(q.domain) ?? { correct: 0, total: 0 }
-    bucket.correct += stat.correct
-    bucket.total += stat.correct + stat.wrong
-    byDomain.set(q.domain, bucket)
-  }
-  for (const [domain, bucket] of byDomain) {
-    if (bucket.total >= 20 && bucket.correct / bucket.total >= 0.85) {
-      add(`domain-${domain[0]}`)
+  exam.domains.forEach((domain, i) => {
+    let correct = 0
+    let total = 0
+    for (const q of questions) {
+      if (q.domain !== domain.id) continue
+      const stat = progress.stats[q.id]
+      if (!stat) continue
+      correct += stat.correct
+      total += stat.correct + stat.wrong
     }
-  }
+    if (total >= 20 && correct / total >= 0.85) add(`domain-${i + 1}`)
+  })
+
   return earned
 }

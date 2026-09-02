@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ExamButton, ExamSheet } from '../components/ExamPicker'
 import { useStore } from '../state'
 import type { Settings } from '../lib/types'
 
@@ -14,8 +15,9 @@ const TOGGLES: { key: keyof Settings; label: string; detail: string }[] = [
 ]
 
 export function SettingsScreen() {
-  const { progress, updateSettings, resetProgress, questions } = useStore()
+  const { progress, updateSettings, resetProgress, questions, exam } = useStore()
   const [confirmReset, setConfirmReset] = useState(false)
+  const [pickExam, setPickExam] = useState(false)
 
   return (
     <div className="screen stack">
@@ -25,6 +27,17 @@ export function SettingsScreen() {
           <h1 className="topbar__title">Settings</h1>
         </div>
       </header>
+
+      <section className="card stack--sm">
+        <span className="eyebrow">Active exam</span>
+        <ExamButton onOpen={() => setPickExam(true)} />
+        <p className="tiny faint">
+          Switching exams changes the question bank everywhere. Each exam keeps its own progress,
+          badges and review schedule.
+        </p>
+      </section>
+
+      {pickExam ? <ExamSheet onClose={() => setPickExam(false)} /> : null}
 
       <section className="card stack">
         {TOGGLES.map((toggle) => (
@@ -50,7 +63,7 @@ export function SettingsScreen() {
       <section className="card stack--sm">
         <span className="eyebrow">About this app</span>
         <p className="small muted">
-          {questions.length} questions parsed from a CompTIA Security+ SY0-701 practice set, each
+          {questions.length} questions parsed from a {exam.family} {exam.code} practice set, each
           with the correct answer, a full explanation, and a note on why every other option is
           wrong. Everything runs locally in your browser — your progress never leaves the device.
         </p>
@@ -63,13 +76,13 @@ export function SettingsScreen() {
       <section className="card stack--sm">
         <span className="eyebrow">Data</span>
         <p className="small muted">
-          Progress, streaks, badges and review scheduling live in this browser's local storage.
-          Clearing site data or using a private window starts you over.
+          Progress, streaks, badges and review scheduling live in this browser's local storage,
+          separately for each exam. Clearing site data or using a private window starts you over.
         </p>
         {confirmReset ? (
           <div className="stack--sm">
             <p className="small" style={{ color: 'var(--bad)' }}>
-              This erases every answer, badge and streak. It cannot be undone.
+              This erases every answer, badge and streak for every exam. It cannot be undone.
             </p>
             <button
               type="button"

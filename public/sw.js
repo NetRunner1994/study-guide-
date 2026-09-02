@@ -1,5 +1,5 @@
 /* Cache-first service worker: after the first visit the app runs fully offline. */
-const CACHE = 'secplus-arcade-v1'
+const CACHE = 'comptia-arcade-v2'
 const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg']
 
 self.addEventListener('install', (event) => {

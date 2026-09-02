@@ -1,6 +1,7 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
+import { ExamButton, ExamSheet } from '../components/ExamPicker'
 import { ProgressRing } from '../components/ProgressRing'
-import { DOMAINS, domainMeta } from '../lib/domains'
+import { domainMeta } from '../lib/exams'
 import { MODES, levelProgress } from '../lib/game'
 import { isDue } from '../lib/srs'
 import { useStore } from '../state'
@@ -13,14 +14,15 @@ interface Props {
 }
 
 export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
-  const { questions, progress } = useStore()
+  const { exam, questions, progress, current } = useStore()
+  const [pickExam, setPickExam] = useState(false)
 
   const summary = useMemo(() => {
-    const stats = Object.values(progress.stats)
+    const stats = Object.values(current.stats)
     const answered = stats.reduce((n, s) => n + s.correct + s.wrong, 0)
     const correct = stats.reduce((n, s) => n + s.correct, 0)
     const seen = stats.filter((s) => s.seen > 0).length
-    const due = questions.filter((q) => isDue(progress.stats[q.id])).length
+    const due = questions.filter((q) => isDue(current.stats[q.id])).length
     const flagged = stats.filter((s) => s.flagged).length
     return {
       answered,
@@ -31,16 +33,16 @@ export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
       due,
       flagged,
     }
-  }, [progress.stats, questions])
+  }, [current.stats, questions])
 
-  const level = levelProgress(progress.xp)
+  const level = levelProgress(current.xp)
   const weakest = useMemo(() => {
-    const buckets = DOMAINS.map((d) => {
+    const buckets = exam.domains.map((d) => {
       let correct = 0
       let total = 0
       for (const q of questions) {
         if (q.domain !== d.id) continue
-        const stat = progress.stats[q.id]
+        const stat = current.stats[q.id]
         if (!stat) continue
         correct += stat.correct
         total += stat.correct + stat.wrong
@@ -49,21 +51,24 @@ export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
     }).filter((b) => b.accuracy !== null)
     buckets.sort((a, b) => (a.accuracy as number) - (b.accuracy as number))
     return buckets[0] ?? null
-  }, [progress.stats, questions])
+  }, [current.stats, questions, exam.domains])
 
   return (
     <div className="screen stack">
-      <header className="topbar">
+      <header className="stack--sm" style={{ marginBottom: 16 }}>
+        <div className="row row--between">
+          <ExamButton onOpen={() => setPickExam(true)} />
+          <span className="pill" title="Day streak">
+            🔥 {progress.dayStreak}
+          </span>
+        </div>
         <div>
-          <p className="eyebrow">CompTIA Security+</p>
-          <h1 className="topbar__title">SY0-701 Arcade</h1>
+          <p className="eyebrow">{exam.family}</p>
+          <h1 className="topbar__title">{exam.code} Arcade</h1>
           <p className="topbar__sub">
             {questions.length} practice questions with full explanations
           </p>
         </div>
-        <span className="pill" title="Day streak">
-          🔥 {progress.dayStreak}
-        </span>
       </header>
 
       {installPrompt ? (
@@ -78,6 +83,8 @@ export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
           </button>
         </div>
       ) : null}
+
+      {pickExam ? <ExamSheet onClose={() => setPickExam(false)} /> : null}
 
       <section className="hero row" style={{ gap: 16 }}>
         <ProgressRing value={level.ratio} size={96}>
@@ -106,7 +113,7 @@ export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
           <div className="stat__label">Answered</div>
         </div>
         <div className="stat">
-          <div className="stat__value mono">{progress.bestStreak}</div>
+          <div className="stat__value mono">{current.bestStreak}</div>
           <div className="stat__label">Best streak</div>
         </div>
         <div className="stat">
@@ -149,7 +156,7 @@ export function HomeScreen({ onPlay, onOpenStudy, installPrompt }: Props) {
             <button
               type="button"
               className="mode"
-              style={{ ['--mode-accent' as string]: domainMeta(weakest.domain.id).accent }}
+              style={{ ['--mode-accent' as string]: domainMeta(exam, weakest.domain.id).accent }}
               onClick={() => onPlay('domain', weakest.domain.id)}
             >
               <span className="mode__icon">🎯</span>

@@ -649,3 +649,69 @@ ul { margin: 0; padding: 0; list-style: none; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ------------------------------------------------------------ exam picker */
+.exam-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 11px 7px 8px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transition: transform 0.14s, border-color 0.14s;
+  max-width: 100%;
+}
+
+.exam-button:active { transform: scale(0.97); }
+.exam-button__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  flex: none;
+}
+.exam-button__text { display: grid; text-align: left; min-width: 0; }
+.exam-button__name { font-size: 13.5px; font-weight: 700; line-height: 1.2; }
+.exam-button__code { font-size: 10.5px; color: var(--faint); font-weight: 600; }
+.exam-button__chevron { color: var(--faint); font-size: 13px; margin-left: 2px; }
+
+.exam-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.14s, background 0.14s, border-color 0.14s;
+  min-height: 60px;
+}
+
+.exam-option:active { transform: scale(0.985); }
+.exam-option--active { background: var(--surface-2); border-color: var(--border-strong); }
+.exam-option__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  flex: none;
+  border: 1px solid transparent;
+}
+.exam-option__name { display: flex; align-items: center; gap: 7px; font-weight: 700; font-size: 14.5px; }
+.exam-option__part {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.exam-option__meta { display: block; font-size: 11.5px; color: var(--faint); margin-top: 2px; }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ProgressRing } from '../components/ProgressRing'
 import { QuestionDetail } from '../components/QuestionDetail'
-import { BADGE_BY_ID, MODES, PASS_SCALED, levelFromXp } from '../lib/game'
+import { badgeById, MODES, PASS_SCALED, levelFromXp } from '../lib/game'
 import { useStore } from '../state'
 import type { AnswerOutcome, ModeId, Question, SessionRecord } from '../lib/types'
 
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export function ResultsScreen({ record, outcomes, earned, questions, onReplay, onHome }: Props) {
-  const { progress } = useStore()
+  const { exam, current } = useStore()
   const [showMisses, setShowMisses] = useState(false)
   const config = MODES[record.mode]
   const accuracy = record.total ? record.correct / record.total : 0
@@ -89,7 +89,7 @@ export function ResultsScreen({ record, outcomes, earned, questions, onReplay, o
         <section className="stack--sm">
           <span className="eyebrow">Badges unlocked</span>
           {earned.map((id) => {
-            const badge = BADGE_BY_ID.get(id)
+            const badge = badgeById(exam, id)
             if (!badge) return null
             return (
               <div className="badge-pop" key={id}>
@@ -106,8 +106,8 @@ export function ResultsScreen({ record, outcomes, earned, questions, onReplay, o
 
       <section className="card stack--sm">
         <div className="row row--between">
-          <span className="eyebrow">Level {levelFromXp(progress.xp)}</span>
-          <span className="tiny mono faint">{progress.xp.toLocaleString()} XP total</span>
+          <span className="eyebrow">Level {levelFromXp(current.xp)}</span>
+          <span className="tiny mono faint">{current.xp.toLocaleString()} XP on {exam.code}</span>
         </div>
         <p className="small muted">
           {missed.length
