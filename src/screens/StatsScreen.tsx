@@ -21,10 +21,15 @@ export function StatsScreen() {
           correct += stat.correct
           total += stat.correct + stat.wrong
         }
+        const share = questions.length ? Math.round((count / questions.length) * 100) : 0
         return {
           ...domain,
           count,
           seen,
+          share,
+          /* Flags an objective the bank covers noticeably less than the real
+             exam weights it, so it is obvious where to study elsewhere. */
+          thin: domain.weight !== undefined && domain.weight - share >= 7,
           answered: total,
           accuracy: total ? correct / total : 0,
           coverage: count ? seen / count : 0,
@@ -125,7 +130,9 @@ export function StatsScreen() {
               />
             </div>
             <span className="tiny faint">
-              {domain.weight ? `Exam weight ${domain.weight}%` : `${domain.count} in this bank`}
+              {domain.count} in bank ({domain.share}%)
+              {domain.weight ? ` · ${domain.weight}% of the exam` : ''}
+              {domain.thin ? ' · thin here' : ''}
             </span>
           </div>
         ))}

@@ -67,7 +67,7 @@
    "An access switch should hand each attached device exactly one network. That means the VLAN list on every access port has to mirror what is plugged into it – the server ports carry the server VLAN 90 untagged, the printer port carries VLAN 60, and the mobile-user/WLAN port carries VLAN 150 – while every VLAN that has nothing to do with that device is removed so a host cannot hop onto another subnet. Only the uplinks between switches need multiple tagged VLANs, and those uplinks are the ones that must run LACP so the pair of cables forms a single fault-tolerant aggregated link; leaving duplex on Auto keeps the two ends from mismatching and causing collisions and slow throughput. Anything left over – ports with no device attached – is shut down so an intruder cannot simply plug in and gain access. Once the edits are saved, the settings should be verified against the intended design and the documentation updated so future troubleshooting",
    "reflects the new switch."
   ],
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 2,
@@ -195,7 +195,7 @@
    "5. Inside Building B a switch provides local connectivity for the laptops and mobile devices so they can reach Building A resources and the Internet.",
    "The design works from the outside in. Internet traffic first hits the firewall, which satisfies the security requirement that all inbound and outbound traffic be inspected. The router behind it performs the Layer 3 forwarding that lets both buildings' subnets reach each other and the Internet. Inside Building A the desktops attach to a switch, which keeps unicast frames confined to the destination port so no desktop sees traffic intended for another device (a hub would flood everything and fail this requirement). Since the buildings are separated by 50 feet with no physical cabling, a wireless range extender carries the signal across to Building B, where a second switch gives the local laptops and devices wired connectivity to the rest of the network and out to the Internet."
   ],
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 5,
@@ -369,7 +369,7 @@
    "C": "VLAN configuration helps segment networks but doesn't identify which physical switch port a device connects to.",
    "D": "netstat displays network connections and statistics from the local device, not switch port information."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 9,
@@ -447,7 +447,7 @@
    "C": "While LDAP can work with certificates, X.509 is most fundamentally associated with PKI, not LDAP specifically.",
    "D": "MFA uses various authentication factors but X.509 certificates are not its primary association."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 11,
@@ -1193,7 +1193,7 @@
    "B": "/26 (255.255.255.192) provides 62 usable addresses, more than needed.",
    "C": "/27 (255.255.255.224) provides 30 usable addresses, more than needed."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 30,
@@ -1624,7 +1624,7 @@
    "C": "Changing switch port speeds does not address the root cause of loops or prevent broadcast storms.",
    "D": "802.1Q tagging is for VLAN configuration and does not prevent or resolve network loops."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 41,
@@ -1700,7 +1700,7 @@
    "B": "Public addresses on the perimeter are already routable and do not require translation via PAT.",
    "D": "Server placement on the perimeter is a network topology decision separate from the purpose of PAT."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 43,
@@ -1930,7 +1930,7 @@
    "B": "VPNs do not provide the capability to reset local computer passwords; that requires separate authentication mechanisms.",
    "D": "Preventing access to blocked sites is the purpose of corporate filtering, and full-tunnel VPNs enforce this but don't inherently enable access to blocked sites."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 49,
@@ -2441,7 +2441,7 @@
    "C": "QoS manages traffic prioritization and quality but does not reduce overhead for increased efficiency.",
    "D": "802.1q tagging adds VLAN information but increases frame size and overhead rather than reducing it."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 62,
@@ -2557,7 +2557,7 @@
    "C": "Virtual addresses for redundancy (HSRP, VRRP) would not be limited to a /30 subnet.",
    "D": "Out-of-band management typically uses separate management networks, not standard routing interface configurations."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 65,
@@ -2872,7 +2872,7 @@
    "B": "A switch operates at layer 2 and provides wired connectivity, not wireless WLAN extension.",
    "D": "A firewall is a security device that filters traffic, not a device for extending WLAN coverage."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 73,
@@ -3026,7 +3026,7 @@
    "B": "CNAME records point domain aliases to canonical names; they don't need updating when DNS server IPs change.",
    "C": "MX records specify mail servers, not DNS servers, and are unrelated to website accessibility."
   },
-  "domain": "4.0 Network Security"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 77,
@@ -3074,7 +3074,7 @@
    "E": "Floor construction type affects weight capacity but is not an environmental factor like temperature or humidity.",
    "F": "Proximity to MDF is a design consideration, not an environmental factor."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 78,
@@ -3351,7 +3351,7 @@
    "C": "Verifying fiber size is typically a pre-installation consideration, not a troubleshooting step for a non-functioning connection.",
    "D": "Visual inspection of cable runs is useful but should come after checking the more obvious issue of fiber reversal."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 85,
@@ -4016,7 +4016,7 @@
    "C": "Hubs do not support subinterfaces or VLANs",
    "D": "Spanning Tree Protocol prevents loops but does not require subinterfaces"
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 102,
@@ -4093,7 +4093,7 @@
    "B": "Split tunneling selectively routes traffic but uses the same network",
    "C": "Jump boxes are administrative access points on the same network, not requiring separate IPs"
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 104,
@@ -4406,7 +4406,7 @@
    "B": "Configuring the native VLAN alone does not enable VoIP functionality.",
    "D": "Disabling VLANs would break VLAN-based services including VoIP."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 112,
@@ -5035,7 +5035,7 @@
    "B": "A policy enforcement point is a network security component, not a definition file for SNMP.",
    "D": "A network access controller is a network security device, not a definition file for event translation."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 128,
@@ -5074,7 +5074,7 @@
    "C": "Firmware without ongoing support will eventually have unpatched vulnerabilities; this doesn't resolve the end-of-support issue.",
    "D": "Isolating the switch doesn't address the underlying security vulnerability of running unsupported equipment in critical infrastructure."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 129,
@@ -5113,7 +5113,7 @@
    "B": "An MX (Mail Exchange) record specifies mail servers for a domain, not web application aliases.",
    "D": "An NS (Name Server) record specifies authoritative nameservers for a domain, not domain aliases."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 130,
@@ -5152,7 +5152,7 @@
    "C": "VPN is a connectivity mechanism, not a security zone classification.",
    "D": "Public zones are for untrusted external users, opposite of internal-only access."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 131,
@@ -5667,7 +5667,7 @@
    "C": "Surge protection is a feature of PDU design, not addressed by adding a second unit.",
    "D": "Electricity conservation is unrelated to having multiple PDUs; it's about power efficiency, not redundancy."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 144,
@@ -6095,7 +6095,7 @@
    "C": "/29 provides only 8 total addresses (6 useable), far too small for this requirement.",
    "D": "/32 is a single host address, not a network subnet."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 155,
@@ -6478,7 +6478,7 @@
    "C": "Social engineering manipulates users but does not cause IP conflicts",
    "D": "Denial-of-service attacks target service availability, not IP address duplication"
   },
-  "domain": "4.0 Network Security"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 165,
@@ -7623,7 +7623,7 @@
    "C": "Time to Live (TTL) affects routing but not videoconferencing quality.",
    "D": "Load balancing distributes traffic but does not prioritize real-time communication flows."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 194,
@@ -8086,7 +8086,7 @@
    "C": "Both EOL and EOS apply to both physical and software products",
    "D": "EOL does not guarantee warranty service; warranties typically expire at or before EOL"
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 206,
@@ -8125,7 +8125,7 @@
    "C": "Direct Connect is a dedicated network connection service, not a disaster recovery approach",
    "D": "Active-passive approach requires manual failover and doesn't guarantee uninterrupted operation"
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 207,
@@ -8243,7 +8243,7 @@
    "B": "Jumbo frames increase frame size but do not add bandwidth capacity needed for 40Gbps service",
    "C": "Half duplex reduces throughput and is obsolete; full duplex is used in modern networks"
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 210,
@@ -8965,7 +8965,7 @@
    "E": "TLS version disabling doesn't prevent DNS filtering bypass; DoH is the primary concern.",
    "F": "DNSSEC validates authenticity but doesn't enforce the DNS filter policy."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 228,
@@ -9436,7 +9436,7 @@
    "B": "Backup refers to data protection and recovery, not configuration standards.",
    "C": "Candidate configurations are being evaluated but not yet the official standard."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 240,
@@ -9551,7 +9551,7 @@
    "C": "A Layer 3 switch would accomplish the goal but requires purchasing additional hardware, which the scenario prohibits.",
    "D": "VIP (Virtual IP) is used for load balancing and redundancy, not inter-VLAN communication."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 243,
@@ -9590,7 +9590,7 @@
    "C": "TLS is a general encryption protocol but DoH is the specific protocol that encrypts DNS queries over HTTPS.",
    "D": "DNSSEC provides authentication and integrity verification of DNS data, not encryption of the queries themselves."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 244,
@@ -10146,7 +10146,7 @@
    "B": "GRE provides tunneling but lacks encryption needed for secure communication over the internet.",
    "C": "VXLAN is designed for overlay networks within data centers, not for secure inter-datacenter links over the internet."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 258,
@@ -10184,7 +10184,7 @@
    "C": "API interfaces are for application communication, not security boundaries for management access.",
    "D": "In-band management uses the data network for management, reducing rather than adding security layers."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 259,
@@ -10570,7 +10570,7 @@
    "B": "DNS filtering blocks domain resolution but is less effective for encrypted connections and cannot categorize all services granularly.",
    "C": "MAC filtering controls device access to the network, not content or service access restrictions."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 269,
@@ -10686,7 +10686,7 @@
    "C": "IPS actually processes more traffic inline, which can increase false positives; IDS is not necessarily more susceptible.",
    "D": "IPS requires more complex configuration as it must block threats; IDS typically requires less administrative overhead."
   },
-  "domain": "4.0 Network Security"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 272,
@@ -11083,7 +11083,7 @@
    "B": "Lease time determines how long an IP address is valid, not where to find configuration servers.",
    "D": "Scope defines the range of available addresses but not how to locate specific servers like TFTP."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 282,
@@ -11316,7 +11316,7 @@
    "B": "Darkware is not a recognized or standard malware classification.",
    "D": "Adware displays unwanted advertisements; it doesn't typically exfiltrate confidential data to unknown destinations."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 288,
@@ -11394,7 +11394,7 @@
    "C": "SNMP ACL access groups control access but don't provide encryption.",
    "D": "SNMPv2c uses community strings and lacks encryption capabilities."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 290,
@@ -11869,7 +11869,7 @@
    "E": "Conditional access policies are separate technologies not inherently provided by MFA/SSO implementation.",
    "F": "Threat feed information is unrelated to MFA and SSO benefits."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 302,
@@ -11947,7 +11947,7 @@
    "C": "/22 provides 1024 usable addresses, which exceeds the requirement and wastes 764 addresses.",
    "D": "/21 provides 2048 usable addresses, which significantly exceeds the requirement and wastes many addresses."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 304,
@@ -12462,7 +12462,7 @@
    "C": "Threats are potential harmful events, not management strategies",
    "D": "Vulnerabilities are weaknesses, not risk response strategies"
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 317,
@@ -12579,7 +12579,7 @@
    "C": "Routing convergence is not impacted by frame size",
    "D": "Drive throughput is a storage device characteristic, not improved by network frame size"
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 320,
@@ -13569,7 +13569,7 @@
    "B": "Licensing refers to usage rights and legal compliance, not the availability of security patches or support status.",
    "C": "SIEM is a security information and event management system, not a software lifecycle descriptor."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 345,
@@ -13772,7 +13772,7 @@
    "C": "Transceiver compatibility would cause connectivity issues, not selective power delivery problems.",
    "D": "DHCP addressing is a Layer 3 concern that occurs after PoE power delivery is established."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 350,
@@ -14323,7 +14323,7 @@
    "D": "Permits port 80 instead of denying it, which is opposite of the security requirement.",
    "E": "Permits all traffic to the server, allowing non-secure connections to remain."
   },
-  "domain": "4.0 Network Security"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 364,
@@ -14478,7 +14478,7 @@
    "C": "MDIX (Medium Dependent Interface Crossover) is automatically detected on modern switches and would cause sporadic issues, not complete connectivity loss.",
    "D": "Trunk ports would not prevent connectivity; devices would simply be untagged on the default native VLAN."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 368,
@@ -14635,7 +14635,7 @@
    "B": "Rack installation has no direct effect on power consumption; power usage depends on the equipment itself, not its mounting configuration.",
    "C": "Network performance is determined by equipment capabilities and configuration, not by whether devices are installed in a rack."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 372,
@@ -15187,7 +15187,7 @@
    "B": "A /27 provides only 30 usable addresses, which is insufficient for 45 hosts.",
    "D": "A /28 provides only 14 usable addresses, which is insufficient for 45 hosts."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 385,
@@ -15226,7 +15226,7 @@
    "B": "SNMP traps are alerts for network conditions, not sources of traffic detail or content analysis.",
    "D": "Server logs show application-level information but not the network-layer details or protocols of all traffic between devices."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 386,
@@ -15618,7 +15618,7 @@
    "C": "A perimeter network (DMZ) is a network security concept unrelated to bridge priority.",
    "D": "Port security controls which devices can connect to ports but does not involve bridge priority settings."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 396,
@@ -15733,7 +15733,7 @@
    "B": "Lightweight APs are specifically designed to communicate back to a WLC, the opposite of the requirement.",
    "D": "Ad hoc mode is for peer-to-peer device connections, not AP deployment."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 399,
@@ -15811,7 +15811,7 @@
    "C": "Long-range microwave uses directional parabolic antennas, not omnidirectional signals.",
    "D": "Routing protocols do not cause input errors on interfaces; this relates to physical signal quality."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 401,
@@ -15966,7 +15966,7 @@
    "C": "URL filtering blocks website access, not device connections.",
    "D": "IP filtering operates at Layer 3 but is less effective for detecting new devices before they obtain IP addresses."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 405,
@@ -16248,7 +16248,7 @@
    "C": "Code of conduct is an internal organizational guideline, not enforced through legislation.",
    "D": "EULA is a contractual agreement between a vendor and user, not government-enforced legislation."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 412,
@@ -16325,7 +16325,7 @@
    "C": "Increasing UPS battery size doesn't solve the cooling problem; the batteries lasted hours but AC units had no backup power.",
    "D": "An IoT thermostat doesn't provide backup power for the AC system that failed."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 414,
@@ -16715,7 +16715,7 @@
    "C": "Static addresses are fixed but don't provide the virtual abstraction layer needed for FHRP.",
    "D": "Dynamic addresses change over time and are unsuitable for a consistent virtual gateway address."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 424,
@@ -17307,7 +17307,7 @@
    "B": "CDP is Cisco-proprietary and does not support non-Cisco devices.",
    "D": "SIP is a VoIP protocol unrelated to device and infrastructure discovery."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 439,
@@ -17732,7 +17732,7 @@
    "C": "IPS hardware detects intrusions but does not prevent access to malicious websites at the DNS level.",
    "D": "802.1X is an authentication protocol for network access, not for preventing access to malicious websites."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 450,
@@ -18280,7 +18280,7 @@
    "C": "Routing all resources through on-site servers describes full-tunnel VPN, not split-tunnel.",
    "D": "ACLs for traffic balancing is a routing technique unrelated to split-tunnel VPN architecture."
   },
-  "domain": "4.0 Network Security"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 464,
@@ -18782,7 +18782,7 @@
    "B": "Power budget is an electrical concern but doesn't address the heat management problem of sealed enclosures.",
    "D": "Humidity is relevant to data center environments but is secondary to temperature concerns in sealed enclosures."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 477,
@@ -19688,7 +19688,7 @@
    "C": "The module shows 456.6 watts remaining out of 472 watts available, so there is more than adequate power capacity for a wireless AP.",
    "D": "Firmware updates would not solve a configuration issue where the port is simply disabled; the administrator needs to enable the port first."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 500,
@@ -19972,7 +19972,7 @@
    "C": "NTP server configuration would not result in APIPA address assignment",
    "D": "VPN connections don't typically result in APIPA addresses; they assign addresses from VPN pools"
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 507,
@@ -20321,7 +20321,7 @@
    "5. In Building B a wireless range extender associates with the Building A WAP and rebroadcasts the signal to the laptops and mobile device, keeping all core managed devices in Building A.",
    "The topology is built from the Internet inward. The firewall sits at the very edge so every packet from the Internet is inspected before it can reach the corporate network, satisfying the security mandate. Behind it, the router provides routing and NAT between the internal segments and the outside world. In Building A the wired desktops connect to a switch, which forwards frames only to the port where the destination lives; a hub would flood every frame to all ports and would let desktops see each other's traffic, so it is deliberately left unused. Since the two buildings have no cabling between them, connectivity is achieved wirelessly: a WAP in Building A creates the wireless network, and a wireless range extender in Building B links back to that WAP and rebroadcasts the signal to the laptops and phone. All of the core devices (firewall, router, switch, WAP) remain in Building A, so they can be managed from there as required."
   ],
-  "domain": "3.0 Network Operations"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 515,
@@ -20756,7 +20756,7 @@
    "B": "While unused services could be running, the scan output shows port states rather than running service information, making firewall rules the more immediate concern.",
    "D": "802.1X is an authentication protocol for network access; the issue presents port accessibility states that point to firewall configuration rather than switch-level authentication problems."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 526,
@@ -21418,7 +21418,7 @@
    "C": "An ACL operates on IP addresses or protocols, not MAC addresses, and wouldn't prevent DHCP address assignment at the port level.",
    "D": "A screened subnet is a network architecture design; it wouldn't cause different results for two laptops plugged into the same port."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 543,
@@ -21577,7 +21577,7 @@
    "B": "Power budget relates to power consumption calculations, not physical installation factors in sealed enclosures.",
    "D": "While humidity is important for equipment protection, temperature management is more critical for sealed enclosures with active equipment generating heat."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 547,
@@ -21962,7 +21962,7 @@
    "B": "Port 389 is standard unencrypted LDAP, not the secure version needed for domain identity management.",
    "C": "Port 445 is used for SMB (Server Message Block) file sharing, not domain identity management."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 557,
@@ -22648,7 +22648,7 @@
    "C": "5GHz with band-steering would alleviate the problem, not cause it.",
    "D": "Most personal devices support 5GHz, and this configuration would actually help, not cause congestion."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 571,
@@ -22765,7 +22765,7 @@
    "B": "A load balancer distributes traffic across multiple paths but doesn't preferentially allocate bandwidth to specific departments.",
    "C": "Jumbo frames reduce overhead but don't increase total available bandwidth or provide prioritization for specific departments."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 574,
@@ -23717,7 +23717,7 @@
    "B": "Cat 6 cabling is designed to minimize crosstalk; using it would reduce rather than increase crosstalk.",
    "D": "Lack of shielded twisted pair would cause external interference issues, not necessarily internal crosstalk between pairs."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 598,
@@ -23756,7 +23756,7 @@
    "B": "Class B addresses begin with 128-191.",
    "D": "Class D addresses (224-239) are reserved for multicast."
   },
-  "domain": "4.0 Network Security"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 599,
@@ -24063,7 +24063,7 @@
    "C": "Layer 2 switches operate within a single network and cannot route between multiple logical networks.",
    "D": "Load balancers distribute traffic across multiple servers or services, not interconnect separate logical networks."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 607,
@@ -25387,7 +25387,7 @@
    "C": "Both APs should use compatible bands; band selection doesn't cause roaming disconnects.",
    "D": "TX power levels affect coverage range uniformly, not the roaming handoff process between APs."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 641,
@@ -25657,7 +25657,7 @@
    "B": "Band steering optimizes existing AP performance by managing client connections between bands, but doesn't add coverage.",
    "D": "Directional antennas can extend range of existing infrastructure but don't enable new APs without Ethernet connections."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 648,
@@ -25696,7 +25696,7 @@
    "B": "Twinaxial cable is more expensive than twisted pair and used primarily for short high-speed connections.",
    "C": "Spanning tree is a network protocol that prevents loops, not a solution for intermittent connectivity loss."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 649,
@@ -26402,7 +26402,7 @@
    "B": "Unused services would not explain why specific ports show 'open' or 'closed' states; this is a network connectivity issue, not a service availability issue.",
    "D": "802.1X authentication on the switch would typically result in complete network access denial or acceptance, not selective port state variations as shown in the output."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 667,
@@ -26441,7 +26441,7 @@
    "C": "PSK is a pre-shared key for authentication, not a packet-level identifier for isolating devices.",
    "D": "BSSID identifies the access point, not the individual client device experiencing the issue."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 668,
@@ -27314,7 +27314,7 @@
    "C": "GRE is a tunneling protocol that encapsulates packets but doesn't provide address translation for IPv6-IPv4 communication.",
    "D": "Static routing only determines packet paths; it cannot translate between IPv6 and IPv4 protocols."
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 690,
@@ -27429,7 +27429,7 @@
    "B": "While documentation may be easier with planning, the core reason is efficient use of resources.",
    "D": "Determining changes is part of the troubleshooting process itself, not the reason for deciding on an approach."
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "3.0 Network Operations"
  },
  {
   "id": 693,
@@ -27622,7 +27622,7 @@
    "C": "NAC is an enterprise solution designed for larger networks with dynamic device management",
    "D": "Trusted zones are not a wireless access control mechanism"
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "4.0 Network Security"
  },
  {
   "id": 698,
@@ -27667,7 +27667,7 @@
    "D": "Show VLAN displays VLAN membership but not device location",
    "E": "Traceroute shows routing path, not the physical switch port location"
   },
-  "domain": "2.0 Network Implementation"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 699,
@@ -27863,7 +27863,7 @@
    "B": "IP helper enables DHCP relay but doesn't manage the pool size",
    "C": "Reservations lock addresses to specific devices, reducing pool availability"
   },
-  "domain": "5.0 Network Troubleshooting"
+  "domain": "1.0 Networking Concepts"
  },
  {
   "id": 704,
@@ -28414,7 +28414,7 @@
    "B": "Traffic shaping manages congestion but doesn't increase throughput efficiency.",
    "C": "QoS policing enforces rate limits and doesn't improve per-flow efficiency for HPC applications."
   },
-  "domain": "1.0 Networking Concepts"
+  "domain": "2.0 Network Implementation"
  },
  {
   "id": 718,
@@ -28646,7 +28646,7 @@
    "C": "A GUI is still an in-band management method subject to the same connectivity issues as SSH.",
    "D": "A physical console cable requires on-site presence and does not provide remote redundancy."
   },
-  "domain": "3.0 Network Operations"
+  "domain": "5.0 Network Troubleshooting"
  },
  {
   "id": 724,

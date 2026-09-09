@@ -1,0 +1,14 @@
+{
+  "_comment": "Corrections applied after parsing, keyed by question number. Use this for content the PDF holds as an image rather than text, so a regenerated bank keeps the fix. Fields are merged over the parsed question.",
+  "321": {
+    "_why": "The four answer options are an image in the source PDF, so no text could be extracted. Transcribed from the rendered page.",
+    "options": [
+      { "letter": "A", "text": "Permit 10.2.2.0/24 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27" },
+      { "letter": "B", "text": "Deny 0.0.0.0/0 to 10.9.8.14/27 · Permit 10.2.2.0/24 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27" },
+      { "letter": "C", "text": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.9/32 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27" },
+      { "letter": "D", "text": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27 · Deny 10.9.8.14/27 to 0.0.0.0/0" }
+    ],
+    "answer": ["C"],
+    "answerText": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.9/32 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27"
+  }
+}

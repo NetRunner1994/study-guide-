@@ -8,10 +8,27 @@ tools/taxonomies.py for the exams that are supported.
 Requires: pypdf
 """
 import json
+import os
 import re
 import sys
 
 from taxonomies import TAXONOMIES, classify
+
+OVERRIDE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "overrides")
+
+
+def load_overrides(exam_id):
+    """Hand-transcribed corrections for content the PDF stores as an image."""
+    path = os.path.join(OVERRIDE_DIR, f"{exam_id}.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path) as handle:
+        raw = json.load(handle)
+    return {
+        int(number): {k: v for k, v in fields.items() if not k.startswith("_")}
+        for number, fields in raw.items()
+        if not number.startswith("_")
+    }
 
 ANSWER_RE = re.compile(
     r"(?m)^\s*Correct Answer[s]?:\s*([A-H](?:\s*,\s*[A-H])*)\s*(?:—\s*(.*?))?\s*✅\s*$"
@@ -106,6 +123,25 @@ def strip_lead_answers(post, letters):
     return post[m.end():], [l[2:].strip() for l in lines]
 
 
+def drop_answer_echo(explanation, answer_text):
+    """Multi-line answers spill their continuation lines into the explanation.
+
+    Only leading paragraphs that the answer line already shows are removed, so
+    real explanatory text is never touched.
+    """
+    if not answer_text:
+        return explanation
+    shown = answer_text.replace("·", " ").split()
+    out = list(explanation)
+    while out:
+        words = out[0].split()
+        if words and all(w in shown for w in words):
+            out.pop(0)
+        else:
+            break
+    return out
+
+
 def split_why(post):
     """Split post-answer text into (explanation paragraphs, {letter: reason})."""
     m = WHY_RE.search(post)
@@ -123,6 +159,7 @@ def split_why(post):
 def main(exam_id, pdf_path, out_path):
     from pypdf import PdfReader
 
+    overrides = load_overrides(exam_id)
     reader = PdfReader(pdf_path)
     text = "\n".join(page.extract_text() for page in reader.pages)
     chunks = re.split(r"(?m)^Question #(\d+)\s*$", text)
@@ -131,12 +168,19 @@ def main(exam_id, pdf_path, out_path):
     questions, problems = [], []
     for number, body in zip(numbers, bodies):
         number = int(number)
+        override = overrides.get(number, {})
         answer = ANSWER_RE.search(body)
         if answer:
             letters = [x.strip() for x in answer.group(1).split(",")]
             stem, options = split_options(body[: answer.start()])
+            if "options" in override:
+                # The options are an image in the PDF; use the transcription.
+                options = [(o["letter"], o["text"]) for o in override["options"]]
             post, restated = strip_lead_answers(body[answer.end():], letters)
             explanation, why = split_why(post)
+            answer_text = "; ".join(restated) if restated else (answer.group(2) or "").strip()
+            answer_text = override.get("answerText", answer_text)
+            explanation = drop_answer_echo(explanation, answer_text)
             valid = {letter for letter, _ in options}
             if len(options) < 2 or not set(letters) <= valid:
                 problems.append((number, "options", len(options), letters))
@@ -147,10 +191,11 @@ def main(exam_id, pdf_path, out_path):
                 "prompt": stem,
                 "options": [{"letter": letter, "text": text_} for letter, text_ in options],
                 "answer": letters,
-                "answerText": "; ".join(restated) if restated else (answer.group(2) or "").strip(),
+                "answerText": answer_text,
                 "explanation": explanation,
                 "why": why,
                 "domain": classify(exam_id, " ".join(stem) + " " + " ".join(t for _, t in options)),
+                **{k: v for k, v in override.items() if k not in {"options"}},
             })
             continue
 
@@ -190,6 +235,7 @@ def main(exam_id, pdf_path, out_path):
             "domain": classify(exam_id, " ".join(stem)),
         })
 
+    applied = sum(1 for q in questions if q["id"] in overrides)
     questions.sort(key=lambda q: q["id"])
     with open(out_path, "w") as handle:
         json.dump(questions, handle, indent=1, ensure_ascii=False)
@@ -201,6 +247,8 @@ def main(exam_id, pdf_path, out_path):
     print(f"{exam_id}: parsed {len(questions)}", kinds)
     for name, _ in TAXONOMIES[exam_id]:
         print(f"   {by_domain.get(name, 0):4d}  {name}")
+    if applied:
+        print(f"   overrides applied: {applied}")
     if problems:
         print("   problems:", problems)
 

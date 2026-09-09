@@ -4,7 +4,7 @@ export interface DomainMeta {
   id: string
   short: string
   accent: string
-  /** Official CompTIA exam weight, where it is published and known. */
+  /** Official CompTIA exam weight, as published in the exam objectives. */
   weight?: number
 }
 
@@ -64,11 +64,11 @@ export const EXAMS: Exam[] = [
     icon: '🧰',
     accent: '#34d399',
     domains: domains([
-      ['1.0 Mobile Devices', 'Mobile Devices'],
-      ['2.0 Networking', 'Networking'],
-      ['3.0 Hardware', 'Hardware'],
-      ['4.0 Virtualization and Cloud Computing', 'Virtualization'],
-      ['5.0 Hardware and Network Troubleshooting', 'Troubleshooting'],
+      ['1.0 Mobile Devices', 'Mobile Devices', 13],
+      ['2.0 Networking', 'Networking', 23],
+      ['3.0 Hardware', 'Hardware', 25],
+      ['4.0 Virtualization and Cloud Computing', 'Virtualization', 11],
+      ['5.0 Hardware and Network Troubleshooting', 'Troubleshooting', 28],
     ]),
     load: () => import('../data/220-1201.json').then((m) => m.default as unknown as Question[]),
   },
@@ -82,10 +82,10 @@ export const EXAMS: Exam[] = [
     icon: '💻',
     accent: '#a78bfa',
     domains: domains([
-      ['1.0 Operating Systems', 'Operating Systems'],
-      ['2.0 Security', 'Security'],
-      ['3.0 Software Troubleshooting', 'Software Troubleshooting'],
-      ['4.0 Operational Procedures', 'Operational Procedures'],
+      ['1.0 Operating Systems', 'Operating Systems', 28],
+      ['2.0 Security', 'Security', 28],
+      ['3.0 Software Troubleshooting', 'Software Troubleshooting', 23],
+      ['4.0 Operational Procedures', 'Operational Procedures', 21],
     ]),
     load: () => import('../data/220-1202.json').then((m) => m.default as unknown as Question[]),
   },
@@ -98,11 +98,11 @@ export const EXAMS: Exam[] = [
     icon: '🌐',
     accent: '#fbbf24',
     domains: domains([
-      ['1.0 Networking Concepts', 'Concepts'],
-      ['2.0 Network Implementation', 'Implementation'],
-      ['3.0 Network Operations', 'Operations'],
-      ['4.0 Network Security', 'Security'],
-      ['5.0 Network Troubleshooting', 'Troubleshooting'],
+      ['1.0 Networking Concepts', 'Concepts', 23],
+      ['2.0 Network Implementation', 'Implementation', 20],
+      ['3.0 Network Operations', 'Operations', 19],
+      ['4.0 Network Security', 'Security', 14],
+      ['5.0 Network Troubleshooting', 'Troubleshooting', 24],
     ]),
     load: () => import('../data/n10-009.json').then((m) => m.default as unknown as Question[]),
   },

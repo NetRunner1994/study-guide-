@@ -4,13 +4,19 @@ Tagging is a keyword heuristic, not an authoritative classification. It exists
 so the app can offer a "drill one objective" filter; the app labels it as such.
 """
 
+import re
+from functools import lru_cache
+
 SECURITY_PLUS = [
     ("1.0 General Security Concepts", [
-        "cia triad", "confidentiality", "non-repudiation", "aaa", "authentication",
+        "cia triad", "confidentiality", "non-repudiation", "aaa",
         "authorization", "gap analysis", "zero trust", "control plane", "data plane",
         "policy engine", "honeypot", "honeytoken", "honeyfile", "deceptive",
-        "change management", "certificate", "public key", "private key", "pki",
-        "encryption", "cryptograph", "hashing", "salting", "key exchange",
+        "change management", "public key", "private key", "pki",
+        # "encryption", "authentication" and "certificate" are deliberately absent:
+        # they appear across every objective, so they identified nothing and pulled
+        # operations questions into this one.
+        "cryptograph", "hashing", "salting", "key exchange",
         "digital signature", "tpm", "hsm", "key escrow", "obfuscation", "tokenization",
         "steganography", "blockchain", "secure enclave", "cipher", "aes", "rsa",
         "physical control", "deterrent control", "compensating control", "directive",
@@ -58,6 +64,21 @@ SECURITY_PLUS = [
         "federation", "mfa", "multifactor", "biometric", "token", "password manager",
         "just-in-time permission", "privileged access", "vault", "rbac", "abac",
         "mandatory access control", "discretionary access", "playbook", "ticket",
+        "secure baseline", "hardening technique", "host-based firewall",
+        "host-based intrusion", "endpoint protection", "decommission",
+        "vulnerability response", "patch management", "rescanning", "exception",
+        "scap", "benchmark", "agent-based", "agentless", "port scan",
+        "vulnerability report", "alert tuning", "quarantine", "archiving",
+        "packet capture", "block rule", "reputation", "secure protocol",
+        "port selection", "transport method", "endpoint detection",
+        "identity proofing", "interoperability", "time-of-day restriction",
+        "passwordless", "guard rail", "security group", "escalation",
+        "incident response process", "preparation", "detection", "containment",
+        "eradication", "recovery", "lessons learned", "threat hunting",
+        "digital forensics", "acquisition", "preservation", "firewall log",
+        "application log", "endpoint log", "network log", "metadata",
+        "dashboard", "automated report", "mobile solution", "deployment model",
+        "connection method", "cellular", "wi-fi", "bluetooth",
     ]),
     ("5.0 Security Program Management & Oversight", [
         "governance", "policy", "standard", "procedure", "guideline", "acceptable use",
@@ -220,6 +241,22 @@ A_PLUS_CORE_2 = [
         "backup rotation", "retention policy", "corporate policy", "company policy",
         "best practice", "proper procedure", "document the", "notify the",
         "report the incident", "follow up", "surveillance footage",
+        "regulated data", "credit card transaction", "personal government-issued",
+        "healthcare data", "data classification", "incident report",
+        "documentation of the incident", "copy of the drive", "preserve",
+        "custody", "meet in person", "set and meet expectations",
+        "be on time", "avoid arguing", "do not judge", "clarify statements",
+        "maintain a positive attitude", "project confidence", "deal appropriately",
+        "confidential material", "private material", "restricted material",
+        "materials located on a computer", "desktop", "printer", "work area",
+        "environmental control", "proper ventilation", "dust cleanup",
+        "component handling", "storage placement", "antistatic",
+        "self-grounding", "power outage", "under-voltage", "power failure",
+        "generator", "surge protector", "battery backup", "fire safety",
+        "cable tie", "weight limitation", "removal of jewelry", "lifting",
+        "change request", "purpose of the change", "date and time of the change",
+        "affected systems", "impact", "risk level", "approval",
+        "rollback plan", "sandbox", "responsible staff member",
     ]),
 ]
 
@@ -285,6 +322,18 @@ NETWORK_PLUS = [
         "runbook", "escalation procedure", "vendor support", "warranty",
         "network performance baseline", "utilization", "bandwidth usage",
         "historical data", "reporting", "review the logs", "track changes",
+        "physical network diagram", "logical network diagram", "wiring diagram",
+        "site survey report", "audit and assessment report", "baseline configuration",
+        "network policy", "password policy", "remote access policy",
+        "onboarding and offboarding", "security policy", "data loss prevention",
+        "installation of patches", "operating system lifecycle",
+        "decommissioning", "configuration compliance", "process monitoring",
+        "interface statistics", "interface errors", "environmental factor",
+        "temperature", "humidity", "power monitoring", "snmp community string",
+        "network device logs", "traffic log", "audit log", "solution testing",
+        "recovery site", "failover testing", "backup schedule",
+        "full backup", "incremental backup", "differential backup",
+        "state of the network", "network health", "packet flow",
     ]),
     ("4.0 Network Security", [
         "cia triad", "confidentiality", "integrity", "availability triad",
@@ -354,7 +403,7 @@ SYMPTOM_SIGNALS = [
 # Tuned per exam: Core 1's troubleshooting objective covers hardware *and*
 # network faults, so it should claim far more symptom questions than Core 2's,
 # which covers software only. Security+ has no troubleshooting objective.
-TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.4, "n10-009": 1.9}
+TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.7, "n10-009": 2.3}
 DEFAULT_TROUBLE_WEIGHT = 1.0
 
 
@@ -366,19 +415,33 @@ TAXONOMIES = {
 }
 
 
+@lru_cache(maxsize=None)
+def _matcher(keyword):
+    """Match a keyword as a whole term, not as a substring.
+
+    Plain `in` matching made short acronyms catastrophically greedy: "man"
+    matched management and command, "ont" matched control and months, "sse"
+    matched assess and asset, "apt" matched laptop. Word boundaries are written
+    as lookarounds rather than \b so keywords containing punctuation still
+    work ("802.1x", ".bat", "sfp+", "cat5e").
+    """
+    return re.compile(r"(?<![a-z0-9])" + re.escape(keyword) + r"(?![a-z0-9])")
+
+
+def _hits(keywords, low):
+    return [k for k in keywords if _matcher(k).search(low)]
+
+
 def classify(exam_id, text):
     """Pick the objective whose keywords best match this question's text."""
     domains = TAXONOMIES[exam_id]
     low = text.lower()
-    trouble = sum(1 for signal in SYMPTOM_SIGNALS if signal in low)
+    trouble = len(_hits(SYMPTOM_SIGNALS, low))
 
     best_name, best_score = domains[0][0], -1.0
     for name, keywords in domains:
-        score = 0.0
-        for keyword in keywords:
-            if keyword in low:
-                # Multi-word phrases are more specific, so they count for more.
-                score += 1.0 + 0.75 * keyword.count(" ")
+        # Multi-word phrases are more specific, so they count for more.
+        score = sum(1.0 + 0.75 * k.count(" ") for k in _hits(keywords, low))
         if name in TROUBLESHOOTING_DOMAINS:
             score += trouble * TROUBLE_WEIGHT.get(exam_id, DEFAULT_TROUBLE_WEIGHT)
         if score > best_score:

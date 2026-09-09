@@ -319,7 +319,7 @@
    "B": "Battery replacement is premature before determining if the port itself is damaged and preventing charge detection.",
    "D": "Digitizer diagnostics address the display's touch functionality, not the charging failure symptom."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 9,
@@ -550,7 +550,7 @@
    "C": "Type 2 hypervisors can support remote management depending on the host OS capabilities.",
    "D": "Type 2 hypervisors are less demanding hardware-wise than Type 1 since they leverage the host OS."
   },
-  "domain": "4.0 Virtualization and Cloud Computing"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 15,
@@ -861,7 +861,7 @@
    "C": "Installing a new ribbon is relevant only to impact printers, not modern office printers that jam due to mechanical wear.",
    "D": "Changing the printhead addresses print quality defects, not paper feed or jamming issues."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 23,
@@ -1056,7 +1056,7 @@
    "B": "2048x1080 is a cinema-specific resolution, not a standard Ultra HD format.",
    "D": "7680x4320 is 8K resolution, which exceeds Ultra HD specifications."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 28,
@@ -1326,7 +1326,7 @@
    "C": "Platform as a Service provides development frameworks and middleware, not the infrastructure-level control needed for VM-based disaster recovery.",
    "D": "Software as a Service delivers applications to end-users, not the underlying infrastructure required for disaster recovery solutions."
   },
-  "domain": "4.0 Virtualization and Cloud Computing"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 35,
@@ -1602,7 +1602,7 @@
    "C": "An improperly terminated cable would affect only that cable's connectivity, not cause issues with both devices when turned on.",
    "D": "Switchport security settings would typically block or restrict a port, not cause connectivity issues for both devices simultaneously."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 42,
@@ -1641,7 +1641,7 @@
    "C": "Supply chain security relates to procurement and product integrity, not to confirming deployment capability to a remote workforce.",
    "D": "While power efficiency is a consideration, it is not the primary specification needed to validate deployment capability across different electrical systems."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 43,
@@ -2572,7 +2572,7 @@
    "B": "VDI licensing can actually be more expensive due to server infrastructure and software licensing costs, not cheaper.",
    "D": "A virus on a virtual desktop is not automatically contained locally; it could potentially spread to the server or other virtual desktops if not properly isolated."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 67,
@@ -3078,7 +3078,7 @@
    "C": "Changing cartridges addresses toner/ink issues but not paper jams or smudging from mechanical problems.",
    "D": "Replacing the fuser is a major repair typically done only after other components are ruled out, not a first step."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 80,
@@ -3198,7 +3198,7 @@
    "C": "Containerization requires application modifications and modern OS compatibility, which is not possible here.",
    "D": "Running from USB enclosure does not address the failing hardware and provides no long-term sustainability."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 83,
@@ -3592,7 +3592,7 @@
    "B": "Paper size selection would cause consistent failures or error messages, not intermittent feeding issues.",
    "D": "The toner cartridge does not affect paper feeding functionality."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 93,
@@ -3720,7 +3720,7 @@
    "E": "Managed switches require configuration to function optimally, not zero configuration.",
    "F": "Managed switches typically consume more power due to processing overhead, not less."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 96,
@@ -3759,7 +3759,7 @@
    "B": "Trusted Platform Module provides security and encryption features, not boot sequence control.",
    "C": "USB permissions relate to file system access and do not affect boot order configuration."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 97,
@@ -3994,7 +3994,7 @@
    "B": "SD cards are storage expansion and do not relate to cellular provider connectivity.",
    "D": "MDM (Mobile Device Management) is a management platform and does not enable switching to different providers."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 103,
@@ -4186,7 +4186,7 @@
    "C": "OS updates do not cause unrecognized RAM and introduce unnecessary complexity.",
    "D": "Replacing the motherboard is expensive and premature when a simple reseat typically resolves the issue."
   },
-  "domain": "3.0 Hardware"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 108,
@@ -4378,7 +4378,7 @@
    "B": "A managed switch provides only network connectivity, not monitor, keyboard, or mouse connections.",
    "D": "Near-field communication has very limited range and bandwidth, unsuitable for peripheral connections."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 113,
@@ -4889,7 +4889,7 @@
    "C": "Community clouds serve a specific group of organizations with shared interests, not a single company's internal migration.",
    "D": "Hybrid clouds combine both private and public cloud resources; an internal-only migration describes a pure private cloud."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 126,
@@ -5660,7 +5660,7 @@
    "C": "Availability refers to service uptime and reliability, not the ability to scale resources based on demand.",
    "D": "Multitenancy refers to multiple customers sharing infrastructure, which is not the primary concern for scaling resources based on shopping traffic patterns."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 145,
@@ -6126,7 +6126,7 @@
    "B": "VPN is used for secure remote network connections, not physical access control.",
    "C": "GPS is a location tracking technology, not relevant to physical access control systems."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 157,
@@ -6165,7 +6165,7 @@
    "B": "Sandboxes isolate individual applications, not entire operating systems.",
    "D": "VDI (Virtual Desktop Infrastructure) is a centralized solution for remote desktop delivery, not for local simultaneous OS evaluation."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 158,
@@ -6719,7 +6719,7 @@
    "C": "Changing the case would be a workaround but does not address the underlying dangerous battery problem.",
    "D": "Factory reset would not resolve a physical hardware failure like battery swelling."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 172,
@@ -7112,7 +7112,7 @@
    "C": "Bluetooth is designed for personal device connectivity and has limited range for inventory tracking applications.",
    "D": "Wi-Fi is a network connectivity technology, not an inventory tracking solution."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 182,
@@ -7736,7 +7736,7 @@
    "C": "PaaS requires application redesign and component refactoring, which is impractical when decommissioning is planned in one year.",
    "D": "Simply backing up and shutting down fails to meet the stated requirement of decommissioning the current environment; the application still needs to run during the transition year."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 198,
@@ -7815,7 +7815,7 @@
    "B": "Network access control manages network connectivity but does not handle data separation or mobile device-specific requirements.",
    "D": "Endpoint protection focuses on malware and threat prevention, not data segregation or device management."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 200,
@@ -8089,7 +8089,7 @@
    "C": "Wireless performance enhancement is not the function of an injector; that would be a wireless access point or amplifier.",
    "D": "Extending network connections is the role of a repeater or extender, not an injector."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 207,
@@ -8128,7 +8128,7 @@
    "C": "FireWire cables use standardized connectors that are identical globally.",
    "D": "USB cables use standardized connectors (USB-A, USB-C, etc.) that are the same in every country."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 208,
@@ -8168,7 +8168,7 @@
    "C": "PostScript vs. PCL language selection wouldn't cause the spooler to stop entirely and require a restart; it would cause formatting issues.",
    "D": "Personal preference settings don't make documents unavailable; this is not a real technical phenomenon affecting print functionality."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 209,
@@ -8360,7 +8360,7 @@
    "B": "85.159.80.0/26 is a public IP address range, not suitable for private internal networks.",
    "D": "195.205.143.160/27 is a public IP address range, not suitable for private internal networks."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 214,
@@ -8565,7 +8565,7 @@
    "B": "Discarding the failed disk without replacement leaves the system with no redundancy and at risk.",
    "D": "Restoring from backup is unnecessary when RAID 1 has maintained an active duplicate of all current data."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 219,
@@ -9500,7 +9500,7 @@
    "B": "RAID 5 uses parity calculations, which adds computational work.",
    "C": "RAID 6 uses dual parity calculations, adding even more computational overhead."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 243,
@@ -9976,7 +9976,7 @@
    "C": "3840x2160 is 4K Ultra HD resolution.",
    "D": "7680x4320 is 8K resolution."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 255,
@@ -10092,7 +10092,7 @@
    "C": "Printer sharing allows multiple users to access a printer but does not prevent forgotten documents.",
    "D": "Wireless encryption protects data in transit but does not prevent physical documents from being left at the printer."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 258,
@@ -10247,7 +10247,7 @@
    "C": "DKIM provides cryptographic signing of email content, not IP-based sender authorization.",
    "D": "DMARC is a policy framework that works with SPF and DKIM but SPF specifically verifies IP address authorization."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 262,
@@ -10614,7 +10614,7 @@
    "D": "Private cloud is entirely internal and doesn't inherently support easy data sharing between on-site and external systems.",
    "E": "SaaS is a service model, not a deployment model for this infrastructure scenario."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 271,
@@ -10884,7 +10884,7 @@
    "C": "SMTP is for sending mail, not receiving it; it doesn't replace POP3 for downloading messages.",
    "D": "SFTP is for secure file transfer, not for email protocol functionality."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 278,
@@ -10973,7 +10973,7 @@
    "C": "Shielded cables improve signal integrity but won't resolve bandwidth contention issues.",
    "D": "Increasing VoIP bit rate would worsen congestion, not improve it."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 280,
@@ -11012,7 +11012,7 @@
    "C": "Environmental interference would affect all devices similarly, not just this one smartphone.",
    "D": "Power settings affect battery drain and performance, not relative signal strength measurement."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 281,
@@ -11170,7 +11170,7 @@
    "C": "Orientation settings affect horizontal layout, not downward vertical shifting.",
    "D": "While pickup roller condition is important, verifying correct paper loading is the logical first diagnostic step."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 285,
@@ -11402,7 +11402,7 @@
    "C": "SFTP is for secure file transfer, not email sending.",
    "D": "SMB is for file sharing on networks, not email."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 291,
@@ -11806,7 +11806,7 @@
    "C": "NFC (Near Field Communication) operates at 13.56MHz and is not a wireless networking technology.",
    "D": "RFID operates at various frequencies including 125kHz and 13.56MHz, but not standardly at 5GHz."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 301,
@@ -11844,7 +11844,7 @@
    "C": "Availability ensures services are accessible but doesn't describe the mechanism for updating local folders with remote changes.",
    "D": "Metered utilization refers to tracking and billing resource consumption, unrelated to folder synchronization."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 302,
@@ -12044,7 +12044,7 @@
    "B": "A hypervisor creates virtual machines but doesn't inherently provide the isolated execution environment needed for safe attachment scanning.",
    "D": "Containers are for application deployment and isolation, not specifically for malware detection of email attachments."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 306,
@@ -13389,7 +13389,7 @@
    "B": "DNS flushing addresses DNS resolution issues, not wireless signal strength or coverage.",
    "C": "A Wi-Fi 6 NIC cannot improve reception if the signal itself is too weak to reach the location."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 340,
@@ -13438,7 +13438,7 @@
    "C": "Duplex setting controls single/double-sided printing, not document access control.",
    "F": "USB is a connection interface type and has no role in identifying who picks up printouts."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 341,
@@ -13632,7 +13632,7 @@
    "C": "Wired connectivity relates to network connection type, not document privacy or access control.",
    "D": "Duplex settings control double-sided printing format, not who can access or retrieve documents."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 346,
@@ -13710,7 +13710,7 @@
    "C": "Standard power supplies have all cables permanently attached, resulting in poor cable management.",
    "D": "Redundant supplies provide failover capability for high-availability systems, not cable management improvements."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 348,
@@ -13913,7 +13913,7 @@
    "C": "While RJ45 ports are disabled, the user is connecting via WLAN, so this does not explain the wireless performance issues.",
    "D": "The laptop works fine in other campus areas and has normal hardware resources, ruling out malware as the cause."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 353,
@@ -13952,7 +13952,7 @@
    "C": "Resetting BIOS to default settings would not address thermal or airflow issues causing the shutdowns.",
    "D": "Switching power outlets would not resolve thermal issues caused by dust accumulation in the manufacturing environment."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 354,
@@ -14346,7 +14346,7 @@
    "B": "Zigbee is a low-power wireless protocol designed for IoT and home automation with much slower data rates than Wi-Fi Direct.",
    "C": "Infrared requires line-of-sight, has limited range, and provides much lower data transmission speeds than modern wireless technologies."
   },
-  "domain": "1.0 Mobile Devices"
+  "domain": "2.0 Networking"
  },
  {
   "id": 364,
@@ -14385,7 +14385,7 @@
    "C": "Performance degradation may affect battery life but would not increase the time required to charge the battery.",
    "D": "While overheating can affect charging, the primary symptom of slow charging time is most directly related to connection or charging circuit issues."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 365,
@@ -14424,7 +14424,7 @@
    "C": "Interference affects all devices in the area equally; the fact that other devices show stronger signals rules out environmental interference as the primary cause.",
    "D": "Power settings may affect Wi-Fi range but would not cause the device to show consistently lower signal strength than nearby devices using the same network."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 366,
@@ -14511,7 +14511,7 @@
    "C": "USB Enable is not a standard BIOS configuration option; boot options are the correct setting.",
    "D": "TPM features relate to security and encryption, not to boot device priority or startup sequencing."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 368,
@@ -14862,7 +14862,7 @@
    "C": "Bluetooth is a short-range personal area network technology, distinct from wide area cellular networks.",
    "D": "Wi-Fi is a local area wireless technology that does not require a WWAN card and operates independently of cellular networks."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 377,
@@ -14940,7 +14940,7 @@
    "C": "Firmware updates improve printer functionality but do not generate usage statistics or logging data.",
    "D": "Network scan services enable scanning documents to network locations; they do not provide print job tracking or usage analytics."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 379,
@@ -15133,7 +15133,7 @@
    "C": "Disabling speakers and microphones in BIOS would prevent them from functioning entirely, not help them work.",
    "D": "Power cycling devices is not the appropriate solution when drivers are installed and hardware is connected; configuration is needed."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 384,
@@ -16069,7 +16069,7 @@
    "B": "Duplexing scans both sides of a page but doesn't speed up the process of feeding pages through the scanner.",
    "D": "Orientation configuration adjusts how scanned images are presented but has no impact on scanning speed."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 408,
@@ -16272,7 +16272,7 @@
    "D": "Software as a service is a cloud delivery model for applications, not a technology for running multiple operating systems on a single physical server.",
    "E": "Load balancing distributes traffic across multiple systems but does not involve running multiple operating systems concurrently on a single physical machine."
   },
-  "domain": "2.0 Networking"
+  "domain": "4.0 Virtualization and Cloud Computing"
  },
  {
   "id": 413,
@@ -16389,7 +16389,7 @@
    "C": "Paper jams would cause printing to stop or produce crumpled output, not smudges across multiple pages.",
    "D": "The fuser is a laser printer component that applies toner by heat; inkjet printers do not use fusers and this is not applicable to the issue."
   },
-  "domain": "5.0 Hardware and Network Troubleshooting"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 416,
@@ -16544,7 +16544,7 @@
    "B": "SSDs are more energy efficient than HDDs because they have no moving mechanical components; HDDs consume more power for motor and actuator movement.",
    "D": "SSDs are lighter and more compact than HDDs due to their solid-state design; HDDs are bulkier and heavier due to spinning platters and mechanical components."
   },
-  "domain": "3.0 Hardware"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 420,
@@ -17145,7 +17145,7 @@
    "C": "IPv6 enablement is not typically related to missing printer features.",
    "D": "Using a USB cable instead of network connection doesn't enable features; it may actually limit them."
   },
-  "domain": "2.0 Networking"
+  "domain": "3.0 Hardware"
  },
  {
   "id": 435,
@@ -17261,7 +17261,7 @@
    "B": "RAID 2 is obsolete and rarely used in modern systems.",
    "C": "RAID 5 provides adequate performance and redundancy but slower write performance than RAID 10 due to parity calculations."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 438,
@@ -17417,7 +17417,7 @@
    "C": "Restarting the router would affect all workstations, but only updated ones have the problem.",
    "D": "Switching to IPv6 would not resolve speed issues and is unlikely to be related to OS updates affecting specific workstations."
   },
-  "domain": "2.0 Networking"
+  "domain": "5.0 Hardware and Network Troubleshooting"
  },
  {
   "id": 442,
@@ -17534,7 +17534,7 @@
    "C": "A local area network (LAN) is typically limited to a single building or office, not multiple branch locations.",
    "D": "A wide area network (WAN) spans large geographic distances like multiple cities or countries, exceeding the scope of same-postal-code locations."
   },
-  "domain": "2.0 Networking"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 445,
@@ -17611,7 +17611,7 @@
    "C": "Port 143 is used for IMAP (email retrieval).",
    "D": "Port 445 is used for SMB (Server Message Block) over TCP, which is related but not NetBIOS itself."
   },
-  "domain": "3.0 Hardware"
+  "domain": "1.0 Mobile Devices"
  },
  {
   "id": 447,
