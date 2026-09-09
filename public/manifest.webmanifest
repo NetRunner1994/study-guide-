@@ -1,7 +1,7 @@
 {
   "name": "CompTIA Arcade \u2014 Exam Study Game",
   "short_name": "CompTIA Arcade",
-  "description": "Study guide and quiz game for CompTIA Security+ and A+ exams.",
+  "description": "Study guide and quiz game for CompTIA Security+, A+ and Network+ exams.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

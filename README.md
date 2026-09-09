@@ -13,8 +13,9 @@ It installs to a phone home screen, runs offline, and keeps all progress on the 
 | Security+ | SY0-701 | 610 | 5 |
 | A+ Core 1 | 220-1201 | 462 | 5 |
 | A+ Core 2 | 220-1202 | 396 | 4 |
+| Network+ | N10-009 | 724 | 5 |
 
-**1,468 questions in total.** Switch exams from the button at the top of the Home screen, or
+**2,192 questions in total.** Switch exams from the button at the top of the Home screen, or
 from Settings. Each exam keeps its own progress, XP, badges, mastery and review schedule; the
 day streak is shared, so studying any exam keeps it alive. Only the active exam's question
 bank is downloaded, so adding exams does not slow the app down.
@@ -92,6 +93,7 @@ pip install pypdf
 npm run data -- sy0-701  "CompTIA Security+ SY0-701 Exam Practice Questions.pdf" src/data/sy0-701.json
 npm run data -- 220-1201 "CompTIA A+ 220-1201 Exam Practice Questions.pdf"       src/data/220-1201.json
 npm run data -- 220-1202 "CompTIA A+ 220-1202 Exam Practice Questions.pdf"       src/data/220-1202.json
+npm run data -- n10-009  "CompTIA Network+ N10-009 Exam Practice Questions.pdf"  src/data/n10-009.json
 ```
 
 `tools/parse_pdf.py` rejoins the PDF's hard line-wraps, splits each item into stem, options,
@@ -99,9 +101,15 @@ correct answer, explanation and per-distractor notes, handles the single-answer,
 and "choose three" formats, converts performance-based items into matching pairs, and tags
 every question with an exam objective.
 
-Parse results: **610 of 611** Security+, **462 of 462** A+ Core 1, **396 of 396** A+ Core 2.
-Security+ question #321 is skipped because its answer options exist only as an image in the
-PDF, so there is no option text to extract. The parser reports it rather than guessing.
+Parse results: **610 of 611** Security+, **462 of 462** A+ Core 1, **396 of 396** A+ Core 2,
+**724 of 724** Network+. Security+ question #321 is skipped because its answer options exist
+only as an image in the PDF, so there is no option text to extract. The parser reports it
+rather than guessing.
+
+Three Network+ questions (#124, #284, #330) are missing a note for one wrong option because
+the source PDF never wrote one. The tests allow a small tail of these while still failing if
+the share of fully-explained questions drops, which is what a parser regression would look
+like.
 
 `npm test` re-validates every bank: unique ids, answers that exist among the options, an
 explanation for every distractor, no leftover extraction artifacts, and that each exam's
@@ -116,8 +124,8 @@ names — without that, "the laptop screen flickers" tags as Hardware and the tr
 objective ends up nearly empty.
 
 Treat the tags as a study filter, not an authoritative classification. Published exam weights
-are shown only for Security+, where they are known; for A+ the app shows how many questions in
-the bank fall under each objective instead of asserting a weight.
+are shown only for Security+, where they are known; for A+ and Network+ the app shows how many
+questions in the bank fall under each objective instead of asserting a weight.
 
 ## Adding another exam
 
@@ -135,7 +143,7 @@ The app is built around a catalog, so a new exam is data plus two small entries:
 Nothing else needs touching: the exam picker, per-exam progress, badges, mastery meters,
 domain drills and the review schedule are all derived from the catalog. Exams sharing a
 `family` are grouped together in the picker, which is how A+ Core 1 and Core 2 appear under
-one heading — Network+ would slot in the same way.
+one heading. Network+ was added exactly this way.
 
 ## Layout
 

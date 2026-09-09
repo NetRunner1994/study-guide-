@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A mobile-first React study guide and quiz game for CompTIA exams (Security+, A+).",
+  "description": "A mobile-first React study guide and quiz game for CompTIA exams (Security+, A+, Network+).",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

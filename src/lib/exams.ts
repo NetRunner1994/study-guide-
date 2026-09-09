@@ -89,6 +89,23 @@ export const EXAMS: Exam[] = [
     ]),
     load: () => import('../data/220-1202.json').then((m) => m.default as unknown as Question[]),
   },
+  {
+    id: 'n10-009',
+    code: 'N10-009',
+    family: 'CompTIA Network+',
+    name: 'Network+',
+    tagline: 'Networking concepts, implementation, operations, security and troubleshooting',
+    icon: '🌐',
+    accent: '#fbbf24',
+    domains: domains([
+      ['1.0 Networking Concepts', 'Concepts'],
+      ['2.0 Network Implementation', 'Implementation'],
+      ['3.0 Network Operations', 'Operations'],
+      ['4.0 Network Security', 'Security'],
+      ['5.0 Network Troubleshooting', 'Troubleshooting'],
+    ]),
+    load: () => import('../data/n10-009.json').then((m) => m.default as unknown as Question[]),
+  },
 ]
 
 export const DEFAULT_EXAM_ID = EXAMS[0].id

@@ -223,6 +223,108 @@ A_PLUS_CORE_2 = [
     ]),
 ]
 
+NETWORK_PLUS = [
+    ("1.0 Networking Concepts", [
+        "osi model", "osi layer", "physical layer", "data link layer", "network layer",
+        "transport layer", "session layer", "presentation layer", "application layer",
+        "encapsulation", "decapsulation", "payload", "frame", "packet", "segment",
+        "mtu", "jumbo frame", "topology", "star topology", "mesh", "hybrid topology",
+        "point-to-point", "three-tier", "spine and leaf", "collapsed core",
+        "north-south", "east-west", "traffic flow", "ipv4", "ipv6", "subnetting",
+        "subnet mask", "cidr", "vlsm", "public ip", "private ip", "rfc1918", "apipa",
+        "loopback", "eui-64", "slaac", "unicast", "multicast", "anycast", "broadcast",
+        "dual stack", "tunneling", "ports and protocols", "well-known port",
+        "ftp", "sftp", "ssh", "telnet", "smtp", "imap", "pop3", "dns", "dhcp", "tftp",
+        "http", "https", "ntp", "snmp", "ldap", "ldaps", "sip", "rdp", "syslog port",
+        "cloud", "nfv", "vpc", "network security group", "cloud gateway", "saas",
+        "iaas", "paas", "multitenancy", "elasticity", "scalability", "regions",
+        "availability zone", "direct connect", "cloud connectivity",
+    ]),
+    ("2.0 Network Implementation", [
+        "routing", "static route", "default route", "dynamic routing", "bgp", "eigrp",
+        "ospf", "rip", "route selection", "administrative distance", "prefix length",
+        "routing metric", "routing table", "nat", "pat", "fhrp", "vrrp", "hsrp",
+        "virtual ip", "subinterface", "switching", "vlan", "voice vlan", "802.1q",
+        "trunk port", "access port", "native vlan", "link aggregation", "lacp",
+        "port aggregation", "spanning tree", "stp", "rstp", "root bridge",
+        "interface configuration", "mac address table", "arp table",
+        "wireless", "802.11", "frequency band", "2.4ghz", "5ghz", "6ghz",
+        "channel width", "ssid", "bssid", "essid", "autonomous access point",
+        "wireless controller", "wpa2", "wpa3", "guest network", "captive portal",
+        "antenna", "omnidirectional", "directional antenna", "site survey", "heat map",
+        "rack", "patch panel", "pdu", "power distribution", "cabling", "fiber",
+        "single-mode", "multimode", "twisted pair", "shielded", "unshielded", "plenum",
+        "riser-rated", "connector", "lc connector", "sc connector", "st connector",
+        "mpo", "rj11", "rj45", "f-type", "transceiver", "sfp", "sfp+", "qsfp",
+        "media converter", "cable standard", "cat5e", "cat6", "cat6a", "cat7", "cat8",
+    ]),
+    ("3.0 Network Operations", [
+        "documentation", "physical diagram", "logical diagram", "rack diagram",
+        "cable map", "ipam", "service level agreement", "sla", "wireless survey",
+        "life-cycle management", "end-of-life", "end-of-support", "software management",
+        "patches and bug fixes", "operating system upgrade", "firmware", "decommissioning",
+        "change management", "configuration management", "production configuration",
+        "backup configuration", "baseline configuration", "golden configuration",
+        "monitoring", "snmp trap", "mib", "oid", "flow data", "netflow", "packet capture",
+        "log aggregation", "siem", "api integration", "port mirroring", "traffic analysis",
+        "network discovery", "performance metric", "availability", "uptime",
+        "disaster recovery", "high availability", "active-active", "active-passive",
+        "cold site", "warm site", "hot site", "tabletop exercise", "validation test",
+        "capacity planning", "redundancy", "load balancing", "clustering",
+        "mttr", "mtbf", "rto", "rpo", "asset inventory", "vendor documentation",
+        "audit", "compliance requirement", "maintenance window", "ticket",
+        "network diagram", "floor plan", "labeling", "port label", "asset tag",
+        "inventory", "backup and restore", "restore point", "archive", "retention",
+        "snapshot", "configuration backup", "monitoring solution", "alert threshold",
+        "notification", "dashboard", "trend", "poller", "snmp version", "syslog severity",
+        "log level", "upgrade", "downgrade", "rollback", "scheduled maintenance",
+        "downtime", "outage window", "planned outage", "business continuity",
+        "recovery plan", "geographic redundancy", "environmental sensor",
+        "temperature and humidity", "onboarding", "offboarding", "acceptable use policy",
+        "bring your own device", "byod", "nda", "standard operating procedure",
+        "runbook", "escalation procedure", "vendor support", "warranty",
+        "network performance baseline", "utilization", "bandwidth usage",
+        "historical data", "reporting", "review the logs", "track changes",
+    ]),
+    ("4.0 Network Security", [
+        "cia triad", "confidentiality", "integrity", "availability triad",
+        "aaa", "radius", "tacacs+", "single sign-on", "sso", "multifactor",
+        "authentication", "authorization", "least privilege", "rbac", "zero trust",
+        "sase", "sse", "defense in depth", "network segmentation", "screened subnet",
+        "honeypot", "deception technology", "physical security", "camera", "door lock",
+        "asset disposal", "denial-of-service", "dos", "ddos", "vlan hopping",
+        "mac flooding", "arp poisoning", "arp spoofing", "dns poisoning", "dns spoofing",
+        "rogue device", "rogue dhcp", "rogue access point", "evil twin", "on-path attack",
+        "social engineering", "phishing", "dumpster diving", "shoulder surfing",
+        "tailgating", "malware", "device hardening", "disable unused ports",
+        "default password", "network access control", "802.1x", "mac filtering",
+        "port security", "key management", "security rule", "access control list",
+        "url filtering", "content filtering", "ids", "ips", "firewall", "waf", "ngfw",
+        "layer 7 firewall", "vpn", "site-to-site", "clientless vpn", "remote access vpn",
+        "ipsec", "ssl vpn", "tls vpn", "encryption in transit", "certificate",
+    ]),
+    ("5.0 Network Troubleshooting", [
+        "troubleshooting methodology", "identify the problem", "establish a theory",
+        "test the theory", "plan of action", "implement the solution",
+        "verify full system functionality", "document findings", "escalate",
+        "attenuation", "interference", "crosstalk", "emi", "decibel loss", "db loss",
+        "incorrect pinout", "bad port", "open circuit", "short circuit",
+        "transceiver mismatch", "wavelength mismatch", "dirty optical cable",
+        "poe issue", "power budget", "incorrect standard", "switching loop",
+        "duplicate ip", "duplicate mac", "expired ip address", "exhausted dhcp scope",
+        "incorrect subnet mask", "incorrect gateway", "incorrect dns",
+        "congestion", "bottleneck", "packet loss", "high latency", "jitter",
+        "insufficient wireless coverage", "channel overlap", "roaming misconfiguration",
+        "client disassociation", "signal strength", "throughput issue",
+        "ping", "traceroute", "tracert", "pathping", "nslookup", "dig", "netstat",
+        "tcpdump", "wireshark", "protocol analyzer", "nmap", "ipconfig", "ifconfig",
+        "arp command", "route command", "speed test", "iperf", "cable tester",
+        "toner probe", "network tap", "wi-fi analyzer", "spectrum analyzer",
+        "link light", "port status", "show command", "counters", "crc error",
+        "runt", "giant", "collision", "duplex mismatch", "speed mismatch",
+    ]),
+]
+
 # Troubleshooting objectives are scored differently: a question belongs to them
 # because it describes a fault to diagnose, not because of the parts it names.
 # Without this, "the laptop screen flickers" is tagged Hardware, and the
@@ -230,6 +332,7 @@ A_PLUS_CORE_2 = [
 TROUBLESHOOTING_DOMAINS = {
     "5.0 Hardware and Network Troubleshooting",
     "3.0 Software Troubleshooting",
+    "5.0 Network Troubleshooting",
 }
 
 SYMPTOM_SIGNALS = [
@@ -251,12 +354,13 @@ SYMPTOM_SIGNALS = [
 # Tuned per exam: Core 1's troubleshooting objective covers hardware *and*
 # network faults, so it should claim far more symptom questions than Core 2's,
 # which covers software only. Security+ has no troubleshooting objective.
-TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.4}
+TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.4, "n10-009": 1.9}
 DEFAULT_TROUBLE_WEIGHT = 1.0
 
 
 TAXONOMIES = {
     "sy0-701": SECURITY_PLUS,
+    "n10-009": NETWORK_PLUS,
     "220-1201": A_PLUS_CORE_1,
     "220-1202": A_PLUS_CORE_2,
 }
