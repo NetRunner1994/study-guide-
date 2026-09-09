@@ -191,7 +191,7 @@
    "C": "MFA adds authentication factors but doesn't reduce the number of credential sets required.",
    "D": "PEAP is a wireless authentication protocol, not a SaaS credential management solution."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 6,
@@ -308,7 +308,7 @@
    "C": "TLS provides encryption in transit but cannot prevent buffer overflow exploitation.",
    "D": "SD-WAN manages network routing and connectivity, not application security threats."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 9,
@@ -347,7 +347,7 @@
    "C": "Access management is too broad and doesn't specifically prevent credential-based attacks.",
    "D": "Password complexity alone doesn't prevent compromised passwords from being used by attackers."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 10,
@@ -563,7 +563,7 @@
    "C": "Defensive reconnaissance is not a standard penetration testing term.",
    "D": "Offensive describes attacks, but the scanning phase is reconnaissance, not the offensive exploitation phase."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 15,
@@ -639,7 +639,7 @@
    "B": "Memory injection involves code being inserted into memory at runtime, not related to software installation sources.",
    "C": "Resource reuse involves reusing computing resources with residual data, not software installation practices."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 17,
@@ -1186,7 +1186,7 @@
    "B": "Incident response procedures address how to handle active security incidents, not routine configuration changes.",
    "C": "A business continuity plan ensures operations continue during disruptions, not specific to firewall rule implementation."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 31,
@@ -1391,7 +1391,7 @@
    "D": "User-based firewall policies rely on identity/authentication systems, not physical asset labels.",
    "E": "Penetration testing target selection uses network reconnaissance and scoping, not asset inventory stickers."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 36,
@@ -1510,7 +1510,7 @@
    "B": "Cryptographic collisions are theoretically possible but extremely rare and unrelated to patch history.",
    "C": "File system snapshots don't change the actual hash of the monitored file."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 39,
@@ -2065,7 +2065,7 @@
    "B": "Critical typically refers to systems and operations essential for business continuity, not a primary data classification for patient information.",
    "D": "Public indicates data with no restriction on access or disclosure, which is completely inappropriate for patient data."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 53,
@@ -2572,7 +2572,7 @@
    "B": "Email security filters prevent delivery but do not address the scenario where users have already clicked links.",
    "D": "Additional training is preventive but does not reduce the impact of clicks that have already happened from users who missed the phishing attempts."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 66,
@@ -2767,7 +2767,7 @@
    "C": "Quarantining isolates affected systems to prevent spread of threats, not related to ignoring future alerts.",
    "D": "Archiving stores logs and data for retention and historical reference, not for suppressing future alert notifications."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 71,
@@ -2964,7 +2964,7 @@
    "C": "Verifying wire transfer information is a specific control procedure, not part of general security awareness communication.",
    "D": "Social engineering by third parties is a testing activity, not an element of communication within the awareness program itself."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 76,
@@ -3516,7 +3516,7 @@
    "B": "While phishing campaigns improve awareness, they do not directly prevent an already-trained employee from being socially engineered.",
    "C": "Insider threat detection measures would detect suspicious behavior but may not prevent the initial transfer if the clerk appeared to follow existing procedures."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 89,
@@ -3595,7 +3595,7 @@
    "B": "Custodian is the entity responsible for safeguarding the data (the infrastructure team in this case).",
    "D": "Owner is typically the organization or the individual with legal rights over the data; here the organization owns the customer data."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 91,
@@ -4063,7 +4063,7 @@
    "B": "Segmentation isolates systems but doesn't specifically describe compensating for legacy system limitations with firewalls.",
    "C": "Risk transfer involves shifting risk to another party through insurance or outsourcing, not implementing additional security controls."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 103,
@@ -4581,7 +4581,7 @@
    "B": "Unsecured Bluetooth would require proximity and specific device pairing, making it less practical than removable media.",
    "C": "An unpatched OS is a vulnerability for malware execution but not the primary data loss path from an air-gapped network."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 116,
@@ -4783,7 +4783,7 @@
    "C": "Network segmentation isolates the device, managing rather than eliminating risk.",
    "D": "Physical relocation doesn't inherently require decommissioning."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 121,
@@ -5173,7 +5173,7 @@
    "B": "Hexdump shows raw binary content but requires manual interpretation and is inefficient for extracting metadata.",
    "C": "Endpoint logs might show file access events but are unlikely to contain file creation details or original creator information."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 131,
@@ -5366,7 +5366,7 @@
    "B": "Tokenization replaces sensitive data with tokens but doesn't inherently render data unreadable in the same way encryption does.",
    "D": "Segmentation is a network security strategy that isolates systems but doesn't directly protect data at rest."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 136,
@@ -5483,7 +5483,7 @@
    "B": "Secure DNS cryptographic downgrade is a protocol manipulation attack, not related to network flooding.",
    "C": "On-path resource consumption would affect internal server resources, not just network interface traffic."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 139,
@@ -5652,7 +5652,7 @@
    "B": "VPN IP address isn't an authentication factor; company ID could be knowledge-based but GeoIP lookup isn't proper MFA.",
    "D": "Company URL and home address aren't authentication factors; TLS certificate is infrastructure-based, not user authentication."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 143,
@@ -6126,7 +6126,7 @@
    "B": "Integrity ensures data is not modified, which is not the primary function of load balancers.",
    "C": "Confidentiality protects data from disclosure, which load balancers do not primarily ensure."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 155,
@@ -6413,7 +6413,7 @@
    "C": "DHCP logs show IP address assignments but don't identify C2 communication.",
    "F": "Database logs record database transactions, not external C2 communications."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 162,
@@ -7124,7 +7124,7 @@
    "B": "Mean time between failures (MTBF) measures how long a system runs between failures, not repair duration.",
    "C": "Recovery time objective (RTO) measures how long systems can be down, not the actual time to repair."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 180,
@@ -7240,7 +7240,7 @@
    "B": "ACL (Access Control List) manages permissions but doesn't protect against malware installation.",
    "D": "NAC (Network Access Control) controls device access to networks but doesn't prevent malware installation on endpoints."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 183,
@@ -8476,7 +8476,7 @@
    "C": "Security agent deployment is a function of endpoint management or security orchestration, not SIEM.",
    "D": "Vulnerability scanning is a separate security tool function, not a core next-generation SIEM feature."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 215,
@@ -9278,7 +9278,7 @@
    "C": "Smart cards require physical hardware that is difficult to manage for global distributed teams and adds equipment requirements.",
    "D": "Time-based logins do not provide meaningful security enhancement and don't address account takeover prevention."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 235,
@@ -9903,7 +9903,7 @@
    "C": "Encrypted data is scrambled content requiring decryption, not embedded geolocation information.",
    "D": "Sensitive data is a broad category; metadata is the specific technical term for this type of embedded file information."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 250,
@@ -9941,7 +9941,7 @@
    "B": "Digital signatures do not affect email delivery rates.",
    "C": "Signatures authenticate the sender but do not directly block phishing attacks; email filtering addresses that."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 251,
@@ -10019,7 +10019,7 @@
    "C": "Block cipher selection is important but derives from resource constraint considerations.",
    "D": "TLS version compatibility is relevant but secondary to whether the device can perform any cryptographic operations at all."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 253,
@@ -10096,7 +10096,7 @@
    "C": "SSDs retain data after power loss, making them less volatile than RAM.",
    "D": "Temporary files, while volatile, reside on storage media that persists longer than RAM without power."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 255,
@@ -10135,7 +10135,7 @@
    "C": "CIS Top 20 compliance reports assess current compliance status but don't provide third-party attestation of control effectiveness over time.",
    "D": "Vulnerability reports identify weaknesses but don't prove historical control implementation and effectiveness."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 256,
@@ -10212,7 +10212,7 @@
    "B": "Log correlation identifies suspicious patterns after events have been logged, making it detective.",
    "C": "Incident alerts notify of problems already occurring, making them reactive/detective controls."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 258,
@@ -10329,7 +10329,7 @@
    "C": "OS hardening reduces attack surface but doesn't protect data if the device itself is stolen.",
    "D": "Boot security prevents unauthorized system access but doesn't encrypt data on the disk itself."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 261,
@@ -10494,7 +10494,7 @@
    "D": "System enumeration is a component of scanning but not the specific scanning type being described.",
    "E": "Passive scans gather information without active probing, whereas this scan probes servers."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 265,
@@ -10651,7 +10651,7 @@
    "C": "Port access for LDAPS is not the issue; the connection is being established but rejected due to certificate validation.",
    "D": "Increasing TLS version on the RA would not resolve trust issues with the server certificate itself."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 269,
@@ -10851,7 +10851,7 @@
    "C": "Wireshark is a packet analyzer for capturing and inspecting network traffic, not for port/protocol discovery.",
    "D": "netcat is a simple networking utility for connections, not a comprehensive vulnerability assessment tool."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 274,
@@ -11219,7 +11219,7 @@
    "B": "802.1X requires credentials but doesn't address the legal concern or create terms of service acknowledgment.",
    "D": "WPS weakens security rather than addressing concerns about illicit activities on the network."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 283,
@@ -11619,7 +11619,7 @@
    "C": "Living-off-the-land binaries involve using legitimate system tools, but mimikatz is a dedicated hacking tool, not a LOLBin.",
    "D": "Social engineering of the accountant is not supported by the technical evidence of the mimikatz hash attack command."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 293,
@@ -11662,7 +11662,7 @@
    "D": "Threat intelligence feeds provide current threat data but not comprehensive documentation of common exploitation techniques.",
    "E": "CVE is an identifier catalog, not an educational resource on exploitation methods."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 294,
@@ -11755,7 +11755,7 @@
    "E": "Content filtering is irrelevant to preventing unauthorized user logins from external networks.",
    "F": "Reviewing permissions doesn't prevent attackers from logging in with compromised credentials in the first place."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 296,
@@ -11804,7 +11804,7 @@
    "D": "HIPS (host-based) protects individual endpoints but doesn't address network-level web application threats.",
    "F": "SIEM is for log aggregation and analysis, not a preventive control for web application attacks."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 297,
@@ -12199,7 +12199,7 @@
    "C": "Gap analysis compares current state to desired state, unrelated to vulnerability identification in code.",
    "D": "Impact analysis assesses consequences of changes or incidents, not source code review for vulnerabilities."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 307,
@@ -12480,7 +12480,7 @@
    "B": "Information security policy is organizational governance, separate from SDLC specifics.",
    "C": "Penetration testing is a security testing methodology, not a core SDLC component."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 313,
@@ -12557,7 +12557,7 @@
    "B": "OAuth tokens are created after IdP selection and configuration.",
    "C": "Password vaulting is a workaround, not the foundational first step toward proper SSO."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 315,
@@ -12712,7 +12712,7 @@
    "C": "Pivoting is a lateral movement technique used after initial access, not reconnaissance.",
    "D": "Exploit validation requires active testing and interaction with the target system."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 319,
@@ -12791,6 +12791,47 @@
   "domain": "5.0 Security Program Management & Oversight"
  },
  {
+  "id": 321,
+  "type": "single",
+  "prompt": [
+   "The security team has been asked to only enable host A (10.2.2.7) and host B (10.3.9.9) to the new isolated network segment (10.9.8.14) that provides access to legacy devices.",
+   "Access from all other hosts should be blocked.",
+   "Which of the following entries would need to be added on the firewall?"
+  ],
+  "options": [
+   {
+    "letter": "A",
+    "text": "Permit 10.2.2.0/24 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27"
+   },
+   {
+    "letter": "B",
+    "text": "Deny 0.0.0.0/0 to 10.9.8.14/27 · Permit 10.2.2.0/24 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27"
+   },
+   {
+    "letter": "C",
+    "text": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.9/32 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27"
+   },
+   {
+    "letter": "D",
+    "text": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.0/24 to 10.9.8.14/27 · Deny 10.9.8.14/27 to 0.0.0.0/0"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "answerText": "Permit 10.2.2.7/32 to 10.9.8.14/27 · Permit 10.3.9.9/32 to 10.9.8.14/27 · Deny 0.0.0.0/0 to 10.9.8.14/27",
+  "explanation": [
+   "The requirement is to allow only specific hosts (10.2.2.7 and 10.3.9.9) to access the network segment 10.9.8.14/27, while blocking all others. Option C correctly uses /32 CIDR notation to specify individual host addresses (10.2.2.7/32 and 10.3.9.9/32), followed by a deny rule for all other traffic (0.0.0.0/0). Options A and B use /24 subnet masks which",
+   "would allow entire subnets rather than just the specific hosts. Option D has an incorrect deny rule direction. The proper firewall rule order is to permit the specific hosts first, then deny all others."
+  ],
+  "why": {
+   "A": "Uses /24 subnets instead of /32 host-specific addresses, allowing unintended hosts to access the network.",
+   "B": "Uses /24 subnets instead of /32 host-specific addresses, and the rule order (deny before permit) may cause the permit rules to be ineffective.",
+   "D": "The final deny rule has incorrect source and destination (reversed direction), and uses /24 subnet for one host instead of /32."
+  },
+  "domain": "3.0 Security Architecture"
+ },
+ {
   "id": 322,
   "type": "pbq",
   "format": "Simulation",
@@ -12849,7 +12890,7 @@
    "5. Because that lower tier holds the database and back-end instances that need no inbound internet exposure, the dropdown is set to Private Subnet.",
    "The diagram models a layered, defense-in-depth cloud deployment. Internet traffic enters through the Internet Gateway and is first screened by the WAF, which protects the customer-facing payment application from injection, cross-site scripting and similar web attacks. Screened traffic is then handed to the Load Balancer in the public subnet, which distributes requests across multiple back-end servers so no single failure takes the site down; the Autoscaling Instances allow that capacity to expand automatically under load, satisfying the redundancy goal. The application workload itself is carried by several Instance icons rather than one, again for fault tolerance. Finally, the Database and the back-end instances that support it sit in the lower tier, which must be set to Private Subnet in the dropdown: private subnets have no direct route to or from the internet, so cardholder data can only be reached through the front-end tier, adding an additional security boundary around the most sensitive component."
   ],
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 323,
@@ -12975,7 +13016,7 @@
    "E": "Containment is an incident response activity, not vulnerability management.",
    "F": "Tabletop exercises are disaster recovery or incident response planning, not vulnerability management."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 326,
@@ -13135,7 +13176,7 @@
    "C": "Using multiple vendors actually makes it harder to apply a single secure configuration guide.",
    "D": "Load balancing is a technical capability, not a benefit of vendor diversity per se."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 330,
@@ -13295,7 +13336,7 @@
    "C": "False positives are a result of assessment, not a risk of conducting it.",
    "D": "Finding security gaps is the intended purpose, not a risk of the assessment."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 334,
@@ -13729,7 +13770,7 @@
    "B": "Segmentation divides networks or systems for security purposes, not for reducing physical servers.",
    "D": "Redundancy adds duplicate systems for fault tolerance, which would typically increase rather than decrease server count."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 345,
@@ -13767,7 +13808,7 @@
    "C": "Integrity protects data from unauthorized modification; DDoS attacks target availability, not data integrity.",
    "D": "Confidentiality protects data from unauthorized disclosure; DDoS attacks do not primarily target confidentiality."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 346,
@@ -14203,7 +14244,7 @@
    "B": "A firewall operates at network layer and does not monitor application authentication attempts.",
    "C": "An IPS prevents network-based attacks but does not detect credential guessing at the application level."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 357,
@@ -14631,7 +14672,7 @@
    "B": "Network saturation would be indicated by high Read/s and Writes/s metrics; the 50KB/s read and 100KB/s write rates show normal network activity, not saturation.",
    "C": "Account lockout is a security/authentication issue unrelated to slow performance and intermittent operation, and would not appear in server resource metrics."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 368,
@@ -14746,7 +14787,7 @@
    "C": "NFC is protected through proximity-based security and encryption, not NAC platforms.",
    "D": "SCADA requires specialized industrial control security, not standard NAC solutions."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 371,
@@ -14825,7 +14866,7 @@
    "C": "URL scanning is a filtering technique, not a deployment method.",
    "D": "Content categorization is a filtering capability, not a deployment architecture."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 373,
@@ -14901,7 +14942,7 @@
    "C": "Intrusion detection detects attacks but does not prevent communications.",
    "D": "Anti-malware protects against malicious software but does not filter communications."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 375,
@@ -15420,7 +15461,7 @@
    "B": "Penetration testing identifies vulnerabilities but isn't designed to formally assess control design and effectiveness.",
    "D": "Vulnerability assessment identifies weaknesses but doesn't formally attest to control design and operational effectiveness."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 388,
@@ -15617,7 +15658,7 @@
    "C": "RFID cloning involves duplicating radio frequency identification cards, not physical following.",
    "D": "Forgery involves creating fake credentials or documents, not entering alongside legitimate employees."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 393,
@@ -15732,7 +15773,7 @@
    "C": "IAM manages authentication and authorization but doesn't detect suspicious behavioral patterns.",
    "D": "NIDS detects network-based attacks but isn't designed to monitor user activity patterns."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 396,
@@ -15850,7 +15891,7 @@
    "B": "Root of trust certificates are trusted by default and wouldn't trigger warnings.",
    "C": "Third-party CA-issued certificates are trusted and don't generate insecurity prompts."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 399,
@@ -16324,7 +16365,7 @@
    "C": "Rules of understanding is not a standard penetration testing term.",
    "D": "Rules of execution relates to how tests are run, but the formal term is rules of engagement."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 411,
@@ -16797,7 +16838,7 @@
    "C": "Network intrusion detection is configured after the server is secured and operational.",
    "D": "While patching is important, hardening (which includes disabling unnecessary components) is the first step."
   },
-  "domain": "3.0 Security Architecture"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 423,
@@ -16992,7 +17033,7 @@
    "B": "Reporting to local authorities is typically done after notifying the affected parties and may not always be the immediate next step.",
    "D": "Implementing vulnerability scanning is a remediation step that occurs after notification and investigation have begun."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 428,
@@ -17715,7 +17756,7 @@
    "B": "Reducing false positives from vulnerability scans is a side effect, not the primary security reason for closing ports.",
    "D": "Improving resource utilization is a performance benefit, not a security reason."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 446,
@@ -17792,7 +17833,7 @@
    "B": "Web application firewalls can help but may not be as effective as MFA at preventing brute-force login attempts.",
    "D": "Encrypting customer data protects data at rest but does not prevent the initial brute-force attack or unauthorized access."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 448,
@@ -18753,7 +18794,7 @@
    "C": "Requiring exception statements does not enable faster detection of security anomalies",
    "D": "Masking usernames helps with privacy but does not improve the security monitoring process itself"
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 472,
@@ -18915,7 +18956,7 @@
    "B": "Security questions are weak factors and email OTPs do not fully satisfy the three requirements effectively",
    "C": "Voice verification may require specialized microphone hardware and SMS incurs carrier costs"
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 476,
@@ -19070,7 +19111,7 @@
    "B": "Removing software reduces attack surface but does not address existing OS vulnerabilities.",
    "C": "Configuration enforcement hardens the system but does not eliminate identified vulnerabilities."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 480,
@@ -19344,7 +19385,7 @@
    "C": "Penetration testing is too invasive and time-consuming for routine guest device onboarding.",
    "D": "Application vulnerability testing is not appropriate for guest devices during initial access control decisions."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 487,
@@ -19932,7 +19973,7 @@
    "C": "Risk treatment involves developing responses to risks after they have been identified.",
    "D": "Risk monitoring and review tracks risks throughout the project lifecycle after identification."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 502,
@@ -20319,7 +20360,7 @@
    "B": "Disabling ports/protocols is important but secondary to changing credentials that could already be known.",
    "D": "Removing unnecessary software is relevant for servers but not typically applicable to dedicated network devices."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 512,
@@ -20444,7 +20485,7 @@
    "E": "Cameras provide monitoring and evidence but do not actively control access.",
    "F": "Memorable questions are for logical authentication, not physical access control."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 515,
@@ -20716,7 +20757,7 @@
    "C": "Insurance considerations are not the primary regulatory driver for corrective controls.",
    "D": "This describes preventive controls, not corrective controls which fix errors after detection."
   },
-  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 522,
@@ -20871,7 +20912,7 @@
    "C": "Branch protection tests relate to version control implementation details rather than overall development methodology policies.",
    "D": "Secrets management configurations are operational implementation details, not policy-level documentation for development methodology."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 526,
@@ -21258,7 +21299,7 @@
    "B": "Policy enumeration is the process of identifying and listing policies, not actively enforcing them through validation scripts.",
    "D": "Guard rails implementation refers to preventive controls that restrict dangerous actions, while this script validates existing configurations."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 536,
@@ -21375,7 +21416,7 @@
    "B": "This order maintains before deploying, which cannot be done if nothing has been deployed yet.",
    "D": "This order deploys before establishing, which lacks the foundational step of defining baselines."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 539,
@@ -21655,7 +21696,7 @@
    "B": "Exception is a temporary deviation, not a strategic avoidance",
    "D": "Transfer shifts risk to another party, not eliminating it through market change"
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 546,
@@ -21908,7 +21949,7 @@
    "E": "Reviewing access logs shows usage patterns but is not a first step for signal strength heat mapping.",
    "F": "Removing impediments is a remediation step that comes after heat map analysis, not before."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "4.0 Security Operations"
  },
  {
   "id": 552,
@@ -21946,7 +21987,7 @@
    "B": "Decommissioning removes systems entirely rather than improving their security and functionality.",
    "D": "Encryption protects data but does not improve application functionality without separate patching."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 553,
@@ -22334,7 +22375,7 @@
    "B": "Onboarding and offboarding procedures are operational security practices, not the foundational element of governance.",
    "D": "Change management is a critical procedure but depends first on having clear roles and responsibilities established."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "1.0 General Security Concepts"
  },
  {
   "id": 563,
@@ -22373,7 +22414,7 @@
    "C": "Firmware failure is a reliability issue, not a security tampering risk mitigated by visual inspection.",
    "D": "RFID keyloggers are not the primary concern addressed by visual motherboard inspection during supply chain verification."
   },
-  "domain": "5.0 Security Program Management & Oversight"
+  "domain": "2.0 Threats, Vulnerabilities & Mitigations"
  },
  {
   "id": 564,
@@ -23091,7 +23132,7 @@
    "B": "Data sovereignty is about regulatory compliance for data location, not attack mitigation.",
    "D": "Encryption protects data in transit but doesn't prevent access from high-risk regions."
   },
-  "domain": "1.0 General Security Concepts"
+  "domain": "3.0 Security Architecture"
  },
  {
   "id": 582,
@@ -23208,7 +23249,7 @@
    "C": "User-driven analysis is not a standard risk analysis methodology.",
    "D": "Trend-based analysis examines patterns over time but doesn't specifically measure exposure factors."
   },
-  "domain": "4.0 Security Operations"
+  "domain": "5.0 Security Program Management & Oversight"
  },
  {
   "id": 585,

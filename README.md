@@ -10,11 +10,12 @@ It installs to a phone home screen, runs offline, and keeps all progress on the 
 
 | Exam | Code | Questions | Objectives |
 | --- | --- | --- | --- |
-| Security+ | SY0-701 | 610 | 5 |
+| Security+ | SY0-701 | 611 | 5 |
 | A+ Core 1 | 220-1201 | 462 | 5 |
 | A+ Core 2 | 220-1202 | 396 | 4 |
+| Network+ | N10-009 | 724 | 5 |
 
-**1,468 questions in total.** Switch exams from the button at the top of the Home screen, or
+**2,193 questions in total.** Switch exams from the button at the top of the Home screen, or
 from Settings. Each exam keeps its own progress, XP, badges, mastery and review schedule; the
 day streak is shared, so studying any exam keeps it alive. Only the active exam's question
 bank is downloaded, so adding exams does not slow the app down.
@@ -92,6 +93,7 @@ pip install pypdf
 npm run data -- sy0-701  "CompTIA Security+ SY0-701 Exam Practice Questions.pdf" src/data/sy0-701.json
 npm run data -- 220-1201 "CompTIA A+ 220-1201 Exam Practice Questions.pdf"       src/data/220-1201.json
 npm run data -- 220-1202 "CompTIA A+ 220-1202 Exam Practice Questions.pdf"       src/data/220-1202.json
+npm run data -- n10-009  "CompTIA Network+ N10-009 Exam Practice Questions.pdf"  src/data/n10-009.json
 ```
 
 `tools/parse_pdf.py` rejoins the PDF's hard line-wraps, splits each item into stem, options,
@@ -99,9 +101,19 @@ correct answer, explanation and per-distractor notes, handles the single-answer,
 and "choose three" formats, converts performance-based items into matching pairs, and tags
 every question with an exam objective.
 
-Parse results: **610 of 611** Security+, **462 of 462** A+ Core 1, **396 of 396** A+ Core 2.
-Security+ question #321 is skipped because its answer options exist only as an image in the
-PDF, so there is no option text to extract. The parser reports it rather than guessing.
+Parse results: **every question in every bank** — 611 Security+, 462 A+ Core 1, 396 A+ Core 2,
+724 Network+.
+
+Security+ #321 keeps its answer options as an image rather than text, so nothing could be
+extracted from it. Rather than dropping the question, the options were read off the rendered
+page and recorded in `tools/overrides/sy0-701.json`. Overrides are merged over the parsed
+result, so a regenerated bank keeps the fix. Add an entry there for any question whose content
+the PDF stores as an image.
+
+Three Network+ questions (#124, #284, #330) are missing a note for one wrong option because
+the source PDF never wrote one. The tests allow a small tail of these while still failing if
+the share of fully-explained questions drops, which is what a parser regression would look
+like.
 
 `npm test` re-validates every bank: unique ids, answers that exist among the options, an
 explanation for every distractor, no leftover extraction artifacts, and that each exam's
@@ -110,14 +122,32 @@ objectives are all populated.
 ### About the objective tags
 
 Objectives are assigned by keyword scoring in `tools/taxonomies.py`, not taken from the source
-PDF, which does not label them. Troubleshooting objectives are scored separately, because a
-question belongs to them for describing a fault to diagnose rather than for the parts it
-names — without that, "the laptop screen flickers" tags as Hardware and the troubleshooting
-objective ends up nearly empty.
+PDFs, which do not label them. Two things make the scoring work:
 
-Treat the tags as a study filter, not an authoritative classification. Published exam weights
-are shown only for Security+, where they are known; for A+ the app shows how many questions in
-the bank fall under each objective instead of asserting a weight.
+- **Keywords match as whole terms, not substrings.** Plain substring matching made short
+  acronyms catastrophically greedy: `man` matched *management* and *command*, `ont` matched
+  *control* and *months*, `sse` matched *assess* and *asset*, `apt` matched *laptop*. Fixing
+  this cut A+ Core 1's tagging error by more than half on its own.
+- **Troubleshooting objectives are scored on symptom language**, because a question belongs to
+  them for describing a fault to diagnose rather than for the parts it names. Without it, "the
+  laptop screen flickers" tags as Hardware. The symptom weight is tuned per exam.
+
+Measured against the published exam weights, the mean error per objective is roughly 2 points
+on A+ Core 1, 5 on A+ Core 2 and Security+, and 4 on Network+. Treat the tags as a study
+filter, not an authoritative classification.
+
+### Where the banks are thin
+
+The Stats screen shows each objective's share of the bank next to its official exam weight, and
+flags any objective the bank covers at least 7 points below its exam weight. Two are worth
+knowing about before you plan study time:
+
+- **Network+ Network Operations** is 19% of the exam but 9.5% of the bank. This is the bank, not
+  the tagging: of the 650 questions tagged elsewhere, 587 contain no operations vocabulary at
+  all, and only 28 are close enough to be plausible misfiles.
+- **Security+ Security Operations** is 28% of the exam and 20% of the bank.
+
+Study those objectives from another source as well.
 
 ## Adding another exam
 
@@ -135,7 +165,7 @@ The app is built around a catalog, so a new exam is data plus two small entries:
 Nothing else needs touching: the exam picker, per-exam progress, badges, mastery meters,
 domain drills and the review schedule are all derived from the catalog. Exams sharing a
 `family` are grouped together in the picker, which is how A+ Core 1 and Core 2 appear under
-one heading — Network+ would slot in the same way.
+one heading. Network+ was added exactly this way.
 
 ## Layout
 

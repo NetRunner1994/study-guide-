@@ -116,7 +116,7 @@
   "why": {
    "B": "A static IP address assignment does not resolve domain name resolution issues; the problem is DNS configuration, not IP address assignment method."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 4,
@@ -311,7 +311,7 @@
    "C": "BitLocker To Go does not enforce VPN connectivity or involve hardware encryption modules for VPN.",
    "D": "BitLocker To Go can work with TPM but is not specifically designed to configure laptop hard drives; it is primarily for removable media."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 9,
@@ -2236,7 +2236,7 @@
    "E": "Turning off network ports is not a standard offboarding task; deactivating accounts provides logical access control.",
    "F": "Adding the MAC address to a blocklist is unnecessary if network access is properly disabled through account deactivation."
   },
-  "domain": "2.0 Security"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 58,
@@ -2673,7 +2673,7 @@
    "C": "Grounding workstations via power supply is unnecessary for RAM removal and does not protect the memory modules themselves.",
    "D": "Installing memory in identical pairs is a best practice for some systems but is not the primary action when initially removing and storing RAM."
   },
-  "domain": "4.0 Operational Procedures"
+  "domain": "1.0 Operating Systems"
  },
  {
   "id": 69,
@@ -2713,7 +2713,7 @@
    "C": "Interrupting the customer and making excuses worsens their frustration rather than addressing it constructively.",
    "D": "While maintaining a positive attitude is good, continuing to ask questions when knowledge is exhausted wastes time and further frustrates the customer."
   },
-  "domain": "3.0 Software Troubleshooting"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 70,
@@ -3169,7 +3169,7 @@
    "6. Apply this same started/stopped pattern to Host 3, Host 4, Host 5, Host 6, Host 7, Host 8 and the Media Server so every device matches the hardened Host 2 baseline.",
    "The unauthorized download installed a persistence service (Persistance.j1zpxn Installer Service / W1nd0ws Persistance Module) that consumes resources and breaks audio playback. Best practice is to isolate the affected machines first, then remove the threat's ability to run by stopping the rogue service, and finally return each host to a hardened, known-good service baseline. In that baseline the services users actually need — Windows Audio, RPC and RPC Endpoint Mapper, Application Information, DNS Client, Network Connections, Print Spooler, Task Scheduler, User Profile Service, Storage Service, Virtual Disk, Volume Shadow Copy, Windows Backup, Windows Search, Windows Time — stay Started, and the security stack (Windows Defender, Windows Firewall, Windows Event Log, Windows Update, Windows Installer, Security Center) is left running so the systems stay protected and audited. Everything that is not needed on a client workstation or that provides a remote entry point (Bluetooth, DHCP Client, EAP, Portable Device Enumerator, Remote Access Connection Manager, Remote Desktop Configuration, Remote Registry, Routing and Remote Access, SSTP, SNMP Trap, Telephony, Windows CardSpace) is Stopped to shrink the attack surface. Because the same infection pattern is present across the environment, the identical configuration must be applied to Hosts 2 through 8 and the Media Server."
   ],
-  "domain": "3.0 Software Troubleshooting"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 77,
@@ -3444,7 +3444,7 @@
    "B": "Downloading an alternative does not solve the customer's need for the specific productivity suite they purchased.",
    "D": "Updating the device OS is unlikely to resolve a license-related installation error and should be attempted only after checking licensing."
   },
-  "domain": "3.0 Software Troubleshooting"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 84,
@@ -3848,7 +3848,7 @@
    "B": "The CMOS battery manages BIOS settings and real-time clock, not boot sector integrity.",
    "D": "Network isolation is a security response, not a troubleshooting step for a local boot problem."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 94,
@@ -4005,7 +4005,7 @@
    "C": "Startup shows programs that launch at boot time but does not provide detailed dependency information for services like the print spooler.",
    "D": "Performance monitors system resource usage but does not show service dependencies or allow service management."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 98,
@@ -4049,7 +4049,7 @@
    "B": "Network is only at 12%, so upgrading the network connection will not resolve the performance issue.",
    "D": "Disk is only at 2% and temporary files would not significantly reduce the 97% memory consumption."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 99,
@@ -4127,7 +4127,7 @@
    "B": "The cable is not the issue since the drive works fine on Linux; the problem is file system compatibility.",
    "C": "A firmware update from the PC manufacturer will not resolve a file system compatibility issue between operating systems."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 101,
@@ -4245,7 +4245,7 @@
    "C": "gpedit.msc is Group Policy Editor, used for applying policies, not renaming user accounts.",
    "D": "eventvwr.msc is Event Viewer, used for viewing system logs, not managing user accounts."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 104,
@@ -5365,7 +5365,7 @@
    "C": "Bluetooth is unnecessary for a domain printer and lacks the reliability and security of network printing.",
    "D": "Local User and Groups is for managing user accounts and permissions, not printer installation."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 132,
@@ -5686,7 +5686,7 @@
    "C": "File size can be spoofed and does not guarantee authenticity without cryptographic verification.",
    "D": "The filename can be easily copied by attackers and provides no security verification whatsoever."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 140,
@@ -5766,7 +5766,7 @@
    "B": "Reinstalling Windows is premature without first determining if a genuine threat exists or if this is a scareware attack.",
    "C": "System File Checker addresses system file corruption, not the scareware pop-up issue or potential malware threats."
   },
-  "domain": "2.0 Security"
+  "domain": "1.0 Operating Systems"
  },
  {
   "id": 142,
@@ -6912,7 +6912,7 @@
    "C": "Installing corporate DNS security software is a preventative measure but is not necessary before returning the computer when the issue is localized to the browser.",
    "D": "Enabling private mode does not resolve existing cached malicious content and would not address past infections."
   },
-  "domain": "2.0 Security"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 170,
@@ -7066,7 +7066,7 @@
    "B": "A user's desktop is not an appropriate location for shared deployment instructions that multiple technicians need to access.",
    "C": "Email is not suitable for complex deployment instructions as it lacks version control, searchability, and centralized access."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 174,
@@ -7567,7 +7567,7 @@
    "C": "Biometric authentication protects against unauthorized local access but does not protect data if the drive is removed or the device is physically compromised.",
    "D": "VPN access secures network communications but does not protect the data stored on the laptop itself when offline or if the device is physically stolen."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 186,
@@ -7646,7 +7646,7 @@
    "C": "Malware would not generate an official-looking quarantine message from the IT system; this is a network policy response.",
    "D": "The URL being incorrect would result in a different error message, not a system quarantine notice from IT infrastructure."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 188,
@@ -7772,7 +7772,7 @@
    "B": "Running antivirus scans on an infected system does not stop active encryption or prevent network spread.",
    "C": "Restoring from backup is appropriate after isolation and assessment, but isolation must happen first to prevent reinfection of the backup."
   },
-  "domain": "2.0 Security"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 191,
@@ -7859,7 +7859,7 @@
    "C": "Freezing all changes does nothing to address the vulnerability and leaves the system at risk.",
    "D": "Delaying patching a critical zero-day vulnerability exposes the business to significant security risk."
   },
-  "domain": "2.0 Security"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 193,
@@ -8173,7 +8173,7 @@
    "C": "Default gateway issues would prevent access to any external resources, which is working in this scenario.",
    "D": "DHCP issues would result in no IP address or connectivity problems across all networks, not selective internal access failure."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 201,
@@ -8941,7 +8941,7 @@
    "C": "While TPM is required for some features, Hyper-V does not strictly require TPM support.",
    "D": "Domain membership does not determine Hyper-V availability; Home edition simply lacks the feature."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 220,
@@ -9019,7 +9019,7 @@
    "C": "Protocol analysis is reactive and time-consuming; it does not prevent the security problem from occurring.",
    "D": "Signage is ineffective as a security control and relies on voluntary compliance rather than technical enforcement."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 222,
@@ -9214,7 +9214,7 @@
    "B": "An unencrypted network would not produce a certificate-related error; the connection would either work or fail for different reasons.",
    "D": "While NTP (Network Time Protocol) issues can affect certificate validation by causing incorrect system time, the error explicitly references certificate date problems, making the direct cause the SSL certificate itself rather than the underlying NTP configuration."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 227,
@@ -9255,7 +9255,7 @@
    "C": "Certificate warnings are legitimate browser security features that appear for HTTPS issues, not fake antivirus messages.",
    "D": "Internet failure would result in a connection error, not a specific webpage displaying a fake antivirus warning."
   },
-  "domain": "2.0 Security"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 228,
@@ -9721,7 +9721,7 @@
    "B": "Windows Update Service being set to manual would not prevent Task Manager from launching.",
    "D": "Moving a page file to the D:\\ drive would not block Task Manager access or cause it to fail to open."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 240,
@@ -10069,7 +10069,7 @@
    "B": "Manually setting the phone time is a temporary workaround that will not prevent future drift and does not address the underlying synchronization problem.",
    "C": "A BIOS update is not related to time synchronization issues and would not resolve differences between a computer and a separate device."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 249,
@@ -10187,7 +10187,7 @@
    "C": "Low-level formatting does not meet government data destruction standards; data can potentially be recovered.",
    "D": "Targeted file deletion is superficial and does not meet regulatory requirements for confidential government data."
   },
-  "domain": "2.0 Security"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 252,
@@ -10867,7 +10867,7 @@
    "D": "Confronting the customer about their tone escalates conflict rather than resolving it professionally.",
    "F": "Transferring without addressing concerns abandons the customer and appears dismissive of their problem."
   },
-  "domain": "4.0 Operational Procedures"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 269,
@@ -11078,7 +11078,7 @@
    "C": "Verifying unneeded ports are disabled is part of the initial hardening process, not a future maintenance recommendation.",
    "D": "Physical location security does not address the dynamic security threats the firewall faces over time."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 274,
@@ -11156,7 +11156,7 @@
    "B": "The web browser used for download does not affect UAC prompts during installation.",
    "D": "Contacting the vendor is unnecessary when UAC settings can resolve this common installation issue."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 276,
@@ -11195,7 +11195,7 @@
    "C": "Remote wiping is important but should happen after securing the account; it takes time and may not execute if the device is offline.",
    "D": "GPS and geofencing are tracking features, not account access controls, and do not prevent unauthorized email access."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 277,
@@ -11311,7 +11311,7 @@
    "B": "Recovery points are backups of system state, not a solution for automatically saving user files to the network.",
    "D": "Windows Server backups are server-side backup tools, not a mechanism for redirecting user folder locations to network storage."
   },
-  "domain": "4.0 Operational Procedures"
+  "domain": "1.0 Operating Systems"
  },
  {
   "id": 280,
@@ -11813,7 +11813,7 @@
    "B": "Slow internet speeds might slow downloads but wouldn't cause repeated installation failures.",
    "D": "An unformatted hard drive would prevent the entire system from functioning, not just one application installation."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 293,
@@ -11892,7 +11892,7 @@
    "B": "Escalating without conversation suggests the technician isn't willing to help and dismisses the customer's concerns.",
    "D": "Defending previous technicians shifts blame to them and doesn't address the customer's valid frustration."
   },
-  "domain": "4.0 Operational Procedures"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 295,
@@ -12767,7 +12767,7 @@
    "B": "Disabling Remote Desktop does not prevent local unauthorized access to an unattended workstation.",
    "D": "Multifactor authentication secures the login process but does not force logoff of active sessions when users leave their desks."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 317,
@@ -13671,7 +13671,7 @@
    "B": "Troubleshooting BSODs requires diagnostics and case-by-case analysis, not straightforward automation.",
    "D": "Room humidity monitoring is a facility/environmental task, not an IT scripting task."
   },
-  "domain": "3.0 Software Troubleshooting"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 340,
@@ -13946,7 +13946,7 @@
    "C": "System File Checker repairs corrupted system files but does not remove third-party applications.",
    "D": "PXE boot is for network-based deployment, not the standard method for factory reset on a local laptop."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "4.0 Operational Procedures"
  },
  {
   "id": 347,
@@ -14418,7 +14418,7 @@
    "B": "A screen lock provides minimal security for an international trip and can be bypassed with physical access.",
    "C": "Restricted login times are ineffective for protecting a traveling laptop that needs flexibility and do not prevent data theft."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 359,
@@ -15421,7 +15421,7 @@
    "D": "Content filtering restricts access to web content, unrelated to application deployment.",
    "E": "Failed login timeout is a security control, not an application provisioning mechanism."
   },
-  "domain": "2.0 Security"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 384,
@@ -15589,7 +15589,7 @@
    "C": "Airplane mode would have already prevented Wi-Fi connection, which was confirmed as working.",
    "D": "Unauthorized software is not a typical cause of OS update failures when the device is compatible and connected."
   },
-  "domain": "2.0 Security"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 388,
@@ -15744,7 +15744,7 @@
    "B": "MDM (Mobile Device Management) manages device configuration and compliance but does not actively detect malware.",
    "D": "DLP (Data Loss Prevention) protects against unauthorized data exfiltration, not malware infection prevention."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "2.0 Security"
  },
  {
   "id": 392,
@@ -15783,7 +15783,7 @@
    "C": "RAM issues would be more hardware-specific and less likely given the lid-closing behavior described.",
    "D": "Network speed is not typically related to general machine slowness from sleep cycles."
   },
-  "domain": "1.0 Operating Systems"
+  "domain": "3.0 Software Troubleshooting"
  },
  {
   "id": 393,
@@ -15948,6 +15948,6 @@
    "B": "Changing passwords Friday evening is ineffective because vendors could use known credentials or bypass authentication through other means on a powered system.",
    "D": "Disabling guest accounts only removes one access method but doesn't prevent use via other accounts or authenticated access that vendors might have. Thank You for purchasing CompTIA A+ 220-1202 Exam Practice Questions — • — We hope these questions serve you well in your exam preparation. Any questions, or a problem with this PDF? Get in touch. We reply to every message. Telegram @DailyDebian Email support@dailydebian.com YouTube www.youtube.com/@DailyDebian Instagram www.instagram.com/dailydebian More PDFs at www.dailydebian.com Daily Debian"
   },
-  "domain": "2.0 Security"
+  "domain": "1.0 Operating Systems"
  }
 ]

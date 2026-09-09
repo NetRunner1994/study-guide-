@@ -4,13 +4,19 @@ Tagging is a keyword heuristic, not an authoritative classification. It exists
 so the app can offer a "drill one objective" filter; the app labels it as such.
 """
 
+import re
+from functools import lru_cache
+
 SECURITY_PLUS = [
     ("1.0 General Security Concepts", [
-        "cia triad", "confidentiality", "non-repudiation", "aaa", "authentication",
+        "cia triad", "confidentiality", "non-repudiation", "aaa",
         "authorization", "gap analysis", "zero trust", "control plane", "data plane",
         "policy engine", "honeypot", "honeytoken", "honeyfile", "deceptive",
-        "change management", "certificate", "public key", "private key", "pki",
-        "encryption", "cryptograph", "hashing", "salting", "key exchange",
+        "change management", "public key", "private key", "pki",
+        # "encryption", "authentication" and "certificate" are deliberately absent:
+        # they appear across every objective, so they identified nothing and pulled
+        # operations questions into this one.
+        "cryptograph", "hashing", "salting", "key exchange",
         "digital signature", "tpm", "hsm", "key escrow", "obfuscation", "tokenization",
         "steganography", "blockchain", "secure enclave", "cipher", "aes", "rsa",
         "physical control", "deterrent control", "compensating control", "directive",
@@ -58,6 +64,21 @@ SECURITY_PLUS = [
         "federation", "mfa", "multifactor", "biometric", "token", "password manager",
         "just-in-time permission", "privileged access", "vault", "rbac", "abac",
         "mandatory access control", "discretionary access", "playbook", "ticket",
+        "secure baseline", "hardening technique", "host-based firewall",
+        "host-based intrusion", "endpoint protection", "decommission",
+        "vulnerability response", "patch management", "rescanning", "exception",
+        "scap", "benchmark", "agent-based", "agentless", "port scan",
+        "vulnerability report", "alert tuning", "quarantine", "archiving",
+        "packet capture", "block rule", "reputation", "secure protocol",
+        "port selection", "transport method", "endpoint detection",
+        "identity proofing", "interoperability", "time-of-day restriction",
+        "passwordless", "guard rail", "security group", "escalation",
+        "incident response process", "preparation", "detection", "containment",
+        "eradication", "recovery", "lessons learned", "threat hunting",
+        "digital forensics", "acquisition", "preservation", "firewall log",
+        "application log", "endpoint log", "network log", "metadata",
+        "dashboard", "automated report", "mobile solution", "deployment model",
+        "connection method", "cellular", "wi-fi", "bluetooth",
     ]),
     ("5.0 Security Program Management & Oversight", [
         "governance", "policy", "standard", "procedure", "guideline", "acceptable use",
@@ -220,6 +241,136 @@ A_PLUS_CORE_2 = [
         "backup rotation", "retention policy", "corporate policy", "company policy",
         "best practice", "proper procedure", "document the", "notify the",
         "report the incident", "follow up", "surveillance footage",
+        "regulated data", "credit card transaction", "personal government-issued",
+        "healthcare data", "data classification", "incident report",
+        "documentation of the incident", "copy of the drive", "preserve",
+        "custody", "meet in person", "set and meet expectations",
+        "be on time", "avoid arguing", "do not judge", "clarify statements",
+        "maintain a positive attitude", "project confidence", "deal appropriately",
+        "confidential material", "private material", "restricted material",
+        "materials located on a computer", "desktop", "printer", "work area",
+        "environmental control", "proper ventilation", "dust cleanup",
+        "component handling", "storage placement", "antistatic",
+        "self-grounding", "power outage", "under-voltage", "power failure",
+        "generator", "surge protector", "battery backup", "fire safety",
+        "cable tie", "weight limitation", "removal of jewelry", "lifting",
+        "change request", "purpose of the change", "date and time of the change",
+        "affected systems", "impact", "risk level", "approval",
+        "rollback plan", "sandbox", "responsible staff member",
+    ]),
+]
+
+NETWORK_PLUS = [
+    ("1.0 Networking Concepts", [
+        "osi model", "osi layer", "physical layer", "data link layer", "network layer",
+        "transport layer", "session layer", "presentation layer", "application layer",
+        "encapsulation", "decapsulation", "payload", "frame", "packet", "segment",
+        "mtu", "jumbo frame", "topology", "star topology", "mesh", "hybrid topology",
+        "point-to-point", "three-tier", "spine and leaf", "collapsed core",
+        "north-south", "east-west", "traffic flow", "ipv4", "ipv6", "subnetting",
+        "subnet mask", "cidr", "vlsm", "public ip", "private ip", "rfc1918", "apipa",
+        "loopback", "eui-64", "slaac", "unicast", "multicast", "anycast", "broadcast",
+        "dual stack", "tunneling", "ports and protocols", "well-known port",
+        "ftp", "sftp", "ssh", "telnet", "smtp", "imap", "pop3", "dns", "dhcp", "tftp",
+        "http", "https", "ntp", "snmp", "ldap", "ldaps", "sip", "rdp", "syslog port",
+        "cloud", "nfv", "vpc", "network security group", "cloud gateway", "saas",
+        "iaas", "paas", "multitenancy", "elasticity", "scalability", "regions",
+        "availability zone", "direct connect", "cloud connectivity",
+    ]),
+    ("2.0 Network Implementation", [
+        "routing", "static route", "default route", "dynamic routing", "bgp", "eigrp",
+        "ospf", "rip", "route selection", "administrative distance", "prefix length",
+        "routing metric", "routing table", "nat", "pat", "fhrp", "vrrp", "hsrp",
+        "virtual ip", "subinterface", "switching", "vlan", "voice vlan", "802.1q",
+        "trunk port", "access port", "native vlan", "link aggregation", "lacp",
+        "port aggregation", "spanning tree", "stp", "rstp", "root bridge",
+        "interface configuration", "mac address table", "arp table",
+        "wireless", "802.11", "frequency band", "2.4ghz", "5ghz", "6ghz",
+        "channel width", "ssid", "bssid", "essid", "autonomous access point",
+        "wireless controller", "wpa2", "wpa3", "guest network", "captive portal",
+        "antenna", "omnidirectional", "directional antenna", "site survey", "heat map",
+        "rack", "patch panel", "pdu", "power distribution", "cabling", "fiber",
+        "single-mode", "multimode", "twisted pair", "shielded", "unshielded", "plenum",
+        "riser-rated", "connector", "lc connector", "sc connector", "st connector",
+        "mpo", "rj11", "rj45", "f-type", "transceiver", "sfp", "sfp+", "qsfp",
+        "media converter", "cable standard", "cat5e", "cat6", "cat6a", "cat7", "cat8",
+    ]),
+    ("3.0 Network Operations", [
+        "documentation", "physical diagram", "logical diagram", "rack diagram",
+        "cable map", "ipam", "service level agreement", "sla", "wireless survey",
+        "life-cycle management", "end-of-life", "end-of-support", "software management",
+        "patches and bug fixes", "operating system upgrade", "firmware", "decommissioning",
+        "change management", "configuration management", "production configuration",
+        "backup configuration", "baseline configuration", "golden configuration",
+        "monitoring", "snmp trap", "mib", "oid", "flow data", "netflow", "packet capture",
+        "log aggregation", "siem", "api integration", "port mirroring", "traffic analysis",
+        "network discovery", "performance metric", "availability", "uptime",
+        "disaster recovery", "high availability", "active-active", "active-passive",
+        "cold site", "warm site", "hot site", "tabletop exercise", "validation test",
+        "capacity planning", "redundancy", "load balancing", "clustering",
+        "mttr", "mtbf", "rto", "rpo", "asset inventory", "vendor documentation",
+        "audit", "compliance requirement", "maintenance window", "ticket",
+        "network diagram", "floor plan", "labeling", "port label", "asset tag",
+        "inventory", "backup and restore", "restore point", "archive", "retention",
+        "snapshot", "configuration backup", "monitoring solution", "alert threshold",
+        "notification", "dashboard", "trend", "poller", "snmp version", "syslog severity",
+        "log level", "upgrade", "downgrade", "rollback", "scheduled maintenance",
+        "downtime", "outage window", "planned outage", "business continuity",
+        "recovery plan", "geographic redundancy", "environmental sensor",
+        "temperature and humidity", "onboarding", "offboarding", "acceptable use policy",
+        "bring your own device", "byod", "nda", "standard operating procedure",
+        "runbook", "escalation procedure", "vendor support", "warranty",
+        "network performance baseline", "utilization", "bandwidth usage",
+        "historical data", "reporting", "review the logs", "track changes",
+        "physical network diagram", "logical network diagram", "wiring diagram",
+        "site survey report", "audit and assessment report", "baseline configuration",
+        "network policy", "password policy", "remote access policy",
+        "onboarding and offboarding", "security policy", "data loss prevention",
+        "installation of patches", "operating system lifecycle",
+        "decommissioning", "configuration compliance", "process monitoring",
+        "interface statistics", "interface errors", "environmental factor",
+        "temperature", "humidity", "power monitoring", "snmp community string",
+        "network device logs", "traffic log", "audit log", "solution testing",
+        "recovery site", "failover testing", "backup schedule",
+        "full backup", "incremental backup", "differential backup",
+        "state of the network", "network health", "packet flow",
+    ]),
+    ("4.0 Network Security", [
+        "cia triad", "confidentiality", "integrity", "availability triad",
+        "aaa", "radius", "tacacs+", "single sign-on", "sso", "multifactor",
+        "authentication", "authorization", "least privilege", "rbac", "zero trust",
+        "sase", "sse", "defense in depth", "network segmentation", "screened subnet",
+        "honeypot", "deception technology", "physical security", "camera", "door lock",
+        "asset disposal", "denial-of-service", "dos", "ddos", "vlan hopping",
+        "mac flooding", "arp poisoning", "arp spoofing", "dns poisoning", "dns spoofing",
+        "rogue device", "rogue dhcp", "rogue access point", "evil twin", "on-path attack",
+        "social engineering", "phishing", "dumpster diving", "shoulder surfing",
+        "tailgating", "malware", "device hardening", "disable unused ports",
+        "default password", "network access control", "802.1x", "mac filtering",
+        "port security", "key management", "security rule", "access control list",
+        "url filtering", "content filtering", "ids", "ips", "firewall", "waf", "ngfw",
+        "layer 7 firewall", "vpn", "site-to-site", "clientless vpn", "remote access vpn",
+        "ipsec", "ssl vpn", "tls vpn", "encryption in transit", "certificate",
+    ]),
+    ("5.0 Network Troubleshooting", [
+        "troubleshooting methodology", "identify the problem", "establish a theory",
+        "test the theory", "plan of action", "implement the solution",
+        "verify full system functionality", "document findings", "escalate",
+        "attenuation", "interference", "crosstalk", "emi", "decibel loss", "db loss",
+        "incorrect pinout", "bad port", "open circuit", "short circuit",
+        "transceiver mismatch", "wavelength mismatch", "dirty optical cable",
+        "poe issue", "power budget", "incorrect standard", "switching loop",
+        "duplicate ip", "duplicate mac", "expired ip address", "exhausted dhcp scope",
+        "incorrect subnet mask", "incorrect gateway", "incorrect dns",
+        "congestion", "bottleneck", "packet loss", "high latency", "jitter",
+        "insufficient wireless coverage", "channel overlap", "roaming misconfiguration",
+        "client disassociation", "signal strength", "throughput issue",
+        "ping", "traceroute", "tracert", "pathping", "nslookup", "dig", "netstat",
+        "tcpdump", "wireshark", "protocol analyzer", "nmap", "ipconfig", "ifconfig",
+        "arp command", "route command", "speed test", "iperf", "cable tester",
+        "toner probe", "network tap", "wi-fi analyzer", "spectrum analyzer",
+        "link light", "port status", "show command", "counters", "crc error",
+        "runt", "giant", "collision", "duplex mismatch", "speed mismatch",
     ]),
 ]
 
@@ -230,6 +381,7 @@ A_PLUS_CORE_2 = [
 TROUBLESHOOTING_DOMAINS = {
     "5.0 Hardware and Network Troubleshooting",
     "3.0 Software Troubleshooting",
+    "5.0 Network Troubleshooting",
 }
 
 SYMPTOM_SIGNALS = [
@@ -251,30 +403,45 @@ SYMPTOM_SIGNALS = [
 # Tuned per exam: Core 1's troubleshooting objective covers hardware *and*
 # network faults, so it should claim far more symptom questions than Core 2's,
 # which covers software only. Security+ has no troubleshooting objective.
-TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.4}
+TROUBLE_WEIGHT = {"sy0-701": 0.0, "220-1201": 1.3, "220-1202": 0.7, "n10-009": 2.3}
 DEFAULT_TROUBLE_WEIGHT = 1.0
 
 
 TAXONOMIES = {
     "sy0-701": SECURITY_PLUS,
+    "n10-009": NETWORK_PLUS,
     "220-1201": A_PLUS_CORE_1,
     "220-1202": A_PLUS_CORE_2,
 }
+
+
+@lru_cache(maxsize=None)
+def _matcher(keyword):
+    """Match a keyword as a whole term, not as a substring.
+
+    Plain `in` matching made short acronyms catastrophically greedy: "man"
+    matched management and command, "ont" matched control and months, "sse"
+    matched assess and asset, "apt" matched laptop. Word boundaries are written
+    as lookarounds rather than \b so keywords containing punctuation still
+    work ("802.1x", ".bat", "sfp+", "cat5e").
+    """
+    return re.compile(r"(?<![a-z0-9])" + re.escape(keyword) + r"(?![a-z0-9])")
+
+
+def _hits(keywords, low):
+    return [k for k in keywords if _matcher(k).search(low)]
 
 
 def classify(exam_id, text):
     """Pick the objective whose keywords best match this question's text."""
     domains = TAXONOMIES[exam_id]
     low = text.lower()
-    trouble = sum(1 for signal in SYMPTOM_SIGNALS if signal in low)
+    trouble = len(_hits(SYMPTOM_SIGNALS, low))
 
     best_name, best_score = domains[0][0], -1.0
     for name, keywords in domains:
-        score = 0.0
-        for keyword in keywords:
-            if keyword in low:
-                # Multi-word phrases are more specific, so they count for more.
-                score += 1.0 + 0.75 * keyword.count(" ")
+        # Multi-word phrases are more specific, so they count for more.
+        score = sum(1.0 + 0.75 * k.count(" ") for k in _hits(keywords, low))
         if name in TROUBLESHOOTING_DOMAINS:
             score += trouble * TROUBLE_WEIGHT.get(exam_id, DEFAULT_TROUBLE_WEIGHT)
         if score > best_score:
