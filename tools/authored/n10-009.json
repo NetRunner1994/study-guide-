@@ -1,0 +1,1908 @@
+{
+ "questions": [
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network administrator needs a document that shows which switch port every wall jack terminates on.",
+    "Which of the following should the administrator maintain?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Logical network diagram"
+    },
+    {
+     "letter": "B",
+     "text": "Wiring and port location diagram"
+    },
+    {
+     "letter": "C",
+     "text": "Rack diagram"
+    },
+    {
+     "letter": "D",
+     "text": "Asset inventory"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "A wiring diagram, sometimes called a port location diagram, maps each wall jack to the patch panel position and switch port that serves it. That physical cable-path record is what a technician needs to trace a jack back to its switch port."
+   ],
+   "why": {
+    "A": "A logical diagram shows IP subnets and traffic flow, not physical cable runs.",
+    "C": "A rack diagram shows equipment positions within a rack, not jack-to-port mapping.",
+    "D": "An asset inventory tracks devices owned, not how cabling is terminated."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company must prove to an auditor that network device configurations have not drifted from an approved standard.",
+    "Which of the following practices best supports this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Baseline configuration management"
+    },
+    {
+     "letter": "B",
+     "text": "Bandwidth monitoring"
+    },
+    {
+     "letter": "C",
+     "text": "Port mirroring"
+    },
+    {
+     "letter": "D",
+     "text": "Load balancing"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A configuration baseline records the approved state of each device so current running configurations can be compared against it. Detecting and reporting drift from that baseline is exactly what a configuration audit requires."
+   ],
+   "why": {
+    "B": "Bandwidth monitoring measures traffic volume, not configuration state.",
+    "C": "Port mirroring copies traffic for analysis and says nothing about configuration.",
+    "D": "Load balancing distributes sessions and is unrelated to configuration control."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network team wants to be alerted when a WAN circuit's utilization stays above 80% for ten minutes.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A syslog facility"
+    },
+    {
+     "letter": "B",
+     "text": "An SNMP trap receiver only"
+    },
+    {
+     "letter": "C",
+     "text": "A monitoring threshold and alert"
+    },
+    {
+     "letter": "D",
+     "text": "A packet capture"
+    }
+   ],
+   "answer": [
+    "C"
+   ],
+   "explanation": [
+    "Alerting on sustained utilization requires a monitoring system that samples the interface counter and compares it to a defined threshold over a time window. Crossing that threshold is what generates the notification."
+   ],
+   "why": {
+    "A": "A syslog facility categorizes log messages; it does not evaluate utilization thresholds.",
+    "B": "A trap receiver collects device-initiated messages but does not itself define a utilization threshold.",
+    "D": "A packet capture records individual frames and is impractical for continuous utilization alerting."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An organization needs to restore a failed core switch configuration within minutes of an outage.",
+    "Which of the following should be in place beforehand?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A current configuration backup"
+    },
+    {
+     "letter": "B",
+     "text": "A spanning tree topology change"
+    },
+    {
+     "letter": "C",
+     "text": "An updated rack diagram"
+    },
+    {
+     "letter": "D",
+     "text": "A bandwidth baseline"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Restoring a device quickly depends on having a current copy of its configuration stored off the device. With that backup, a replacement unit can be loaded and returned to service without rebuilding the configuration by hand."
+   ],
+   "why": {
+    "B": "A topology change is a spanning tree event, not a recovery artifact.",
+    "C": "A rack diagram helps locate hardware but does not restore a configuration.",
+    "D": "A bandwidth baseline describes normal traffic, not device settings."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network administrator is asked to reduce the risk of an unplanned outage caused by an untested firmware upgrade.",
+    "Which of the following should the administrator do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Schedule the upgrade during business hours"
+    },
+    {
+     "letter": "B",
+     "text": "Test the upgrade in a lab or sandbox"
+    },
+    {
+     "letter": "C",
+     "text": "Upgrade all devices simultaneously"
+    },
+    {
+     "letter": "D",
+     "text": "Disable monitoring during the upgrade"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "Validating the new firmware in a lab or sandbox that mirrors production reveals incompatibilities before they can affect users. This is the step that most reduces the risk the change itself introduces."
+   ],
+   "why": {
+    "A": "Business hours maximize user impact if the upgrade fails.",
+    "C": "Upgrading everything at once removes any ability to contain a bad release.",
+    "D": "Disabling monitoring hides problems rather than preventing them."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A change advisory board requires that every submitted change include a way to return the network to its previous state.",
+    "Which of the following must the request contain?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A rollback plan"
+    },
+    {
+     "letter": "B",
+     "text": "A bandwidth estimate"
+    },
+    {
+     "letter": "C",
+     "text": "A vendor quote"
+    },
+    {
+     "letter": "D",
+     "text": "An IP address plan"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A rollback plan documents the steps to reverse a change and restore the prior working state. Change boards require it so that a failed change has a defined, rehearsed exit rather than improvised recovery."
+   ],
+   "why": {
+    "B": "A bandwidth estimate describes capacity, not reversal steps.",
+    "C": "A vendor quote is a procurement artifact.",
+    "D": "An addressing plan is design documentation, not a recovery procedure."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company keeps three copies of its data on two media types with one copy stored off site.",
+    "Which of the following practices does this describe?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Full and incremental rotation"
+    },
+    {
+     "letter": "B",
+     "text": "The 3-2-1 backup rule"
+    },
+    {
+     "letter": "C",
+     "text": "Cold site replication"
+    },
+    {
+     "letter": "D",
+     "text": "Grandfather-father-son"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "The 3-2-1 rule calls for three copies of the data, on two different media, with one copy kept off site. The described arrangement matches that pattern exactly."
+   ],
+   "why": {
+    "A": "Rotation describes backup types and schedule, not copy and location counts.",
+    "C": "A cold site is a recovery facility, not a copy policy.",
+    "D": "Grandfather-father-son is a tape retention rotation scheme."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A disaster recovery plan states that operations must resume within four hours of an outage.",
+    "Which of the following metrics does this define?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "RPO"
+    },
+    {
+     "letter": "B",
+     "text": "MTBF"
+    },
+    {
+     "letter": "C",
+     "text": "RTO"
+    },
+    {
+     "letter": "D",
+     "text": "MTTR"
+    }
+   ],
+   "answer": [
+    "C"
+   ],
+   "explanation": [
+    "The recovery time objective is the maximum tolerable duration between an outage and the restoration of service. A four-hour resumption requirement is a statement of RTO."
+   ],
+   "why": {
+    "A": "The recovery point objective defines how much data loss is acceptable, measured backward in time.",
+    "B": "Mean time between failures describes reliability, not recovery targets.",
+    "D": "Mean time to repair is an observed average, not a planning objective."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An organization needs a recovery facility that has hardware racked and data replicated, allowing failover within minutes.",
+    "Which of the following best describes this facility?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Cold site"
+    },
+    {
+     "letter": "B",
+     "text": "Warm site"
+    },
+    {
+     "letter": "C",
+     "text": "Hot site"
+    },
+    {
+     "letter": "D",
+     "text": "Cloud region"
+    }
+   ],
+   "answer": [
+    "C"
+   ],
+   "explanation": [
+    "A hot site is fully provisioned with equipment and current data, so production can move there almost immediately. Minute-scale failover is only achievable when the environment is already running and synchronized."
+   ],
+   "why": {
+    "A": "A cold site provides space and power only; hardware and data must be brought in.",
+    "B": "A warm site has hardware but not current data, so failover takes longer.",
+    "D": "A cloud region is a location, not a defined recovery site tier."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network engineer must collect interface error counters from 200 switches every five minutes for trending.",
+    "Which of the following is the most appropriate protocol?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "SNMP"
+    },
+    {
+     "letter": "B",
+     "text": "SMTP"
+    },
+    {
+     "letter": "C",
+     "text": "TFTP"
+    },
+    {
+     "letter": "D",
+     "text": "LDAP"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "SNMP polls device MIB objects such as interface counters on a defined interval, which is exactly what periodic trending requires. It is the standard management protocol for collecting this kind of metric at scale."
+   ],
+   "why": {
+    "B": "SMTP transfers mail and carries no device counters.",
+    "C": "TFTP transfers files such as configurations and images.",
+    "D": "LDAP queries directory objects, not device statistics."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A security team needs network device logs centralized so they can be correlated with server events.",
+    "Which of the following should be deployed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A syslog collector feeding a SIEM"
+    },
+    {
+     "letter": "B",
+     "text": "A DHCP relay"
+    },
+    {
+     "letter": "C",
+     "text": "A reverse proxy"
+    },
+    {
+     "letter": "D",
+     "text": "A jump box"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Forwarding device logs to a central syslog collector and into a SIEM puts network and server events in one place with a common timeline, which is what correlation requires."
+   ],
+   "why": {
+    "B": "A DHCP relay forwards address requests, not log messages.",
+    "C": "A reverse proxy fronts application traffic.",
+    "D": "A jump box provides controlled administrative access, not log aggregation."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "Before troubleshooting a reported slowdown, an engineer compares current throughput with measurements taken when the link was known healthy.",
+    "Which of the following is the engineer using?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A performance baseline"
+    },
+    {
+     "letter": "B",
+     "text": "An SLA credit"
+    },
+    {
+     "letter": "C",
+     "text": "A rollback plan"
+    },
+    {
+     "letter": "D",
+     "text": "An asset tag"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A performance baseline is a recorded set of normal metrics captured while the network is healthy. Comparing live readings to it is what makes a deviation measurable rather than subjective."
+   ],
+   "why": {
+    "B": "An SLA credit is a contractual remedy for missed service levels.",
+    "C": "A rollback plan reverses a change.",
+    "D": "An asset tag identifies equipment."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A managed service contract guarantees 99.9% availability and defines penalties if the provider misses it.",
+    "Which of the following documents is this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "MOU"
+    },
+    {
+     "letter": "B",
+     "text": "SLA"
+    },
+    {
+     "letter": "C",
+     "text": "NDA"
+    },
+    {
+     "letter": "D",
+     "text": "AUP"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "A service level agreement states the measurable service commitments a provider must meet and the remedies that apply when it does not. Availability percentages and penalties are core SLA content."
+   ],
+   "why": {
+    "A": "A memorandum of understanding records intent without enforceable service metrics.",
+    "C": "A non-disclosure agreement governs confidential information.",
+    "D": "An acceptable use policy governs how users may use resources."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network administrator must decommission a switch that is being replaced.",
+    "Which of the following should be done with the device's configuration before disposal?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Leave it intact for the next owner"
+    },
+    {
+     "letter": "B",
+     "text": "Archive a copy, then wipe the device"
+    },
+    {
+     "letter": "C",
+     "text": "Upgrade the firmware"
+    },
+    {
+     "letter": "D",
+     "text": "Document only the serial number"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "The configuration should be archived so its settings remain available for reference, then erased from the hardware so credentials, SNMP strings and topology details do not leave with the device."
+   ],
+   "why": {
+    "A": "Leaving the configuration exposes credentials and network design to whoever receives it.",
+    "C": "A firmware upgrade does not remove stored configuration data.",
+    "D": "Recording a serial number neither preserves nor protects the configuration."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An administrator wants to send a copy of traffic from one switch port to an analyzer without interrupting the monitored link.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Port mirroring"
+    },
+    {
+     "letter": "B",
+     "text": "Port security"
+    },
+    {
+     "letter": "C",
+     "text": "Link aggregation"
+    },
+    {
+     "letter": "D",
+     "text": "Spanning tree"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Port mirroring, also called SPAN, copies frames from a source port to a destination port where an analyzer is attached. The original traffic continues to forward normally, so monitoring is non-disruptive."
+   ],
+   "why": {
+    "B": "Port security restricts which MAC addresses may use a port.",
+    "C": "Link aggregation bundles links for bandwidth and redundancy.",
+    "D": "Spanning tree prevents switching loops."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company must keep firewall logs for seven years to satisfy a regulator.",
+    "Which of the following policies governs this requirement?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Password policy"
+    },
+    {
+     "letter": "B",
+     "text": "Data retention policy"
+    },
+    {
+     "letter": "C",
+     "text": "Remote access policy"
+    },
+    {
+     "letter": "D",
+     "text": "Onboarding policy"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "A data retention policy defines how long each class of record must be kept and when it may be destroyed. A seven-year log requirement is stated and enforced through that policy."
+   ],
+   "why": {
+    "A": "A password policy governs credential strength and rotation.",
+    "C": "A remote access policy governs how users connect from outside.",
+    "D": "An onboarding policy governs account and equipment provisioning."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network operations team wants to know the physical position of each device within its cabinet for a planned maintenance visit.",
+    "Which of the following documents provides this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Rack diagram"
+    },
+    {
+     "letter": "B",
+     "text": "Logical diagram"
+    },
+    {
+     "letter": "C",
+     "text": "IP address management record"
+    },
+    {
+     "letter": "D",
+     "text": "Change log"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A rack diagram shows each device's rack unit position within the cabinet, which is what a technician needs to locate hardware physically before working on it."
+   ],
+   "why": {
+    "B": "A logical diagram shows addressing and traffic relationships.",
+    "C": "IPAM records address assignments, not physical placement.",
+    "D": "A change log records modifications over time."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An administrator needs to reclaim IPv4 addresses that were assigned to decommissioned servers and avoid future conflicts.",
+    "Which of the following tools is most appropriate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "IPAM"
+    },
+    {
+     "letter": "B",
+     "text": "SIEM"
+    },
+    {
+     "letter": "C",
+     "text": "NetFlow collector"
+    },
+    {
+     "letter": "D",
+     "text": "Protocol analyzer"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "IP address management tracks which addresses are allocated, to what, and which are free. It is the system of record that prevents duplicate assignment and supports reclaiming unused space."
+   ],
+   "why": {
+    "B": "A SIEM correlates security events.",
+    "C": "A NetFlow collector summarizes traffic flows.",
+    "D": "A protocol analyzer decodes captured packets."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company tests its disaster recovery plan by walking through a simulated outage in a conference room with no systems touched.",
+    "Which of the following describes this exercise?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Failover test"
+    },
+    {
+     "letter": "B",
+     "text": "Tabletop exercise"
+    },
+    {
+     "letter": "C",
+     "text": "Penetration test"
+    },
+    {
+     "letter": "D",
+     "text": "Load test"
+    }
+   ],
+   "answer": [
+    "B"
+   ],
+   "explanation": [
+    "A tabletop exercise is a discussion-based walkthrough in which participants talk through their roles against a scenario. No production systems are affected, which distinguishes it from an actual failover test."
+   ],
+   "why": {
+    "A": "A failover test actually shifts production to the recovery environment.",
+    "C": "A penetration test attempts to exploit vulnerabilities.",
+    "D": "A load test measures behavior under traffic volume."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An engineer needs to confirm that a newly installed wireless network provides at least -67 dBm throughout a warehouse.",
+    "Which of the following should be performed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A post-installation site survey"
+    },
+    {
+     "letter": "B",
+     "text": "A port scan"
+    },
+    {
+     "letter": "C",
+     "text": "A cable certification"
+    },
+    {
+     "letter": "D",
+     "text": "A spanning tree recalculation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A post-installation, or validation, site survey measures actual signal levels throughout the covered area and produces a heat map. That measurement is how a coverage requirement such as -67 dBm is verified."
+   ],
+   "why": {
+    "B": "A port scan enumerates open services on hosts.",
+    "C": "Cable certification validates copper or fiber runs, not RF coverage.",
+    "D": "Spanning tree recalculation concerns switched loop prevention."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network administrator receives an alert that a device stopped responding to polling, but no one was notified for two hours.",
+    "Which of the following should be reviewed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The alert notification and escalation configuration"
+    },
+    {
+     "letter": "B",
+     "text": "The spanning tree priority"
+    },
+    {
+     "letter": "C",
+     "text": "The DHCP scope size"
+    },
+    {
+     "letter": "D",
+     "text": "The cable category"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An alert that fires but reaches nobody is a notification and escalation failure. Reviewing who is paged, through which channel, and after what delay is what closes that gap."
+   ],
+   "why": {
+    "B": "Spanning tree priority determines root bridge election.",
+    "C": "Scope size affects address availability, not alert delivery.",
+    "D": "Cable category affects supported speeds."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An organization wants the ability to continue operating if an entire data center becomes unavailable, with traffic served from a second site at all times.",
+    "Which of the following describes this design?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Active-active"
+    },
+    {
+     "letter": "B",
+     "text": "Active-passive"
+    },
+    {
+     "letter": "C",
+     "text": "Cold standby"
+    },
+    {
+     "letter": "D",
+     "text": "Single point of failure"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "In an active-active design both sites carry production traffic simultaneously, so losing one leaves the other already serving users. That continuous dual operation is what distinguishes it from a standby arrangement."
+   ],
+   "why": {
+    "B": "In active-passive the second site is idle until failover occurs.",
+    "C": "Cold standby requires the secondary to be brought up from an off state.",
+    "D": "A single point of failure is a weakness, not a resilience design."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A technician must document the network before a vendor audit and needs to show subnets, VLANs and routing relationships.",
+    "Which of the following should be produced?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Logical network diagram"
+    },
+    {
+     "letter": "B",
+     "text": "Wiring diagram"
+    },
+    {
+     "letter": "C",
+     "text": "Rack elevation"
+    },
+    {
+     "letter": "D",
+     "text": "Floor plan"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A logical diagram represents addressing, VLANs and how traffic routes between segments, independent of physical placement. That is the view an auditor needs to understand segmentation."
+   ],
+   "why": {
+    "B": "A wiring diagram shows cable paths and terminations.",
+    "C": "A rack elevation shows equipment mounting positions.",
+    "D": "A floor plan shows building layout."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A support team wants a record of every reported issue, who worked it, and how it was resolved.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A ticketing system"
+    },
+    {
+     "letter": "B",
+     "text": "A syslog server"
+    },
+    {
+     "letter": "C",
+     "text": "A RADIUS server"
+    },
+    {
+     "letter": "D",
+     "text": "A NetFlow exporter"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A ticketing system records each reported issue with its owner, activity history and resolution. That record is what supports trend analysis, accountability and knowledge reuse."
+   ],
+   "why": {
+    "B": "A syslog server stores device-generated messages, not human work records.",
+    "C": "RADIUS authenticates users and devices.",
+    "D": "A NetFlow exporter reports traffic flow summaries."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A monitoring platform reports that a switch's uplink shows a rising count of CRC errors over several days.",
+    "Which of the following best describes the value of this observation?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It is a trend that warrants investigation before failure"
+    },
+    {
+     "letter": "B",
+     "text": "It confirms a security breach"
+    },
+    {
+     "letter": "C",
+     "text": "It indicates a routing loop"
+    },
+    {
+     "letter": "D",
+     "text": "It proves the SLA was violated"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A steadily rising error counter is a trend that usually signals a degrading cable, connector or transceiver. Catching it while the link still passes traffic is the point of trending, allowing repair before an outage."
+   ],
+   "why": {
+    "B": "CRC errors indicate physical-layer corruption, not intrusion.",
+    "C": "Routing loops show as TTL expiry and duplicated traffic, not CRC errors.",
+    "D": "An SLA violation requires measured downtime or missed service levels."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network engineer must ensure that a critical router keeps running through a short utility outage.",
+    "Which of the following should be installed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "UPS"
+    },
+    {
+     "letter": "B",
+     "text": "PDU"
+    },
+    {
+     "letter": "C",
+     "text": "KVM"
+    },
+    {
+     "letter": "D",
+     "text": "NIC teaming"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An uninterruptible power supply carries the load on battery when utility power drops, keeping the device running through short outages and allowing a clean shutdown during longer ones."
+   ],
+   "why": {
+    "B": "A power distribution unit distributes power but provides no ride-through on its own.",
+    "C": "A KVM switch shares console access.",
+    "D": "NIC teaming provides network path redundancy, not power."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company's policy requires that new employees receive network access only after their manager approves the request.",
+    "Which of the following processes does this describe?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Onboarding"
+    },
+    {
+     "letter": "B",
+     "text": "Offboarding"
+    },
+    {
+     "letter": "C",
+     "text": "Decommissioning"
+    },
+    {
+     "letter": "D",
+     "text": "Incident response"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Onboarding covers provisioning accounts and access for a new employee, including the approval steps that authorize what they receive. Requiring manager approval is a control within that process."
+   ],
+   "why": {
+    "B": "Offboarding removes access when someone leaves.",
+    "C": "Decommissioning retires equipment or services.",
+    "D": "Incident response handles security events."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An administrator must verify that backups can actually be used before relying on them for disaster recovery.",
+    "Which of the following should be performed regularly?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Restore testing"
+    },
+    {
+     "letter": "B",
+     "text": "Increasing retention"
+    },
+    {
+     "letter": "C",
+     "text": "Adding more backup targets"
+    },
+    {
+     "letter": "D",
+     "text": "Compressing the archives"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Only an actual restore proves that backup media, indexes and procedures work end to end. Scheduling restore tests is what converts an untested backup into a dependable recovery capability."
+   ],
+   "why": {
+    "B": "Longer retention keeps more copies but proves nothing about usability.",
+    "C": "More targets add copies without validating them.",
+    "D": "Compression saves space and does not verify recoverability."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network manager needs to plan switch purchases for an office expanding from 40 to 120 staff next year.",
+    "Which of the following activities does this represent?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Capacity planning"
+    },
+    {
+     "letter": "B",
+     "text": "Incident response"
+    },
+    {
+     "letter": "C",
+     "text": "Change rollback"
+    },
+    {
+     "letter": "D",
+     "text": "Port mirroring"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Capacity planning forecasts future demand and determines the resources required to meet it. Sizing switch port counts against projected headcount growth is a capacity planning exercise."
+   ],
+   "why": {
+    "B": "Incident response reacts to events after they occur.",
+    "C": "Rollback reverses an implemented change.",
+    "D": "Port mirroring duplicates traffic for analysis."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "Which of the following describes the primary purpose of maintaining an asset inventory of network hardware?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "To know what is deployed, where, and when support expires"
+    },
+    {
+     "letter": "B",
+     "text": "To increase available bandwidth"
+    },
+    {
+     "letter": "C",
+     "text": "To prevent switching loops"
+    },
+    {
+     "letter": "D",
+     "text": "To encrypt management traffic"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An asset inventory records what equipment exists, its location, and lifecycle dates such as warranty and end of support. That record drives replacement planning, patching scope and audit responses."
+   ],
+   "why": {
+    "B": "Inventory records do not affect throughput.",
+    "C": "Loop prevention is handled by spanning tree.",
+    "D": "Encryption of management traffic is a protocol choice such as SSH or HTTPS."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A company must move a rack of equipment to a new suite and wants to minimize user impact.",
+    "Which of the following should be scheduled?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A maintenance window"
+    },
+    {
+     "letter": "B",
+     "text": "A penetration test"
+    },
+    {
+     "letter": "C",
+     "text": "A full backup only"
+    },
+    {
+     "letter": "D",
+     "text": "A spanning tree change"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A maintenance window is an agreed period when disruptive work may occur, communicated to users in advance. Scheduling the move inside that window is what limits the impact of unavoidable downtime."
+   ],
+   "why": {
+    "B": "A penetration test assesses security posture.",
+    "C": "A backup protects data but does not schedule the outage.",
+    "D": "A spanning tree change is a configuration action, not a scheduling practice."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "An engineer needs to know which applications consume the most WAN bandwidth during business hours.",
+    "Which of the following provides this most efficiently?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Flow data such as NetFlow"
+    },
+    {
+     "letter": "B",
+     "text": "A full packet capture of the link"
+    },
+    {
+     "letter": "C",
+     "text": "An ICMP ping sweep"
+    },
+    {
+     "letter": "D",
+     "text": "A cable tester"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Flow records summarize conversations by address, port and volume, which is enough to rank applications by consumption without storing every packet. That makes it the practical tool for ongoing WAN analysis."
+   ],
+   "why": {
+    "B": "Capturing every packet on a WAN link produces enormous data for the same answer.",
+    "C": "A ping sweep discovers reachable hosts only.",
+    "D": "A cable tester validates physical media."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A network administrator must confirm that a firmware update applied last night did not change any unrelated settings.",
+    "Which of the following should be compared?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The running configuration against the archived baseline"
+    },
+    {
+     "letter": "B",
+     "text": "The interface error counters"
+    },
+    {
+     "letter": "C",
+     "text": "The DHCP lease table"
+    },
+    {
+     "letter": "D",
+     "text": "The wireless heat map"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Comparing the live running configuration against the archived pre-change baseline shows exactly which lines differ. That diff is the direct evidence of whether anything beyond the intended change moved."
+   ],
+   "why": {
+    "B": "Error counters reflect physical link health.",
+    "C": "The lease table shows address assignments.",
+    "D": "A heat map shows wireless coverage."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "Which of the following best describes the purpose of a network configuration management system?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "To store, version and deploy device configurations consistently"
+    },
+    {
+     "letter": "B",
+     "text": "To route packets between VLANs"
+    },
+    {
+     "letter": "C",
+     "text": "To assign IP addresses dynamically"
+    },
+    {
+     "letter": "D",
+     "text": "To terminate VPN tunnels"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Configuration management stores device configurations, tracks versions over time and pushes standardized settings. It is what keeps a fleet consistent and makes changes auditable and reversible."
+   ],
+   "why": {
+    "B": "Inter-VLAN routing is performed by a router or layer 3 switch.",
+    "C": "Dynamic addressing is DHCP's role.",
+    "D": "VPN termination is a firewall or concentrator function."
+   }
+  },
+  {
+   "domain": "3.0 Network Operations",
+   "prompt": [
+    "A data center operator monitors inlet temperature and relative humidity in the cold aisle.",
+    "Which of the following is the operator managing?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Environmental factors"
+    },
+    {
+     "letter": "B",
+     "text": "Spanning tree convergence"
+    },
+    {
+     "letter": "C",
+     "text": "Routing metrics"
+    },
+    {
+     "letter": "D",
+     "text": "Link aggregation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Temperature and humidity are environmental conditions that directly affect hardware reliability. Monitoring them is part of operating the facility that houses the network."
+   ],
+   "why": {
+    "B": "Convergence concerns switching topology recalculation.",
+    "C": "Routing metrics influence path selection.",
+    "D": "Link aggregation bundles physical links."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "An administrator must connect two switches so that a single cable failure does not sever the link and the bandwidth of both cables is usable.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Link aggregation with LACP"
+    },
+    {
+     "letter": "B",
+     "text": "Port security"
+    },
+    {
+     "letter": "C",
+     "text": "A voice VLAN"
+    },
+    {
+     "letter": "D",
+     "text": "A static route"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Link aggregation bundles multiple physical links into one logical link, providing both additional throughput and survival of an individual member failure. LACP negotiates and maintains that bundle dynamically."
+   ],
+   "why": {
+    "B": "Port security limits MAC addresses on a port.",
+    "C": "A voice VLAN segregates IP phone traffic.",
+    "D": "A static route directs traffic between networks, not between switch links."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "A technician must connect a 10 Gbps switch uplink over 300 meters of existing multimode fiber.",
+    "Which of the following should be installed in the switch?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An SFP+ optical transceiver"
+    },
+    {
+     "letter": "B",
+     "text": "An RJ45 copper module rated Cat 5e"
+    },
+    {
+     "letter": "C",
+     "text": "A coaxial F-type adapter"
+    },
+    {
+     "letter": "D",
+     "text": "A media converter to RS-232"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "SFP+ is the 10 Gbps small form-factor pluggable standard, and an optical SFP+ matched to multimode fiber supports that distance. Copper twisted pair cannot reach 300 meters at 10 Gbps."
+   ],
+   "why": {
+    "B": "Cat 5e copper is limited to 100 meters and does not support 10 Gbps at that distance.",
+    "C": "F-type coaxial is used for cable television and broadband, not switch uplinks.",
+    "D": "RS-232 is a low-speed serial console standard."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "A wireless network must authenticate each user against the corporate directory rather than using a shared passphrase.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "WPA3-Enterprise with 802.1X"
+    },
+    {
+     "letter": "B",
+     "text": "WPA2-Personal with a strong PSK"
+    },
+    {
+     "letter": "C",
+     "text": "MAC address filtering"
+    },
+    {
+     "letter": "D",
+     "text": "SSID suppression"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Enterprise mode uses 802.1X to pass each user's credentials to a RADIUS server, which validates them against the directory. That provides per-user authentication and revocation, which a shared key cannot."
+   ],
+   "why": {
+    "B": "A pre-shared key is shared by everyone and cannot identify individual users.",
+    "C": "MAC filtering identifies devices, is easily spoofed and is not authentication.",
+    "D": "Hiding the SSID conceals the name but provides no authentication."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "A router must allow hosts on 192.168.10.0/24 to reach the internet using a single public address.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "PAT"
+    },
+    {
+     "letter": "B",
+     "text": "DHCP relay"
+    },
+    {
+     "letter": "C",
+     "text": "VLAN trunking"
+    },
+    {
+     "letter": "D",
+     "text": "Spanning tree"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Port address translation maps many internal addresses to one public address by tracking unique source ports. That is what allows an entire private subnet to share a single routable address."
+   ],
+   "why": {
+    "B": "A DHCP relay forwards address requests to a remote server.",
+    "C": "Trunking carries multiple VLANs over one link.",
+    "D": "Spanning tree prevents layer 2 loops."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "Two routers must present a single default gateway address to clients so that either can serve traffic if the other fails.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "FHRP"
+    },
+    {
+     "letter": "B",
+     "text": "BGP"
+    },
+    {
+     "letter": "C",
+     "text": "NAT"
+    },
+    {
+     "letter": "D",
+     "text": "STP"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A first hop redundancy protocol lets two routers share one virtual IP and MAC that clients use as their gateway. If the active router fails, the standby assumes the virtual address transparently."
+   ],
+   "why": {
+    "B": "BGP exchanges routes between autonomous systems.",
+    "C": "NAT translates addresses.",
+    "D": "Spanning tree operates at layer 2 to prevent loops."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "An administrator needs to carry VLANs 10, 20 and 30 between two switches over a single cable.",
+    "Which of the following must be configured on the interconnecting ports?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An 802.1Q trunk"
+    },
+    {
+     "letter": "B",
+     "text": "An access port in VLAN 10"
+    },
+    {
+     "letter": "C",
+     "text": "Port mirroring"
+    },
+    {
+     "letter": "D",
+     "text": "A native-only untagged port"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An 802.1Q trunk tags frames with their VLAN ID so multiple VLANs share one physical link and remain separated at the far end. An access port would carry only one VLAN."
+   ],
+   "why": {
+    "B": "An access port belongs to a single VLAN and would drop the others.",
+    "C": "Port mirroring copies traffic for analysis.",
+    "D": "An untagged-only port cannot distinguish multiple VLANs."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "A network designer must choose a routing protocol for a single enterprise campus that converges quickly and uses cost based on bandwidth.",
+    "Which of the following is most appropriate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "OSPF"
+    },
+    {
+     "letter": "B",
+     "text": "BGP"
+    },
+    {
+     "letter": "C",
+     "text": "RIP"
+    },
+    {
+     "letter": "D",
+     "text": "Static routing only"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "OSPF is a link-state interior gateway protocol that computes shortest paths using a bandwidth-derived cost and converges quickly after a topology change. That fits a single enterprise campus well."
+   ],
+   "why": {
+    "B": "BGP is a path-vector protocol designed for routing between autonomous systems.",
+    "C": "RIP uses hop count, is limited to 15 hops and converges slowly.",
+    "D": "Static routes do not adapt to topology changes."
+   }
+  },
+  {
+   "domain": "2.0 Network Implementation",
+   "prompt": [
+    "An access point must be powered where no electrical outlet exists in the ceiling.",
+    "Which of the following should be used?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Power over Ethernet"
+    },
+    {
+     "letter": "B",
+     "text": "A longer patch cable"
+    },
+    {
+     "letter": "C",
+     "text": "A PDU in the rack"
+    },
+    {
+     "letter": "D",
+     "text": "A media converter"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Power over Ethernet delivers both data and DC power over the same twisted pair run, which is why it is the standard way to place an access point where no outlet exists."
+   ],
+   "why": {
+    "B": "Cable length does not supply power.",
+    "C": "A rack PDU powers rack equipment, not a remote ceiling device.",
+    "D": "A media converter changes media type without supplying device power."
+   }
+  },
+  {
+   "domain": "1.0 Networking Concepts",
+   "prompt": [
+    "A host is configured with the address 169.254.12.44 after being unable to reach a server.",
+    "Which of the following does this indicate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The host self-assigned an APIPA address"
+    },
+    {
+     "letter": "B",
+     "text": "The host received a public address"
+    },
+    {
+     "letter": "C",
+     "text": "The host is using a loopback address"
+    },
+    {
+     "letter": "D",
+     "text": "The host was assigned a multicast address"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The 169.254.0.0/16 range is automatic private IP addressing, which a host assigns to itself when no DHCP server answers. Seeing it is a direct indication that DHCP failed."
+   ],
+   "why": {
+    "B": "169.254.0.0/16 is link-local and not routable on the internet.",
+    "C": "Loopback is 127.0.0.0/8.",
+    "D": "IPv4 multicast is 224.0.0.0/4."
+   }
+  },
+  {
+   "domain": "1.0 Networking Concepts",
+   "prompt": [
+    "A network must support 500 hosts in a single subnet with the least wasted address space.",
+    "Which of the following subnet masks should be used?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "255.255.254.0"
+    },
+    {
+     "letter": "B",
+     "text": "255.255.255.0"
+    },
+    {
+     "letter": "C",
+     "text": "255.255.252.0"
+    },
+    {
+     "letter": "D",
+     "text": "255.255.255.128"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A /23, written 255.255.254.0, provides 510 usable host addresses, which is the smallest standard subnet that accommodates 500 hosts. Anything smaller cannot hold them, and anything larger wastes space."
+   ],
+   "why": {
+    "B": "A /24 provides only 254 usable addresses.",
+    "C": "A /22 provides 1022 usable addresses and wastes more than needed.",
+    "D": "A /25 provides only 126 usable addresses."
+   }
+  },
+  {
+   "domain": "1.0 Networking Concepts",
+   "prompt": [
+    "Which of the following OSI layers is responsible for reliable, connection-oriented delivery using sequence numbers and acknowledgements?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Transport"
+    },
+    {
+     "letter": "B",
+     "text": "Network"
+    },
+    {
+     "letter": "C",
+     "text": "Data link"
+    },
+    {
+     "letter": "D",
+     "text": "Session"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The transport layer provides end-to-end delivery services, and TCP at that layer uses sequence numbers, acknowledgements and retransmission to guarantee ordered, reliable delivery."
+   ],
+   "why": {
+    "B": "The network layer provides logical addressing and routing without delivery guarantees.",
+    "C": "The data link layer handles framing and local delivery on a single segment.",
+    "D": "The session layer manages dialogue setup and teardown."
+   }
+  },
+  {
+   "domain": "1.0 Networking Concepts",
+   "prompt": [
+    "An administrator needs to permit encrypted web traffic and secure shell management through a firewall.",
+    "Which of the following port pairs should be allowed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "443 and 22"
+    },
+    {
+     "letter": "B",
+     "text": "80 and 23"
+    },
+    {
+     "letter": "C",
+     "text": "443 and 23"
+    },
+    {
+     "letter": "D",
+     "text": "80 and 22"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "HTTPS uses TCP 443 and SSH uses TCP 22, so allowing that pair permits encrypted web traffic and encrypted remote management while leaving their cleartext equivalents closed."
+   ],
+   "why": {
+    "B": "Port 80 is cleartext HTTP and 23 is cleartext Telnet.",
+    "C": "Port 23 is Telnet, which sends credentials in cleartext.",
+    "D": "Port 80 is unencrypted HTTP."
+   }
+  },
+  {
+   "domain": "1.0 Networking Concepts",
+   "prompt": [
+    "Which of the following cloud characteristics allows a service to automatically add capacity during a traffic spike and release it afterward?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Rapid elasticity"
+    },
+    {
+     "letter": "B",
+     "text": "Multitenancy"
+    },
+    {
+     "letter": "C",
+     "text": "Measured service"
+    },
+    {
+     "letter": "D",
+     "text": "Resource pooling"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Rapid elasticity is the ability to scale resources out and back in automatically as demand changes, which is precisely the behavior described."
+   ],
+   "why": {
+    "B": "Multitenancy means multiple customers share the same infrastructure.",
+    "C": "Measured service is metered billing based on consumption.",
+    "D": "Resource pooling is the provider aggregating resources to serve many customers."
+   }
+  },
+  {
+   "domain": "5.0 Network Troubleshooting",
+   "prompt": [
+    "Users on one floor report that the network is unreachable. A technician confirms link lights are off on every affected wall jack and that the patch panel is properly terminated.",
+    "Which of the following should the technician check next?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The access switch serving that floor"
+    },
+    {
+     "letter": "B",
+     "text": "The internet circuit"
+    },
+    {
+     "letter": "C",
+     "text": "Each user's browser settings"
+    },
+    {
+     "letter": "D",
+     "text": "The DNS server records"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Link lights off across every jack on one floor points to the common device those jacks share, which is the floor's access switch, or its power. Checking the shared component before individual hosts follows the divide and conquer approach."
+   ],
+   "why": {
+    "B": "A WAN circuit failure would not extinguish local link lights.",
+    "C": "Browser settings cannot affect physical link status.",
+    "D": "DNS affects name resolution, not link state."
+   }
+  },
+  {
+   "domain": "5.0 Network Troubleshooting",
+   "prompt": [
+    "A user's workstation has an IP address, but cannot reach hosts on other subnets while local hosts respond normally.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An incorrect default gateway"
+    },
+    {
+     "letter": "B",
+     "text": "A failed network cable"
+    },
+    {
+     "letter": "C",
+     "text": "A disabled DHCP scope"
+    },
+    {
+     "letter": "D",
+     "text": "An incorrect DNS suffix"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Local communication succeeding while remote communication fails shows the interface and local segment are healthy but traffic has no valid exit path. That is the signature of a wrong or missing default gateway."
+   ],
+   "why": {
+    "B": "A failed cable would prevent local communication as well.",
+    "C": "The host already has an address, so DHCP has served it.",
+    "D": "A DNS suffix issue affects name resolution, not routed reachability."
+   }
+  },
+  {
+   "domain": "5.0 Network Troubleshooting",
+   "prompt": [
+    "A fiber link between two buildings is up but throughput is far below expectation and the optical receive level reads much lower than the vendor specification.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Excessive attenuation or a dirty connector"
+    },
+    {
+     "letter": "B",
+     "text": "A duplicate IP address"
+    },
+    {
+     "letter": "C",
+     "text": "An incorrect VLAN assignment"
+    },
+    {
+     "letter": "D",
+     "text": "An expired DHCP lease"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A receive power level well under specification is an optical loss problem, most often caused by contaminated connectors, tight bends or excessive run length. The link trains but errors and retransmissions cut throughput."
+   ],
+   "why": {
+    "B": "A duplicate address causes intermittent host conflicts, not low optical power.",
+    "C": "A VLAN mismatch blocks traffic rather than weakening the optical signal.",
+    "D": "A lease problem affects addressing, not light levels."
+   }
+  },
+  {
+   "domain": "5.0 Network Troubleshooting",
+   "prompt": [
+    "Wireless clients in one area disconnect and reconnect repeatedly. A survey shows three nearby access points all broadcasting on channel 6 in the 2.4 GHz band.",
+    "Which of the following should be changed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Assign non-overlapping channels such as 1, 6 and 11"
+    },
+    {
+     "letter": "B",
+     "text": "Increase transmit power on all three"
+    },
+    {
+     "letter": "C",
+     "text": "Hide the SSID"
+    },
+    {
+     "letter": "D",
+     "text": "Switch all clients to WPA2-Personal"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Co-channel interference from overlapping access points causes repeated contention and roaming problems. Assigning the non-overlapping 2.4 GHz channels 1, 6 and 11 separates them and restores stability."
+   ],
+   "why": {
+    "B": "Raising power on all three widens the overlap and worsens interference.",
+    "C": "Hiding the SSID does not change RF conditions.",
+    "D": "The security mode does not cause channel contention."
+   }
+  },
+  {
+   "domain": "5.0 Network Troubleshooting",
+   "prompt": [
+    "A technician replaced a patch cable and the link will not come up. A cable tester shows pins 1 and 2 on one end landing on pins 3 and 6 at the other.",
+    "Which of the following describes this condition?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A crossover, or transposed pair, wiring"
+    },
+    {
+     "letter": "B",
+     "text": "An open circuit"
+    },
+    {
+     "letter": "C",
+     "text": "A short circuit"
+    },
+    {
+     "letter": "D",
+     "text": "Excessive attenuation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Transmit pins arriving on the receive positions at the far end describes a crossover wiring pattern. On equipment that does not auto-negotiate the pinout, this transposition prevents the link from establishing."
+   ],
+   "why": {
+    "B": "An open would show a missing connection, not a swapped one.",
+    "C": "A short would show two conductors joined together.",
+    "D": "Attenuation shows as signal loss over distance, not a pinout change."
+   }
+  }
+ ]
+}

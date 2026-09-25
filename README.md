@@ -10,12 +10,12 @@ It installs to a phone home screen, runs offline, and keeps all progress on the 
 
 | Exam | Code | Questions | Objectives |
 | --- | --- | --- | --- |
-| Security+ | SY0-701 | 611 | 5 |
-| A+ Core 1 | 220-1201 | 462 | 5 |
-| A+ Core 2 | 220-1202 | 396 | 4 |
-| Network+ | N10-009 | 724 | 5 |
+| Security+ | SY0-701 | 658 | 5 |
+| A+ Core 1 | 220-1201 | 493 | 5 |
+| A+ Core 2 | 220-1202 | 442 | 4 |
+| Network+ | N10-009 | 777 | 5 |
 
-**2,193 questions in total.** Switch exams from the button at the top of the Home screen, or
+**2,370 questions in total**, of which 179 were written for this app to cover objectives the publisher's banks are light on. Those are tagged `authored`, badged **Added** in the app and filterable on their own, so it is always clear which questions came from the PDFs. Switch exams from the button at the top of the Home screen, or
 from Settings. Each exam keeps its own progress, XP, badges, mastery and review schedule; the
 day streak is shared, so studying any exam keeps it alive. Only the active exam's question
 bank is downloaded, so adding exams does not slow the app down.
@@ -36,8 +36,15 @@ bank is downloaded, so adding exams does not slow the app down.
 | Sprint | 90 seconds, as many as you can clear |
 | Survival | 3 lives, endless, 30s per question |
 | Domain Drill | 15 questions from one exam objective |
+| Arcade | Three correct in a row drops you into a seven-second bonus round |
 | Smart Review | Whatever is due, flagged or previously missed |
 | Exam Simulation | 90 questions in 90 minutes, no feedback until the end, scaled 100–900 with 750 to pass |
+
+**Arcade mode**
+- Every third consecutive correct answer opens a timed bonus round
+- Tap threats for points with a combo multiplier; hitting a shield costs points
+- Number keys work as well as taps, so it is playable on a laptop
+- Bonus points count toward the run score, and 30 threats in a run earns a badge
 
 **Scoring and progression** (tracked per exam)
 - 100 points per correct answer, plus up to 60 for speed when a clock is running
@@ -136,18 +143,27 @@ Measured against the published exam weights, the mean error per objective is rou
 on A+ Core 1, 5 on A+ Core 2 and Security+, and 4 on Network+. Treat the tags as a study
 filter, not an authoritative classification.
 
+### Written-for-this-app questions
+
+`tools/authored/<exam-id>.json` holds questions written for this app rather than extracted from
+a PDF. The parser merges them in, numbers them from 10001 so they can never collide with the
+PDF's numbering, and tags them `source: "authored"`. They are weighted toward the objectives
+the publisher banks under-cover, and the tests hold them to the same bar as extracted
+questions: every distractor explained, options in order, no duplicates.
+
+The source PDFs also repeat a few questions verbatim. The parser now keeps the first of each
+and reports the rest, so a run never asks the same thing twice.
+
 ### Where the banks are thin
 
 The Stats screen shows each objective's share of the bank next to its official exam weight, and
 flags any objective the bank covers at least 7 points below its exam weight. Two are worth
 knowing about before you plan study time:
 
-- **Network+ Network Operations** is 19% of the exam but 9.5% of the bank. This is the bank, not
-  the tagging: of the 650 questions tagged elsewhere, 587 contain no operations vocabulary at
-  all, and only 28 are close enough to be plausible misfiles.
-- **Security+ Security Operations** is 28% of the exam and 20% of the bank.
-
-Study those objectives from another source as well.
+The authored questions were written specifically to close these gaps. Network+ Network
+Operations moved from 9.5% to 13.4% of its bank, and Security+ Security Operations from 20% to
+23%, against exam weights of 19% and 28%. Both remain somewhat light, so treat them as areas to
+study from another source too.
 
 ## Adding another exam
 

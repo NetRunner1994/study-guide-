@@ -14,7 +14,47 @@ import sys
 
 from taxonomies import TAXONOMIES, classify
 
-OVERRIDE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "overrides")
+HERE = os.path.dirname(os.path.abspath(__file__))
+OVERRIDE_DIR = os.path.join(HERE, "overrides")
+AUTHORED_DIR = os.path.join(HERE, "authored")
+# Authored questions are numbered from here so they can never collide with the
+# PDF's own numbering, and so their origin is obvious in the data.
+AUTHORED_ID_BASE = 10000
+
+
+def load_authored(exam_id):
+    """Questions written for this app rather than extracted from the PDF.
+
+    They are kept in a separate file, numbered from a high base, and tagged
+    source="authored" so the app can label them and a reader can always tell
+    which questions came from the publisher.
+    """
+    path = os.path.join(AUTHORED_DIR, f"{exam_id}.json")
+    if not os.path.exists(path):
+        return []
+    with open(path) as handle:
+        raw = json.load(handle)
+    out = []
+    for i, q in enumerate(raw.get("questions", []), start=1):
+        letters = [o["letter"] for o in q["options"]]
+        answer = q["answer"]
+        assert letters == sorted(letters), f"authored {exam_id} #{i}: options out of order"
+        assert set(answer) <= set(letters), f"authored {exam_id} #{i}: answer not an option"
+        out.append({
+            "id": AUTHORED_ID_BASE + i,
+            "type": "multi" if len(answer) > 1 else "single",
+            "prompt": q["prompt"],
+            "options": q["options"],
+            "answer": answer,
+            "answerText": "; ".join(
+                o["text"] for o in q["options"] if o["letter"] in answer
+            ),
+            "explanation": q["explanation"],
+            "why": q["why"],
+            "domain": q["domain"],
+            "source": "authored",
+        })
+    return out
 
 
 def load_overrides(exam_id):
@@ -160,6 +200,7 @@ def main(exam_id, pdf_path, out_path):
     from pypdf import PdfReader
 
     overrides = load_overrides(exam_id)
+    authored = load_authored(exam_id)
     reader = PdfReader(pdf_path)
     text = "\n".join(page.extract_text() for page in reader.pages)
     chunks = re.split(r"(?m)^Question #(\d+)\s*$", text)
@@ -236,6 +277,23 @@ def main(exam_id, pdf_path, out_path):
         })
 
     applied = sum(1 for q in questions if q["id"] in overrides)
+
+    # The source PDFs repeat a few questions verbatim; keep the first of each so
+    # a run never asks the same thing twice.
+    seen, deduped, dupes = set(), [], []
+    for q in sorted(questions, key=lambda q: q["id"]):
+        key = re.sub(r"[^a-z0-9 ]", "", " ".join(q["prompt"]).lower())
+        if key in seen:
+            dupes.append(q["id"])
+            continue
+        seen.add(key)
+        q["source"] = "publisher"
+        deduped.append(q)
+
+    known = {name for name, _ in TAXONOMIES[exam_id]}
+    for q in authored:
+        assert q["domain"] in known, f"authored question has unknown domain {q['domain']!r}"
+    questions = deduped + authored
     questions.sort(key=lambda q: q["id"])
     with open(out_path, "w") as handle:
         json.dump(questions, handle, indent=1, ensure_ascii=False)
@@ -249,6 +307,10 @@ def main(exam_id, pdf_path, out_path):
         print(f"   {by_domain.get(name, 0):4d}  {name}")
     if applied:
         print(f"   overrides applied: {applied}")
+    if dupes:
+        print(f"   duplicates dropped: {dupes}")
+    if authored:
+        print(f"   authored questions added: {len(authored)}")
     if problems:
         print("   problems:", problems)
 

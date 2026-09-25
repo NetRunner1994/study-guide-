@@ -15,6 +15,8 @@ export interface Question {
   type: QuestionType
   prompt: string[]
   domain: string
+  /** Where the question came from: the practice PDF, or written for this app. */
+  source?: 'publisher' | 'authored'
   /** Multiple-choice fields. */
   options?: Option[]
   answer?: string[]
@@ -28,7 +30,7 @@ export interface Question {
   steps?: string[]
 }
 
-export type ModeId = 'quick' | 'domain' | 'sprint' | 'survival' | 'exam' | 'review'
+export type ModeId = 'quick' | 'domain' | 'sprint' | 'survival' | 'exam' | 'review' | 'arcade'
 
 export interface ModeConfig {
   id: ModeId
@@ -44,6 +46,10 @@ export interface ModeConfig {
   lives: number | null
   /** Show the verdict after each answer instead of only at the end. */
   instantFeedback: boolean
+  /** Correct answers in a row that trigger a bonus round, if any. */
+  bonusEvery?: number
+  /** Seconds each bonus round lasts. */
+  bonusSeconds?: number
   accent: string
 }
 
@@ -71,6 +77,8 @@ export interface SessionRecord {
   domain: string | null
   scaled: number | null
   passed: boolean | null
+  /** Threats neutralised across this run's bonus rounds, for Arcade. */
+  bonusHits?: number
 }
 
 export interface Settings {
