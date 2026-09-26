@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { BonusRound } from '../components/BonusRound'
 import { DomainChip, QuestionDetail } from '../components/QuestionDetail'
 import { CloseIcon, FlagIcon } from '../components/Icons'
 import { MODES, scoreAnswer, scaledScore, xpForAnswer } from '../lib/game'
@@ -42,6 +43,13 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
   const [flash, setFlash] = useState<{ id: number; text: string; good: boolean } | null>(null)
   const [now, setNow] = useState(() => Date.now())
   const [confirmExit, setConfirmExit] = useState(false)
+  /* Arcade: a bonus round after every N correct in a row. */
+  const [bonusOpen, setBonusOpen] = useState(false)
+  const [bonusHits, setBonusHits] = useState(0)
+  const [bonusPoints, setBonusPoints] = useState(0)
+  /* Bonus points live outside `score` so finish() can add them exactly once,
+     whichever path ends the run. */
+  const bonusScore = useRef(0)
 
   const runStart = useRef(Date.now())
   const questionStart = useRef(Date.now())
@@ -90,17 +98,18 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
         date: Date.now(),
         total,
         correct,
-        score: finalScore,
+        score: finalScore + bonusScore.current,
         durationMs: Date.now() - runStart.current,
         domain: run.domain,
         scaled,
         passed: scaled === null ? null : scaled >= 750,
+        bonusHits: bonusHits || undefined,
       }
       const earned = finishSession(record, best)
       play('finish', settings.sound)
       onFinish(record, finalOutcomes, earned)
     },
-    [finishSession, onFinish, run.domain, run.mode, settings.sound],
+    [bonusHits, finishSession, onFinish, run.domain, run.mode, settings.sound],
   )
 
   const submit = useCallback(
@@ -144,6 +153,10 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
             good: true,
           })
         }
+      }
+
+      if (right && config.bonusEvery && nextStreak > 0 && nextStreak % config.bonusEvery === 0) {
+        setBonusOpen(true)
       }
 
       const remainingLives = right ? lives : lives - 1
@@ -319,7 +332,7 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
             </span>
           )}
           <span className="tiny mono muted" style={{ minWidth: 52, textAlign: 'right' }}>
-            {score.toLocaleString()} pts
+            {(score + bonusPoints).toLocaleString()} pts
           </span>
         </div>
 
@@ -340,6 +353,9 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
         ) : (
           <DomainChip domain={question.domain} />
         )}
+        {question.source === 'authored' ? (
+          <span className="tiny faint">Added for this app</span>
+        ) : null}
       </header>
 
       <div className="quiz__body" ref={bodyRef}>
@@ -443,6 +459,20 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
           {answered ? `${correctCount}/${answered} correct this run` : 'Tap an option to answer'}
         </p>
       </footer>
+
+      {bonusOpen ? (
+        <BonusRound
+          seconds={config.bonusSeconds ?? 7}
+          sound={settings.sound}
+          haptics={settings.haptics}
+          onDone={(points, hits) => {
+            bonusScore.current += points
+            setBonusPoints(bonusScore.current)
+            setBonusHits((n) => n + hits)
+            setBonusOpen(false)
+          }}
+        />
+      ) : null}
 
       {confirmExit ? (
         <div className="sheet" role="dialog" aria-modal="true" onClick={() => setConfirmExit(false)}>

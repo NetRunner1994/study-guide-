@@ -1,0 +1,1724 @@
+{
+ "questions": [
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A vulnerability scan reports a critical finding on a server, but investigation shows the affected package is not installed.",
+    "Which of the following best describes this result?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "False positive"
+    },
+    {
+     "letter": "B",
+     "text": "False negative"
+    },
+    {
+     "letter": "C",
+     "text": "True positive"
+    },
+    {
+     "letter": "D",
+     "text": "Zero-day"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A false positive is a reported finding that does not actually exist on the target. Confirming the package is absent means the scanner flagged a condition that is not present, so the finding should be validated and tuned out."
+   ],
+   "why": {
+    "B": "A false negative is a real vulnerability the scanner failed to report.",
+    "C": "A true positive would mean the vulnerability genuinely exists.",
+    "D": "A zero-day is an unpatched flaw with no vendor fix, unrelated to scanner accuracy."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A security team cannot patch a legacy application server because the vendor no longer supports it, but the business requires it to stay online.",
+    "Which of the following is the most appropriate response?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Isolate the server with compensating controls"
+    },
+    {
+     "letter": "B",
+     "text": "Accept the risk with no further action"
+    },
+    {
+     "letter": "C",
+     "text": "Remove the server from the asset inventory"
+    },
+    {
+     "letter": "D",
+     "text": "Disable logging on the server"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "When a vulnerability cannot be remediated, compensating controls such as network segmentation, strict access control and enhanced monitoring reduce the exposure to an acceptable level while the system remains in service."
+   ],
+   "why": {
+    "B": "Silent acceptance without controls leaves the exposure unmanaged.",
+    "C": "Removing it from inventory hides the risk rather than reducing it.",
+    "D": "Disabling logging removes the visibility most needed on an unpatched host."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An analyst must determine which phase of incident response includes eliminating the attacker's persistence mechanisms.",
+    "Which of the following phases is this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Eradication"
+    },
+    {
+     "letter": "B",
+     "text": "Containment"
+    },
+    {
+     "letter": "C",
+     "text": "Recovery"
+    },
+    {
+     "letter": "D",
+     "text": "Lessons learned"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Eradication removes the cause of the incident from the environment, including malware, backdoors and attacker accounts. Only after those persistence mechanisms are gone can systems safely be restored."
+   ],
+   "why": {
+    "B": "Containment limits the spread but leaves the artifacts in place.",
+    "C": "Recovery restores systems to normal operation after eradication.",
+    "D": "Lessons learned reviews the response after it concludes."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "During an investigation, an analyst documents every person who handled a seized hard drive and when.",
+    "Which of the following is the analyst maintaining?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Chain of custody"
+    },
+    {
+     "letter": "B",
+     "text": "Legal hold"
+    },
+    {
+     "letter": "C",
+     "text": "Data retention schedule"
+    },
+    {
+     "letter": "D",
+     "text": "Acceptable use record"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Chain of custody is the documented record of who possessed evidence, when and for what purpose. It is what allows the evidence to be admitted and shown to be unaltered."
+   ],
+   "why": {
+    "B": "A legal hold preserves records from deletion; it does not track handling.",
+    "C": "A retention schedule defines storage duration.",
+    "D": "Acceptable use records govern permitted resource usage."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company wants endpoint software that detects suspicious behavior, records process activity and allows analysts to isolate a host remotely.",
+    "Which of the following should be deployed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "EDR"
+    },
+    {
+     "letter": "B",
+     "text": "A host firewall"
+    },
+    {
+     "letter": "C",
+     "text": "A password manager"
+    },
+    {
+     "letter": "D",
+     "text": "A DNS resolver"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Endpoint detection and response continuously records endpoint telemetry, detects behavioral indicators and gives responders actions such as host isolation. That combination is what distinguishes it from signature-only antivirus."
+   ],
+   "why": {
+    "B": "A host firewall filters traffic but does not record process behavior.",
+    "C": "A password manager stores credentials.",
+    "D": "A resolver answers name queries."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An organization wants to prevent employees from reaching known malicious domains without installing software on each endpoint.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "DNS filtering"
+    },
+    {
+     "letter": "B",
+     "text": "Full disk encryption"
+    },
+    {
+     "letter": "C",
+     "text": "A host-based IDS"
+    },
+    {
+     "letter": "D",
+     "text": "Screen locks"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "DNS filtering blocks resolution of known-bad domains at the resolver, which stops connections before they are established and applies to every device using that resolver with no endpoint agent."
+   ],
+   "why": {
+    "B": "Disk encryption protects data at rest.",
+    "C": "A host-based IDS requires endpoint installation.",
+    "D": "Screen locks address unattended devices."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "Email from the company's domain is being spoofed. The security team wants receiving servers to reject messages that fail authentication and to receive reports.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "DMARC"
+    },
+    {
+     "letter": "B",
+     "text": "SPF only"
+    },
+    {
+     "letter": "C",
+     "text": "POP3"
+    },
+    {
+     "letter": "D",
+     "text": "IMAP"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "DMARC builds on SPF and DKIM by publishing a policy that tells receivers what to do with failures and where to send aggregate reports. The reject policy and reporting are specific to DMARC."
+   ],
+   "why": {
+    "B": "SPF alone authorizes sending hosts but defines no failure policy or reporting.",
+    "C": "POP3 retrieves mail from a server.",
+    "D": "IMAP synchronizes mailboxes."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A security operations center wants alerts automatically enriched and low-risk actions executed without analyst involvement.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "SOAR"
+    },
+    {
+     "letter": "B",
+     "text": "A vulnerability scanner"
+    },
+    {
+     "letter": "C",
+     "text": "A honeypot"
+    },
+    {
+     "letter": "D",
+     "text": "A proxy server"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Security orchestration, automation and response executes playbooks that enrich alerts and take defined actions automatically. That automation of repetitive handling is its defining purpose."
+   ],
+   "why": {
+    "B": "A scanner identifies weaknesses but does not orchestrate response.",
+    "C": "A honeypot attracts attackers for observation.",
+    "D": "A proxy mediates client requests."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An administrator must ensure that a departing employee loses access to all systems on their last day.",
+    "Which of the following processes covers this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Deprovisioning"
+    },
+    {
+     "letter": "B",
+     "text": "Provisioning"
+    },
+    {
+     "letter": "C",
+     "text": "Federation"
+    },
+    {
+     "letter": "D",
+     "text": "Attestation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Deprovisioning is the removal of accounts and entitlements when a user leaves or changes roles. Executing it on the departure date is what prevents orphaned access."
+   ],
+   "why": {
+    "B": "Provisioning grants access at the start of a relationship.",
+    "C": "Federation allows authentication across trust boundaries.",
+    "D": "Attestation is a periodic review confirming access is still appropriate."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A manager must periodically confirm that each of their staff still requires the permissions they hold.",
+    "Which of the following describes this activity?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Access recertification"
+    },
+    {
+     "letter": "B",
+     "text": "Least privilege"
+    },
+    {
+     "letter": "C",
+     "text": "Separation of duties"
+    },
+    {
+     "letter": "D",
+     "text": "Time-of-day restriction"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Access recertification, also called attestation, is the recurring review in which an owner confirms or revokes existing entitlements. It is the control that catches privilege accumulated over time."
+   ],
+   "why": {
+    "B": "Least privilege is the principle being enforced, not the review activity.",
+    "C": "Separation of duties splits conflicting responsibilities across people.",
+    "D": "Time-of-day restrictions limit when access may be used."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company wants administrators to receive elevated rights only for the duration of an approved task.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Just-in-time permissions"
+    },
+    {
+     "letter": "B",
+     "text": "Permanent administrator accounts"
+    },
+    {
+     "letter": "C",
+     "text": "Shared service accounts"
+    },
+    {
+     "letter": "D",
+     "text": "Password complexity rules"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Just-in-time access grants elevated privileges temporarily and revokes them automatically when the window closes. This removes standing privilege, which is the account state attackers most want to capture."
+   ],
+   "why": {
+    "B": "Permanent rights are exactly the standing privilege being avoided.",
+    "C": "Shared accounts destroy accountability.",
+    "D": "Complexity rules strengthen passwords but do not limit privilege duration."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A security engineer must harden a fleet of Windows workstations to a consistent, documented configuration.",
+    "Which of the following should be applied?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A secure baseline enforced by group policy"
+    },
+    {
+     "letter": "B",
+     "text": "A different configuration per user"
+    },
+    {
+     "letter": "C",
+     "text": "Local administrator rights for all staff"
+    },
+    {
+     "letter": "D",
+     "text": "Disabling the event log"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A secure baseline defines the approved hardened settings, and group policy enforces them consistently across the fleet while reporting drift. Consistency is what makes the fleet auditable."
+   ],
+   "why": {
+    "B": "Per-user configurations make the estate inconsistent and unverifiable.",
+    "C": "Granting broad local admin rights weakens every workstation.",
+    "D": "Disabling logging removes the evidence needed to detect problems."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An analyst needs to determine whether a suspicious executable contacts external hosts, without risking production systems.",
+    "Which of the following should be used?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A sandbox"
+    },
+    {
+     "letter": "B",
+     "text": "A production file server"
+    },
+    {
+     "letter": "C",
+     "text": "The domain controller"
+    },
+    {
+     "letter": "D",
+     "text": "A user's laptop"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A sandbox is an isolated, instrumented environment where a sample can be executed and its behavior, including network callbacks, observed safely without endangering production."
+   ],
+   "why": {
+    "B": "Running malware on a file server risks the data it holds.",
+    "C": "The domain controller is the highest-value target in the environment.",
+    "D": "A user's laptop is a production endpoint with real access."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company must verify that mobile devices meet a minimum OS version before being allowed on the corporate network.",
+    "Which of the following provides this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "MDM with device posture checks"
+    },
+    {
+     "letter": "B",
+     "text": "A guest wireless SSID"
+    },
+    {
+     "letter": "C",
+     "text": "A captive portal message"
+    },
+    {
+     "letter": "D",
+     "text": "A physical asset tag"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Mobile device management enrolls devices, evaluates their posture against policy, and allows or blocks access based on the result. Enforcing a minimum OS version is a standard posture check."
+   ],
+   "why": {
+    "B": "A guest SSID segregates visitors but checks no device posture.",
+    "C": "A captive portal presents terms; it does not evaluate OS version.",
+    "D": "An asset tag identifies hardware physically."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "Which of the following log sources would most directly show that a user account authenticated successfully from an unusual country?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Authentication logs from the identity provider"
+    },
+    {
+     "letter": "B",
+     "text": "Printer spooler logs"
+    },
+    {
+     "letter": "C",
+     "text": "DHCP lease logs"
+    },
+    {
+     "letter": "D",
+     "text": "Firmware update logs"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The identity provider records each authentication with its result and source address, which is what reveals a successful sign-in from an unexpected geography."
+   ],
+   "why": {
+    "B": "Spooler logs record print jobs.",
+    "C": "DHCP logs record address assignment on the local network.",
+    "D": "Firmware logs record device updates."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company wants to detect data leaving the network in violation of policy, such as spreadsheets containing card numbers.",
+    "Which of the following should be deployed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "DLP"
+    },
+    {
+     "letter": "B",
+     "text": "NAC"
+    },
+    {
+     "letter": "C",
+     "text": "IPS signatures for malware only"
+    },
+    {
+     "letter": "D",
+     "text": "A load balancer"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Data loss prevention inspects content against defined patterns and policies, and blocks or alerts when sensitive data is being transmitted. Detecting card numbers in outbound files is its core use case."
+   ],
+   "why": {
+    "B": "Network access control governs which devices may connect.",
+    "C": "Malware signatures detect code, not policy-violating content.",
+    "D": "A load balancer distributes traffic."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An analyst wants to reduce alert volume by suppressing a rule that fires constantly on known benign activity.",
+    "Which of the following is the analyst performing?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Alert tuning"
+    },
+    {
+     "letter": "B",
+     "text": "Threat hunting"
+    },
+    {
+     "letter": "C",
+     "text": "Chain of custody"
+    },
+    {
+     "letter": "D",
+     "text": "Risk transfer"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Alert tuning adjusts detection rules and thresholds so that known-benign activity stops generating noise. Reducing false positives is what keeps analysts focused on real events."
+   ],
+   "why": {
+    "B": "Threat hunting proactively searches for undetected adversary activity.",
+    "C": "Chain of custody documents evidence handling.",
+    "D": "Risk transfer shifts financial exposure to another party."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A scanner is configured with domain credentials so it can log in to hosts and inspect installed patch levels.",
+    "Which of the following describes this scan type?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Credentialed scan"
+    },
+    {
+     "letter": "B",
+     "text": "Non-credentialed scan"
+    },
+    {
+     "letter": "C",
+     "text": "Port scan"
+    },
+    {
+     "letter": "D",
+     "text": "Passive scan"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A credentialed scan authenticates to the target and reads installed software and configuration directly, producing far more accurate results than probing from outside."
+   ],
+   "why": {
+    "B": "A non-credentialed scan infers findings from network-visible responses only.",
+    "C": "A port scan enumerates listening services.",
+    "D": "A passive scan observes traffic without probing."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "After remediating a critical vulnerability, an administrator must prove the fix worked.",
+    "Which of the following should be performed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A rescan of the affected systems"
+    },
+    {
+     "letter": "B",
+     "text": "A change request"
+    },
+    {
+     "letter": "C",
+     "text": "A tabletop exercise"
+    },
+    {
+     "letter": "D",
+     "text": "A risk acceptance memo"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Rescanning after remediation confirms the finding no longer appears and provides the evidence needed to close it. Verification is the step that turns a claimed fix into a validated one."
+   ],
+   "why": {
+    "B": "A change request authorizes work; it does not verify the outcome.",
+    "C": "A tabletop exercise rehearses response procedures.",
+    "D": "A risk acceptance memo documents a decision not to remediate."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "Which of the following best describes the purpose of a security playbook?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A repeatable set of response steps for a specific incident type"
+    },
+    {
+     "letter": "B",
+     "text": "A list of approved software vendors"
+    },
+    {
+     "letter": "C",
+     "text": "A record of user password history"
+    },
+    {
+     "letter": "D",
+     "text": "A diagram of the physical network"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A playbook documents the ordered actions responders take for a defined scenario, such as a phishing report or ransomware detection, so handling is consistent regardless of who is on shift."
+   ],
+   "why": {
+    "B": "Approved vendor lists are a procurement control.",
+    "C": "Password history is an authentication setting.",
+    "D": "A network diagram is architecture documentation."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A security team wants to identify attacker activity that existing detections have missed, starting from a hypothesis rather than an alert.",
+    "Which of the following describes this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Threat hunting"
+    },
+    {
+     "letter": "B",
+     "text": "Penetration testing"
+    },
+    {
+     "letter": "C",
+     "text": "Patch management"
+    },
+    {
+     "letter": "D",
+     "text": "Vulnerability scanning"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Threat hunting begins with a hypothesis about adversary behavior and searches telemetry for evidence of it, specifically targeting activity that automated detections did not flag."
+   ],
+   "why": {
+    "B": "Penetration testing simulates an attacker against defenses.",
+    "C": "Patch management remediates known flaws.",
+    "D": "Scanning enumerates known vulnerabilities."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company must securely dispose of decommissioned drives that held regulated data and prove destruction to an auditor.",
+    "Which of the following should be obtained?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A certificate of destruction"
+    },
+    {
+     "letter": "B",
+     "text": "A purchase order"
+    },
+    {
+     "letter": "C",
+     "text": "An SLA"
+    },
+    {
+     "letter": "D",
+     "text": "A rollback plan"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A certificate of destruction is the vendor's formal record that specific media were destroyed by a stated method on a stated date, which is the evidence an auditor requires."
+   ],
+   "why": {
+    "B": "A purchase order documents acquisition.",
+    "C": "An SLA defines service levels.",
+    "D": "A rollback plan reverses a change."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An administrator configures a wireless network to authenticate users against RADIUS using certificates rather than passwords.",
+    "Which of the following is being implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "EAP-TLS"
+    },
+    {
+     "letter": "B",
+     "text": "WPA2-Personal"
+    },
+    {
+     "letter": "C",
+     "text": "MAC filtering"
+    },
+    {
+     "letter": "D",
+     "text": "WPS"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "EAP-TLS performs mutual certificate-based authentication between the client and the RADIUS server, removing shared passwords from the wireless authentication path entirely."
+   ],
+   "why": {
+    "B": "WPA2-Personal uses a shared passphrase.",
+    "C": "MAC filtering checks hardware addresses and is easily spoofed.",
+    "D": "WPS is a simplified setup method with known weaknesses."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "Which of the following is the primary security benefit of centralized log aggregation?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Logs survive compromise of the originating host and can be correlated"
+    },
+    {
+     "letter": "B",
+     "text": "It reduces the amount of disk used overall"
+    },
+    {
+     "letter": "C",
+     "text": "It encrypts all network traffic"
+    },
+    {
+     "letter": "D",
+     "text": "It eliminates the need for patching"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Sending logs off the host means an attacker who compromises that host cannot erase the evidence, and gathering many sources in one place enables cross-system correlation."
+   ],
+   "why": {
+    "B": "Aggregation usually increases total storage requirements.",
+    "C": "Aggregation does not encrypt production traffic.",
+    "D": "Log collection does not remediate vulnerabilities."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company requires that no single administrator can both request and approve a privileged access change.",
+    "Which of the following is being enforced?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Separation of duties"
+    },
+    {
+     "letter": "B",
+     "text": "Least privilege"
+    },
+    {
+     "letter": "C",
+     "text": "Implicit deny"
+    },
+    {
+     "letter": "D",
+     "text": "Defense in depth"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Separation of duties splits the steps of a sensitive process across different people so that no one individual can complete it alone, which is what blocks unilateral privilege grants."
+   ],
+   "why": {
+    "B": "Least privilege limits the scope of rights held, not who approves them.",
+    "C": "Implicit deny blocks anything not expressly permitted.",
+    "D": "Defense in depth layers multiple controls."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An analyst needs to capture full packet data to prove exactly what an attacker exfiltrated.",
+    "Which of the following data sources is required?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A packet capture"
+    },
+    {
+     "letter": "B",
+     "text": "A flow record summary"
+    },
+    {
+     "letter": "C",
+     "text": "An asset inventory"
+    },
+    {
+     "letter": "D",
+     "text": "A vulnerability report"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Only a full packet capture contains payload contents, which is what proves what data actually left. Flow records show that a conversation happened but not what it carried."
+   ],
+   "why": {
+    "B": "Flow data summarizes addresses, ports and volume without payload.",
+    "C": "An inventory lists assets.",
+    "D": "A vulnerability report lists weaknesses."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A company wants users to authenticate once and reach multiple cloud applications without re-entering credentials.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "SSO using SAML"
+    },
+    {
+     "letter": "B",
+     "text": "Local accounts on each application"
+    },
+    {
+     "letter": "C",
+     "text": "A shared departmental password"
+    },
+    {
+     "letter": "D",
+     "text": "Password rotation every 30 days"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Single sign-on with SAML lets an identity provider assert authentication to each service provider, so one sign-in grants access to many applications while identity stays centrally managed and revocable."
+   ],
+   "why": {
+    "B": "Local accounts multiply credentials and complicate revocation.",
+    "C": "Shared passwords remove individual accountability.",
+    "D": "Rotation is a credential hygiene control, not a sign-on architecture."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "Which of the following describes the purpose of automating account provisioning through scripts and workflows?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Consistent, auditable access grants with fewer manual errors"
+    },
+    {
+     "letter": "B",
+     "text": "Faster network throughput"
+    },
+    {
+     "letter": "C",
+     "text": "Stronger physical security"
+    },
+    {
+     "letter": "D",
+     "text": "Reduced electrical consumption"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Automated provisioning applies the same approved entitlements every time and records what was granted, which removes the inconsistency and typos that manual account creation introduces."
+   ],
+   "why": {
+    "B": "Provisioning has no effect on network speed.",
+    "C": "Physical security is a separate control domain.",
+    "D": "Power usage is unrelated."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "A technician must ensure a lost company laptop cannot expose its stored data.",
+    "Which of the following provides the strongest protection?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Full disk encryption"
+    },
+    {
+     "letter": "B",
+     "text": "A screen saver password"
+    },
+    {
+     "letter": "C",
+     "text": "A BIOS boot order change"
+    },
+    {
+     "letter": "D",
+     "text": "Antivirus software"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Full disk encryption renders the contents unreadable without the key, so removing the drive and attaching it to another machine yields nothing. That protection holds even with physical possession."
+   ],
+   "why": {
+    "B": "A screen saver password is bypassed by removing the drive.",
+    "C": "Boot order does not protect stored data.",
+    "D": "Antivirus detects malware but does not protect data at rest."
+   }
+  },
+  {
+   "domain": "4.0 Security Operations",
+   "prompt": [
+    "An organization wants to confirm its incident response plan works by having teams respond to a simulated ransomware event in a controlled test.",
+    "Which of the following should be scheduled?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A simulation exercise"
+    },
+    {
+     "letter": "B",
+     "text": "A vulnerability scan"
+    },
+    {
+     "letter": "C",
+     "text": "A code review"
+    },
+    {
+     "letter": "D",
+     "text": "A penetration test"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A simulation exercise runs the response plan against a realistic scenario so gaps in roles, communication and tooling surface before a real incident does."
+   ],
+   "why": {
+    "B": "A scan enumerates weaknesses rather than testing response.",
+    "C": "A code review inspects software.",
+    "D": "A penetration test attacks the environment but does not rehearse the response plan itself."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "A company calculates that a server outage costs $40,000 each time and expects it twice per year.",
+    "Which of the following values is $80,000?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "ALE"
+    },
+    {
+     "letter": "B",
+     "text": "SLE"
+    },
+    {
+     "letter": "C",
+     "text": "ARO"
+    },
+    {
+     "letter": "D",
+     "text": "RPO"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Annualized loss expectancy is the single loss expectancy multiplied by the annualized rate of occurrence. At $40,000 per event occurring twice a year, the ALE is $80,000."
+   ],
+   "why": {
+    "B": "The single loss expectancy is $40,000, the cost of one event.",
+    "C": "The annualized rate of occurrence is 2, the frequency.",
+    "D": "Recovery point objective measures tolerable data loss."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "An organization buys cyber insurance to cover losses from a breach.",
+    "Which of the following risk responses is this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Transfer"
+    },
+    {
+     "letter": "B",
+     "text": "Avoidance"
+    },
+    {
+     "letter": "C",
+     "text": "Acceptance"
+    },
+    {
+     "letter": "D",
+     "text": "Mitigation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Purchasing insurance shifts the financial consequence of the risk to a third party. The likelihood of the event is unchanged, which is what distinguishes transfer from mitigation."
+   ],
+   "why": {
+    "B": "Avoidance eliminates the activity that creates the risk.",
+    "C": "Acceptance takes no action and absorbs the loss.",
+    "D": "Mitigation reduces likelihood or impact through controls."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "Before contracting a cloud provider, a company reviews the provider's audit reports and security certifications.",
+    "Which of the following is being performed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Due diligence"
+    },
+    {
+     "letter": "B",
+     "text": "Penetration testing"
+    },
+    {
+     "letter": "C",
+     "text": "Risk acceptance"
+    },
+    {
+     "letter": "D",
+     "text": "Change management"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Due diligence is the investigation of a prospective third party's controls and practices before entering an agreement, and reviewing audit reports and certifications is a standard part of it."
+   ],
+   "why": {
+    "B": "Penetration testing actively probes systems.",
+    "C": "Risk acceptance is a decision made after assessment.",
+    "D": "Change management governs modifications to systems."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "Which of the following agreements gives a customer the right to inspect a vendor's security controls during the contract term?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A right-to-audit clause"
+    },
+    {
+     "letter": "B",
+     "text": "An NDA"
+    },
+    {
+     "letter": "C",
+     "text": "An SOW"
+    },
+    {
+     "letter": "D",
+     "text": "An MOU"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A right-to-audit clause contractually preserves the customer's ability to examine the vendor's controls, which is what makes ongoing third-party assurance enforceable rather than voluntary."
+   ],
+   "why": {
+    "B": "An NDA governs confidentiality of shared information.",
+    "C": "A statement of work defines deliverables and scope.",
+    "D": "An MOU records mutual intent without binding audit rights."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "A business impact analysis identifies that a payroll system can be unavailable for no more than 8 hours and can lose at most 1 hour of data.",
+    "Which of the following pair of metrics is stated?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "RTO of 8 hours and RPO of 1 hour"
+    },
+    {
+     "letter": "B",
+     "text": "RPO of 8 hours and RTO of 1 hour"
+    },
+    {
+     "letter": "C",
+     "text": "MTTR of 8 hours and MTBF of 1 hour"
+    },
+    {
+     "letter": "D",
+     "text": "SLE of 8 and ARO of 1"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The maximum tolerable downtime is the recovery time objective, and the maximum tolerable data loss is the recovery point objective. Eight hours of downtime and one hour of data loss map to RTO and RPO respectively."
+   ],
+   "why": {
+    "B": "The two values are reversed.",
+    "C": "MTTR and MTBF are reliability measures, not recovery objectives.",
+    "D": "SLE and ARO are quantitative risk values."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "A data subject asks a company to delete all personal information it holds about them.",
+    "Which of the following roles is accountable for deciding whether and how this is fulfilled?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Data controller"
+    },
+    {
+     "letter": "B",
+     "text": "Data processor"
+    },
+    {
+     "letter": "C",
+     "text": "Data custodian"
+    },
+    {
+     "letter": "D",
+     "text": "End user"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The controller determines the purposes and means of processing and is accountable for responding to data subject rights requests. Processors act only on the controller's documented instructions."
+   ],
+   "why": {
+    "B": "A processor handles data on the controller's behalf and refers such requests to it.",
+    "C": "A custodian implements technical protections day to day.",
+    "D": "An end user consumes data without accountability for these decisions."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "A company classifies information as public, internal, confidential and restricted.",
+    "Which of the following is the primary benefit of this practice?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Controls can be applied proportionally to sensitivity"
+    },
+    {
+     "letter": "B",
+     "text": "Storage costs are eliminated"
+    },
+    {
+     "letter": "C",
+     "text": "All data becomes encrypted automatically"
+    },
+    {
+     "letter": "D",
+     "text": "Backups become unnecessary"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Classification lets the organization match the strength of handling, access and retention controls to the sensitivity of each category, rather than over-protecting everything or under-protecting what matters."
+   ],
+   "why": {
+    "B": "Classification does not remove storage costs.",
+    "C": "Labels alone do not encrypt anything.",
+    "D": "Backups remain necessary at every classification level."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "Which of the following best describes an organization's risk appetite?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The amount and type of risk it is willing to pursue to meet objectives"
+    },
+    {
+     "letter": "B",
+     "text": "The total value of its insured assets"
+    },
+    {
+     "letter": "C",
+     "text": "The number of open vulnerabilities"
+    },
+    {
+     "letter": "D",
+     "text": "The time required to restore service"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Risk appetite is the board-level statement of how much risk the organization is willing to take on in pursuit of its goals. It sets the boundary against which individual risk decisions are judged."
+   ],
+   "why": {
+    "B": "Insured value is a financial figure, not an appetite statement.",
+    "C": "Open vulnerability counts are an operational metric.",
+    "D": "Restoration time is the recovery time objective."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "Security awareness training results show that phishing click rates fell from 22% to 6% over a year.",
+    "Which of the following does this figure represent?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A program effectiveness metric"
+    },
+    {
+     "letter": "B",
+     "text": "A risk appetite statement"
+    },
+    {
+     "letter": "C",
+     "text": "A recovery objective"
+    },
+    {
+     "letter": "D",
+     "text": "A compensating control"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A measured change in user behavior over time is a metric that demonstrates whether the awareness program is working, which is how security programs justify and adjust their training investment."
+   ],
+   "why": {
+    "B": "Appetite expresses willingness to take risk.",
+    "C": "Recovery objectives define restoration targets.",
+    "D": "A compensating control substitutes for an infeasible control."
+   }
+  },
+  {
+   "domain": "5.0 Security Program Management & Oversight",
+   "prompt": [
+    "An external firm reviews a company's controls against a standard and issues a formal opinion.",
+    "Which of the following describes this engagement?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An external audit"
+    },
+    {
+     "letter": "B",
+     "text": "An internal self-assessment"
+    },
+    {
+     "letter": "C",
+     "text": "A tabletop exercise"
+    },
+    {
+     "letter": "D",
+     "text": "A bug bounty"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An external audit is performed by an independent party that evaluates controls against defined criteria and issues a formal opinion. Independence is what gives the result credibility with regulators and customers."
+   ],
+   "why": {
+    "B": "A self-assessment is performed by the organization itself.",
+    "C": "A tabletop rehearses response procedures.",
+    "D": "A bug bounty pays researchers for reported flaws."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "An attacker sends a crafted link that causes a logged-in user's browser to submit an unwanted state-changing request to a trusted site.",
+    "Which of the following attacks is this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Cross-site request forgery"
+    },
+    {
+     "letter": "B",
+     "text": "SQL injection"
+    },
+    {
+     "letter": "C",
+     "text": "Directory traversal"
+    },
+    {
+     "letter": "D",
+     "text": "Buffer overflow"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Cross-site request forgery abuses the browser's automatic inclusion of session credentials, causing an authenticated user to perform an action they did not intend on a site they are logged into."
+   ],
+   "why": {
+    "B": "SQL injection manipulates database queries through unsanitized input.",
+    "C": "Directory traversal reaches files outside the intended path.",
+    "D": "A buffer overflow writes beyond allocated memory."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "A developer's build pipeline pulls a package from a public repository, and an attacker publishes a malicious package with a very similar name.",
+    "Which of the following describes this attack?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Typosquatting in a supply chain attack"
+    },
+    {
+     "letter": "B",
+     "text": "Password spraying"
+    },
+    {
+     "letter": "C",
+     "text": "Evil twin"
+    },
+    {
+     "letter": "D",
+     "text": "Smishing"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Registering a deceptively similar package name so an automated build retrieves the attacker's code is a supply chain compromise carried out through typosquatting."
+   ],
+   "why": {
+    "B": "Password spraying tries common passwords against many accounts.",
+    "C": "An evil twin is a rogue wireless access point.",
+    "D": "Smishing is phishing over SMS."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "An attacker tries the password 'Summer2026!' against 2,000 different user accounts, once each.",
+    "Which of the following describes this technique?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Password spraying"
+    },
+    {
+     "letter": "B",
+     "text": "Brute force against one account"
+    },
+    {
+     "letter": "C",
+     "text": "Rainbow table attack"
+    },
+    {
+     "letter": "D",
+     "text": "Pass the hash"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Password spraying uses a small number of likely passwords across many accounts, keeping attempts per account low enough to avoid lockout thresholds while still finding weak credentials."
+   ],
+   "why": {
+    "B": "Brute force concentrates many guesses on a single account and triggers lockout.",
+    "C": "A rainbow table reverses captured password hashes offline.",
+    "D": "Pass the hash reuses a stolen hash without cracking it."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "Employees receive a phone call from someone claiming to be IT support who asks them to read out a code sent to their phone.",
+    "Which of the following best describes this attack?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Vishing combined with MFA fatigue"
+    },
+    {
+     "letter": "B",
+     "text": "Watering hole"
+    },
+    {
+     "letter": "C",
+     "text": "Logic bomb"
+    },
+    {
+     "letter": "D",
+     "text": "Rootkit installation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The attacker uses a voice call, which is vishing, to socially engineer the victim into surrendering a one-time code so the attacker can complete multifactor authentication."
+   ],
+   "why": {
+    "B": "A watering hole compromises a site the target group visits.",
+    "C": "A logic bomb executes on a trigger condition.",
+    "D": "A rootkit hides an attacker's presence on a host."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "A company discovers that a former administrator left a hidden account that still grants remote shell access.",
+    "Which of the following best describes this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A backdoor created by an insider threat"
+    },
+    {
+     "letter": "B",
+     "text": "A zero-day vulnerability"
+    },
+    {
+     "letter": "C",
+     "text": "A denial-of-service condition"
+    },
+    {
+     "letter": "D",
+     "text": "A misconfigured firewall rule only"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A concealed account providing ongoing unauthorized access is a backdoor, and its creation by a trusted former employee makes it an insider threat."
+   ],
+   "why": {
+    "B": "A zero-day is an unknown software flaw, not a deliberately planted account.",
+    "C": "Denial of service affects availability.",
+    "D": "A firewall misconfiguration is an error rather than a hidden access path."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "Which of the following best mitigates the risk of an attacker moving laterally after compromising one workstation?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Network segmentation and least privilege"
+    },
+    {
+     "letter": "B",
+     "text": "Longer password expiry"
+    },
+    {
+     "letter": "C",
+     "text": "Disabling the screen saver"
+    },
+    {
+     "letter": "D",
+     "text": "Increasing log retention"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Segmentation limits which systems a compromised host can even reach, and least privilege limits what its credentials can do. Together they constrain lateral movement directly."
+   ],
+   "why": {
+    "B": "Longer expiry weakens credential hygiene and does not limit movement.",
+    "C": "Disabling the screen saver reduces security.",
+    "D": "Retention aids investigation after the fact but does not prevent movement."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "An application accepts a filename from the user and returns the file contents. An attacker submits '../../etc/passwd' and receives the file.",
+    "Which of the following vulnerabilities is present?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Directory traversal"
+    },
+    {
+     "letter": "B",
+     "text": "Cross-site scripting"
+    },
+    {
+     "letter": "C",
+     "text": "Race condition"
+    },
+    {
+     "letter": "D",
+     "text": "Session replay"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The application resolves user-supplied relative path segments, allowing access to files outside the intended directory. That is a directory traversal flaw caused by unvalidated path input."
+   ],
+   "why": {
+    "B": "Cross-site scripting injects script into pages viewed by other users.",
+    "C": "A race condition depends on timing between operations.",
+    "D": "Session replay reuses captured authentication material."
+   }
+  },
+  {
+   "domain": "2.0 Threats, Vulnerabilities & Mitigations",
+   "prompt": [
+    "Which of the following best describes the risk introduced by shadow IT?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Unmanaged services hold company data outside security oversight"
+    },
+    {
+     "letter": "B",
+     "text": "Approved software receives patches too quickly"
+    },
+    {
+     "letter": "C",
+     "text": "Network bandwidth is permanently reduced"
+    },
+    {
+     "letter": "D",
+     "text": "Encryption keys rotate automatically"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Shadow IT is technology adopted without approval, so it falls outside asset inventory, patching, monitoring and data governance while still holding company information."
+   ],
+   "why": {
+    "B": "Prompt patching of approved software is desirable.",
+    "C": "Shadow IT may consume bandwidth but that is not its defining risk.",
+    "D": "Automatic key rotation is a security benefit."
+   }
+  }
+ ]
+}

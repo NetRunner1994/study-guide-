@@ -5,10 +5,10 @@ import test from 'node:test'
 
 /** Every exam bank the app ships, with the objectives it should tag against. */
 const EXAMS = [
-  { id: 'sy0-701', min: 600, domains: 5 },
-  { id: '220-1201', min: 450, domains: 5 },
-  { id: '220-1202', min: 380, domains: 4 },
-  { id: 'n10-009', min: 700, domains: 5 },
+  { id: 'sy0-701', min: 650, domains: 5 },
+  { id: '220-1201', min: 490, domains: 5 },
+  { id: '220-1202', min: 440, domains: 4 },
+  { id: 'n10-009', min: 770, domains: 5 },
 ]
 
 const banks = EXAMS.map((exam) => ({
@@ -107,6 +107,46 @@ for (const bank of banks) {
     )
     for (const [domain, count] of counts) {
       assert.ok(count >= 10, `objective "${domain}" only has ${count} questions`)
+    }
+  })
+}
+
+for (const bank of banks) {
+  test(`${bank.id}: no question is repeated`, () => {
+    const seen = new Map()
+    for (const q of bank.questions) {
+      const key = q.prompt.join(' ').toLowerCase().replace(/[^a-z0-9 ]/g, '')
+      const first = seen.get(key)
+      assert.equal(first, undefined, `#${q.id} repeats #${first}`)
+      seen.set(key, q.id)
+    }
+  })
+
+  test(`${bank.id}: every question declares its source`, () => {
+    for (const q of bank.questions) {
+      assert.ok(
+        q.source === 'publisher' || q.source === 'authored',
+        `#${q.id} has source ${q.source}`,
+      )
+    }
+  })
+
+  test(`${bank.id}: authored questions meet the same bar as the publisher's`, () => {
+    const authored = bank.questions.filter((q) => q.source === 'authored')
+    for (const q of authored) {
+      assert.ok(q.id > 10000, `#${q.id} authored ids must not collide with the PDF's`)
+      assert.ok(q.prompt.length >= 1, `#${q.id} has no prompt`)
+      assert.ok(q.options.length >= 3, `#${q.id} needs at least three options`)
+      assert.ok(q.explanation.length >= 1, `#${q.id} has no explanation`)
+      const distractors = q.options.filter((o) => !q.answer.includes(o.letter))
+      assert.equal(
+        Object.keys(q.why).length,
+        distractors.length,
+        `#${q.id} must explain every distractor`,
+      )
+      for (const o of q.options) {
+        assert.ok(o.text.trim().length > 1, `#${q.id} option ${o.letter} is too short`)
+      }
     }
   })
 }

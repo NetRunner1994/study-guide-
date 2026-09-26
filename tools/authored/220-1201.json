@@ -1,0 +1,1153 @@
+{
+ "questions": [
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician is building a workstation that must survive a single drive failure with no loss of capacity efficiency beyond one disk.",
+    "Which of the following RAID levels should be used with four drives?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "RAID 5"
+    },
+    {
+     "letter": "B",
+     "text": "RAID 0"
+    },
+    {
+     "letter": "C",
+     "text": "RAID 1"
+    },
+    {
+     "letter": "D",
+     "text": "JBOD"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "RAID 5 stripes data with distributed parity, surviving one drive failure while consuming only one drive's worth of capacity for parity. With four drives it yields three drives of usable space."
+   ],
+   "why": {
+    "B": "RAID 0 stripes without redundancy and loses everything if a drive fails.",
+    "C": "RAID 1 mirrors and sacrifices half the total capacity.",
+    "D": "JBOD simply concatenates disks with no fault tolerance."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A user needs the fastest possible internal storage for a video editing workstation.",
+    "Which of the following should the technician install?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An NVMe SSD in an M.2 slot"
+    },
+    {
+     "letter": "B",
+     "text": "A 7200 rpm SATA hard drive"
+    },
+    {
+     "letter": "C",
+     "text": "A SATA SSD"
+    },
+    {
+     "letter": "D",
+     "text": "An external USB 2.0 drive"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "NVMe drives communicate over PCI Express lanes rather than the SATA bus, delivering several times the throughput of any SATA device. That makes them the fastest internal option."
+   ],
+   "why": {
+    "B": "A mechanical drive is by far the slowest of these.",
+    "C": "A SATA SSD is fast but capped by the SATA interface.",
+    "D": "USB 2.0 is limited to roughly 480 Mbps."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician must connect a single external monitor at 4K 60 Hz to a laptop that has only USB-C ports.",
+    "Which of the following should be used?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A USB-C to DisplayPort adapter supporting DP Alt Mode"
+    },
+    {
+     "letter": "B",
+     "text": "A USB-C to VGA adapter"
+    },
+    {
+     "letter": "C",
+     "text": "A USB-C to RJ45 adapter"
+    },
+    {
+     "letter": "D",
+     "text": "A USB-C to 3.5 mm audio adapter"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "DisplayPort Alternate Mode carries native video over the USB-C connector and supports 4K at 60 Hz. VGA is analog and cannot deliver that resolution and refresh rate."
+   ],
+   "why": {
+    "B": "VGA is analog and unsuitable for 4K 60 Hz.",
+    "C": "RJ45 is for wired networking.",
+    "D": "A 3.5 mm adapter carries audio only."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A desktop powers on briefly then shuts down. The technician notes bulging capacitors on the motherboard near the CPU socket.",
+    "Which of the following should be done?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Replace the motherboard"
+    },
+    {
+     "letter": "B",
+     "text": "Reinstall the operating system"
+    },
+    {
+     "letter": "C",
+     "text": "Replace the hard drive"
+    },
+    {
+     "letter": "D",
+     "text": "Update the BIOS"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Bulging or leaking capacitors are physical failure of the board's power delivery components and cannot be repaired in the field. The motherboard must be replaced."
+   ],
+   "why": {
+    "B": "An OS reinstall cannot fix failed hardware.",
+    "C": "Storage is unrelated to the power symptom described.",
+    "D": "Firmware updates cannot restore failed capacitors."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A laser printer produces pages with a repeating faint ghost image of the previous page.",
+    "Which of the following components is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The imaging drum"
+    },
+    {
+     "letter": "B",
+     "text": "The pickup roller"
+    },
+    {
+     "letter": "C",
+     "text": "The duplexing assembly"
+    },
+    {
+     "letter": "D",
+     "text": "The paper tray sensor"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Ghosting is residual charge or toner remaining on the imaging drum between rotations, so the previous image reappears faintly. Replacing the drum resolves it."
+   ],
+   "why": {
+    "B": "Pickup rollers cause misfeeds and jams, not ghost images.",
+    "C": "The duplexer handles two-sided printing.",
+    "D": "A tray sensor reports paper presence."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician must install memory in a workstation that requires error detection and correction for a database server role.",
+    "Which of the following should be installed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "ECC DIMMs supported by the motherboard"
+    },
+    {
+     "letter": "B",
+     "text": "SODIMM modules"
+    },
+    {
+     "letter": "C",
+     "text": "Non-ECC gaming memory"
+    },
+    {
+     "letter": "D",
+     "text": "Virtual memory expansion"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "ECC memory detects and corrects single-bit errors, which is why servers handling important data use it. The motherboard and CPU must both support ECC for it to function."
+   ],
+   "why": {
+    "B": "SODIMMs are the small form factor used in laptops.",
+    "C": "Non-ECC memory cannot correct bit errors.",
+    "D": "Virtual memory is disk-backed paging, not physical RAM."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A workstation with a discrete graphics card shows artifacts and random colored blocks on screen during 3D workloads only.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An overheating or failing GPU"
+    },
+    {
+     "letter": "B",
+     "text": "A failing keyboard controller"
+    },
+    {
+     "letter": "C",
+     "text": "An incorrect DNS server"
+    },
+    {
+     "letter": "D",
+     "text": "A full hard drive"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Artifacts that appear only under graphics load point to the GPU itself, usually overheating or failing memory on the card. Idle operation stays clean because the fault is load dependent."
+   ],
+   "why": {
+    "B": "Keyboard hardware does not render video.",
+    "C": "DNS affects name resolution.",
+    "D": "Disk capacity does not produce visual artifacts."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "Which of the following power supply characteristics must be checked before installing a high-end graphics card?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Total wattage and available PCIe power connectors"
+    },
+    {
+     "letter": "B",
+     "text": "The number of SATA data ports"
+    },
+    {
+     "letter": "C",
+     "text": "The case fan colour"
+    },
+    {
+     "letter": "D",
+     "text": "The RAM speed"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A high-end card draws substantial power and requires specific supplementary PCIe connectors. Both the supply's wattage headroom and its connector complement must match the card."
+   ],
+   "why": {
+    "B": "SATA data ports are on the motherboard and carry no power for the GPU.",
+    "C": "Fan colour is cosmetic.",
+    "D": "Memory speed is unrelated to GPU power delivery."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician needs to add four more SATA drives to a server that has no free SATA ports.",
+    "Which of the following should be installed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A PCIe host bus adapter"
+    },
+    {
+     "letter": "B",
+     "text": "A second power supply"
+    },
+    {
+     "letter": "C",
+     "text": "Additional RAM"
+    },
+    {
+     "letter": "D",
+     "text": "A USB hub"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A PCIe host bus adapter or storage controller adds SATA ports to a system that has exhausted those on the motherboard, which is the direct solution to the stated limit."
+   ],
+   "why": {
+    "B": "A second supply addresses power, not port count.",
+    "C": "RAM does not provide storage connectivity.",
+    "D": "A USB hub adds USB ports, not internal SATA."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A thermal printer produces faded output even with new media.",
+    "Which of the following should the technician check first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The heating element and its cleanliness"
+    },
+    {
+     "letter": "B",
+     "text": "The toner cartridge"
+    },
+    {
+     "letter": "C",
+     "text": "The fuser assembly"
+    },
+    {
+     "letter": "D",
+     "text": "The ink ribbon"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Thermal printers form images by heating special paper, so faded output points to a dirty or failing heating element. They use no toner, fuser or ink."
+   ],
+   "why": {
+    "B": "Toner is used by laser printers.",
+    "C": "A fuser is a laser printer component.",
+    "D": "An ink ribbon is used by impact and dye-sublimation printers."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "Which of the following describes the purpose of thermal paste between a CPU and its heat sink?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It fills microscopic gaps to improve heat transfer"
+    },
+    {
+     "letter": "B",
+     "text": "It electrically insulates the CPU pins"
+    },
+    {
+     "letter": "C",
+     "text": "It glues the CPU into the socket"
+    },
+    {
+     "letter": "D",
+     "text": "It prevents electrostatic discharge"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Machined surfaces are never perfectly flat, so thermal compound displaces the insulating air in the microscopic gaps and conducts heat from the die into the heat sink."
+   ],
+   "why": {
+    "B": "Thermal paste is not applied to pins and is not an insulator for them.",
+    "C": "The retention mechanism secures the CPU, not the paste.",
+    "D": "ESD protection comes from grounding practices."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician must configure a workstation so it cannot boot an unsigned operating system loader.",
+    "Which of the following UEFI features should be enabled?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Secure Boot"
+    },
+    {
+     "letter": "B",
+     "text": "Legacy BIOS mode"
+    },
+    {
+     "letter": "C",
+     "text": "Wake on LAN"
+    },
+    {
+     "letter": "D",
+     "text": "Fast startup"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Secure Boot verifies the signature of the bootloader against trusted keys held in firmware and refuses to load unsigned code, which is exactly the stated requirement."
+   ],
+   "why": {
+    "B": "Legacy mode removes the signature checking that Secure Boot provides.",
+    "C": "Wake on LAN powers a system remotely.",
+    "D": "Fast startup shortens boot time using a hybrid shutdown."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "An inkjet printer prints with horizontal white lines through the text.",
+    "Which of the following should the technician perform first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Run the print head cleaning and nozzle check"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the fuser"
+    },
+    {
+     "letter": "C",
+     "text": "Replace the imaging drum"
+    },
+    {
+     "letter": "D",
+     "text": "Recalibrate the duplexer"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Missing horizontal bands on an inkjet indicate clogged nozzles. The built-in cleaning cycle and nozzle check clear and confirm them before any part is replaced."
+   ],
+   "why": {
+    "B": "Inkjets have no fuser.",
+    "C": "Imaging drums belong to laser printers.",
+    "D": "The duplexer handles two-sided output, not nozzle health."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician is asked to select a display cable that carries both video and audio and supports 4K.",
+    "Which of the following should be chosen?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "HDMI"
+    },
+    {
+     "letter": "B",
+     "text": "VGA"
+    },
+    {
+     "letter": "C",
+     "text": "DVI-D"
+    },
+    {
+     "letter": "D",
+     "text": "RS-232"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "HDMI carries digital video and audio on one cable and supports 4K resolutions, which VGA and DVI-D cannot do for audio."
+   ],
+   "why": {
+    "B": "VGA is analog video only.",
+    "C": "DVI-D carries digital video but not audio.",
+    "D": "RS-232 is a serial console interface."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "Which of the following best describes the function of a KVM switch?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It shares one keyboard, monitor and mouse across multiple computers"
+    },
+    {
+     "letter": "B",
+     "text": "It routes IP traffic between subnets"
+    },
+    {
+     "letter": "C",
+     "text": "It converts fiber to copper"
+    },
+    {
+     "letter": "D",
+     "text": "It supplies battery power during an outage"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A KVM switch lets a single console control several machines in turn, which is why it is common in racks and labs where per-machine peripherals would be impractical."
+   ],
+   "why": {
+    "B": "Routing is performed by a router.",
+    "C": "Media conversion is done by a media converter.",
+    "D": "Battery backup is provided by a UPS."
+   }
+  },
+  {
+   "domain": "3.0 Hardware",
+   "prompt": [
+    "A technician must provide a workstation with both fast boot performance and large bulk capacity on a limited budget.",
+    "Which of the following configurations is most appropriate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A small NVMe SSD for the OS plus a large HDD for data"
+    },
+    {
+     "letter": "B",
+     "text": "Two mechanical drives in RAID 0"
+    },
+    {
+     "letter": "C",
+     "text": "A single 5400 rpm drive"
+    },
+    {
+     "letter": "D",
+     "text": "Only an NVMe SSD of minimum size"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Placing the operating system and applications on a fast SSD delivers responsive boot and launch times, while a mechanical drive supplies inexpensive bulk capacity for data."
+   ],
+   "why": {
+    "B": "Two mechanical drives improve throughput slightly but remain slow to seek and add failure risk.",
+    "C": "A single slow drive gives neither speed nor a good experience.",
+    "D": "A minimum-size SSD alone will not hold the bulk data."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "A laptop display is very dim but an external monitor connected to it shows a normal image.",
+    "Which of the following is the most likely failed component?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The display backlight or its inverter"
+    },
+    {
+     "letter": "B",
+     "text": "The graphics processor"
+    },
+    {
+     "letter": "C",
+     "text": "The system memory"
+    },
+    {
+     "letter": "D",
+     "text": "The hard drive"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A readable image on an external monitor proves the GPU is rendering correctly, so the fault is in the panel's illumination path. A failed backlight or its driver circuit produces exactly this dim-but-present image."
+   ],
+   "why": {
+    "B": "A failed GPU would corrupt the external display as well.",
+    "C": "Memory faults cause instability, not selective dimming.",
+    "D": "Storage problems do not affect backlighting."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "A desktop emits a repeating beep pattern at power-on and nothing appears on screen.",
+    "Which of the following should the technician consult?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The motherboard vendor's POST beep code reference"
+    },
+    {
+     "letter": "B",
+     "text": "The Windows event log"
+    },
+    {
+     "letter": "C",
+     "text": "The printer spooler log"
+    },
+    {
+     "letter": "D",
+     "text": "The DHCP lease table"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Beep codes are emitted by firmware before any operating system loads, and their meaning is vendor specific. The board's documentation maps the pattern to the failing subsystem."
+   ],
+   "why": {
+    "B": "Windows has not started, so no event log entries exist.",
+    "C": "Print logs are unrelated.",
+    "D": "DHCP requires a booted network stack."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "Several users on one floor report intermittent wireless drops, and a survey shows strong signal but high channel utilization.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Too many clients and interference on the same channel"
+    },
+    {
+     "letter": "B",
+     "text": "Insufficient transmit power"
+    },
+    {
+     "letter": "C",
+     "text": "An incorrect DNS suffix"
+    },
+    {
+     "letter": "D",
+     "text": "A failed patch panel"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Strong signal with high utilization indicates contention rather than coverage. Too many clients and overlapping access points on one channel cause the repeated drops."
+   ],
+   "why": {
+    "B": "Signal strength is already reported as strong.",
+    "C": "DNS affects name resolution, not association stability.",
+    "D": "A failed patch panel would break wired connectivity outright."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "A workstation randomly restarts under heavy CPU load but is stable when idle. Dust is packed into the CPU heat sink.",
+    "Which of the following should the technician do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Clean the heat sink and verify fan operation"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the power supply"
+    },
+    {
+     "letter": "C",
+     "text": "Reinstall the operating system"
+    },
+    {
+     "letter": "D",
+     "text": "Add more RAM"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Load-dependent shutdowns with a blocked heat sink point to thermal protection. Restoring airflow addresses the identified cause before any part is replaced."
+   ],
+   "why": {
+    "B": "Replacing the supply ignores the visible thermal obstruction.",
+    "C": "A reinstall does not change thermal behavior.",
+    "D": "Additional memory does not reduce CPU temperature."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "A printer on the network prints garbled characters for every job from every workstation.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "An incorrect or corrupt print driver"
+    },
+    {
+     "letter": "B",
+     "text": "A low toner cartridge"
+    },
+    {
+     "letter": "C",
+     "text": "A jammed paper path"
+    },
+    {
+     "letter": "D",
+     "text": "A disconnected network cable"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Garbled output from all clients indicates the data stream does not match what the printer expects, which is the signature of a wrong or corrupted driver rather than a physical fault."
+   ],
+   "why": {
+    "B": "Low toner produces faded output, not garbled characters.",
+    "C": "A jam stops printing rather than corrupting it.",
+    "D": "A disconnected cable would prevent printing entirely."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "A technician replaces a failed SSD and the system reports 'no operating system found' although the drive appears in firmware.",
+    "Which of the following should the technician do next?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Install or restore the operating system to the new drive"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the motherboard"
+    },
+    {
+     "letter": "C",
+     "text": "Reseat the RAM"
+    },
+    {
+     "letter": "D",
+     "text": "Replace the power supply"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The firmware sees the drive, so the hardware path is good. A brand-new drive contains no operating system, so installing or restoring one is the expected next step."
+   ],
+   "why": {
+    "B": "The board is detecting the drive correctly.",
+    "C": "Memory faults do not produce this message.",
+    "D": "The system powers on and completes POST."
+   }
+  },
+  {
+   "domain": "5.0 Hardware and Network Troubleshooting",
+   "prompt": [
+    "Users report that a specific network printer is unreachable, while other devices on the same switch respond.",
+    "Which of the following should the technician check first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The printer's IP configuration and link status"
+    },
+    {
+     "letter": "B",
+     "text": "The core router's routing table"
+    },
+    {
+     "letter": "C",
+     "text": "The internet circuit"
+    },
+    {
+     "letter": "D",
+     "text": "Every user's workstation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "When one device is unreachable and its neighbors are fine, the fault is almost certainly local to that device. Its address settings and link state are the first things to verify."
+   ],
+   "why": {
+    "B": "A routing problem would affect many devices.",
+    "C": "An internet fault would not break local printing.",
+    "D": "Checking every workstation is inefficient when one device is the common factor."
+   }
+  },
+  {
+   "domain": "4.0 Virtualization and Cloud Computing",
+   "prompt": [
+    "A developer needs to run three isolated test operating systems on one workstation without additional hardware.",
+    "Which of the following should be installed?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A type 2 hypervisor"
+    },
+    {
+     "letter": "B",
+     "text": "A second physical server"
+    },
+    {
+     "letter": "C",
+     "text": "A network switch"
+    },
+    {
+     "letter": "D",
+     "text": "A RAID controller"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A type 2 hypervisor runs as an application on the existing desktop operating system and hosts multiple guest virtual machines, which meets the requirement without new hardware."
+   ],
+   "why": {
+    "B": "Additional hardware is explicitly excluded.",
+    "C": "A switch provides network connectivity.",
+    "D": "A RAID controller manages disks."
+   }
+  },
+  {
+   "domain": "4.0 Virtualization and Cloud Computing",
+   "prompt": [
+    "A company pays only for the compute time its functions actually consume and does not manage any servers.",
+    "Which of the following cloud characteristics does this describe?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Measured service"
+    },
+    {
+     "letter": "B",
+     "text": "Resource pooling"
+    },
+    {
+     "letter": "C",
+     "text": "Multitenancy"
+    },
+    {
+     "letter": "D",
+     "text": "Rapid elasticity"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Measured service means consumption is metered and billed according to actual usage. Paying strictly for compute time consumed is the definition of that characteristic."
+   ],
+   "why": {
+    "B": "Resource pooling is the provider serving many customers from shared infrastructure.",
+    "C": "Multitenancy is multiple customers sharing that infrastructure.",
+    "D": "Rapid elasticity is automatic scaling up and down."
+   }
+  },
+  {
+   "domain": "4.0 Virtualization and Cloud Computing",
+   "prompt": [
+    "Before creating a virtual machine, a technician must confirm the host can run it.",
+    "Which of the following must be enabled in firmware?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Hardware virtualization extensions"
+    },
+    {
+     "letter": "B",
+     "text": "Wake on LAN"
+    },
+    {
+     "letter": "C",
+     "text": "Secure Boot only"
+    },
+    {
+     "letter": "D",
+     "text": "Fast startup"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Hypervisors depend on CPU virtualization extensions, which are frequently disabled by default in firmware. Enabling them is a prerequisite for running virtual machines efficiently."
+   ],
+   "why": {
+    "B": "Wake on LAN powers the system remotely.",
+    "C": "Secure Boot verifies the bootloader signature.",
+    "D": "Fast startup shortens boot time."
+   }
+  },
+  {
+   "domain": "4.0 Virtualization and Cloud Computing",
+   "prompt": [
+    "Several hospitals jointly fund and share a cloud environment with common compliance requirements.",
+    "Which of the following deployment models is this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Community cloud"
+    },
+    {
+     "letter": "B",
+     "text": "Public cloud"
+    },
+    {
+     "letter": "C",
+     "text": "Private cloud"
+    },
+    {
+     "letter": "D",
+     "text": "Hybrid cloud"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A community cloud is shared by organizations with common concerns such as regulatory requirements, which distinguishes it from a public offering or a single-tenant private environment."
+   ],
+   "why": {
+    "B": "A public cloud serves the general public.",
+    "C": "A private cloud serves one organization exclusively.",
+    "D": "A hybrid cloud combines private and public deployments."
+   }
+  },
+  {
+   "domain": "4.0 Virtualization and Cloud Computing",
+   "prompt": [
+    "A technician needs to capture a virtual machine's exact state before applying a risky update so it can be reverted quickly.",
+    "Which of the following should be taken?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A snapshot"
+    },
+    {
+     "letter": "B",
+     "text": "A full disk defragmentation"
+    },
+    {
+     "letter": "C",
+     "text": "A firmware backup"
+    },
+    {
+     "letter": "D",
+     "text": "A screenshot of the desktop"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A snapshot preserves the virtual machine's disk and memory state at a point in time, allowing an immediate revert if the update misbehaves."
+   ],
+   "why": {
+    "B": "Defragmentation reorganizes files and provides no rollback.",
+    "C": "Firmware backup applies to physical device settings.",
+    "D": "A screenshot captures an image, not machine state."
+   }
+  },
+  {
+   "domain": "2.0 Networking",
+   "prompt": [
+    "A technician must extend a network connection 200 meters between two buildings with electrical isolation.",
+    "Which of the following media should be used?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Fiber optic cable"
+    },
+    {
+     "letter": "B",
+     "text": "Cat 6 unshielded twisted pair"
+    },
+    {
+     "letter": "C",
+     "text": "Coaxial RG-6"
+    },
+    {
+     "letter": "D",
+     "text": "USB extension"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Fiber carries light rather than electrical current, so it exceeds copper's 100-meter limit and provides galvanic isolation between buildings with different ground potentials."
+   ],
+   "why": {
+    "B": "Twisted pair Ethernet is limited to 100 meters and conducts electricity.",
+    "C": "Coaxial is used for cable broadband and legacy networks and also conducts.",
+    "D": "USB is limited to a few meters."
+   }
+  },
+  {
+   "domain": "2.0 Networking",
+   "prompt": [
+    "A small office router must forward inbound requests on port 443 to an internal web server.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Port forwarding"
+    },
+    {
+     "letter": "B",
+     "text": "DHCP reservation only"
+    },
+    {
+     "letter": "C",
+     "text": "MAC filtering"
+    },
+    {
+     "letter": "D",
+     "text": "SSID suppression"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Port forwarding maps an inbound port on the public interface to a specific internal host and port, which is what lets external clients reach a server behind NAT."
+   ],
+   "why": {
+    "B": "A reservation ensures a consistent internal address but does not forward traffic.",
+    "C": "MAC filtering restricts which devices may join.",
+    "D": "SSID suppression hides a wireless network name."
+   }
+  },
+  {
+   "domain": "1.0 Mobile Devices",
+   "prompt": [
+    "A user reports that their laptop will not charge and the charging light does not illuminate with a known-good adapter.",
+    "Which of the following should the technician check next?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The DC jack and charging circuit"
+    },
+    {
+     "letter": "B",
+     "text": "The display panel"
+    },
+    {
+     "letter": "C",
+     "text": "The wireless card"
+    },
+    {
+     "letter": "D",
+     "text": "The webcam driver"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "With the adapter ruled out, the fault lies in the path that receives the power, which is the DC jack and the board's charging circuit. A damaged jack commonly prevents charging entirely."
+   ],
+   "why": {
+    "B": "The display does not affect charging.",
+    "C": "The wireless card is unrelated to power input.",
+    "D": "A webcam driver is software."
+   }
+  },
+  {
+   "domain": "1.0 Mobile Devices",
+   "prompt": [
+    "A smartphone rapidly loses battery after an application update, and the battery usage screen shows one app consuming most of the power in the background.",
+    "Which of the following should the technician do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Restrict or uninstall the offending application"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the battery"
+    },
+    {
+     "letter": "C",
+     "text": "Factory reset the device"
+    },
+    {
+     "letter": "D",
+     "text": "Disable Wi-Fi permanently"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The usage data already identifies the cause, so limiting that application's background activity or removing it addresses the drain directly and preserves the user's data."
+   ],
+   "why": {
+    "B": "Battery hardware is not implicated when one app is clearly responsible.",
+    "C": "A factory reset erases user data unnecessarily.",
+    "D": "Disabling Wi-Fi removes functionality without addressing the app."
+   }
+  }
+ ]
+}

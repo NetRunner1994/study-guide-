@@ -7,7 +7,7 @@ import { isDue, mastery } from '../lib/srs'
 import { useStore } from '../state'
 import type { Question } from '../lib/types'
 
-type Filter = 'all' | 'flagged' | 'missed' | 'due' | 'unseen' | 'pbq'
+type Filter = 'all' | 'flagged' | 'missed' | 'due' | 'unseen' | 'pbq' | 'authored'
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: 'all', label: 'All' },
@@ -16,6 +16,7 @@ const FILTERS: { id: Filter; label: string }[] = [
   { id: 'due', label: 'Due' },
   { id: 'unseen', label: 'Unseen' },
   { id: 'pbq', label: 'Simulations' },
+  { id: 'authored', label: '+ Added' },
 ]
 
 const PAGE = 25
@@ -50,6 +51,9 @@ export function StudyScreen() {
           break
         case 'pbq':
           if (q.type !== 'pbq') return false
+          break
+        case 'authored':
+          if (q.source !== 'authored') return false
           break
         default:
           break
@@ -181,6 +185,11 @@ function StudyEntry({ question, open, onToggle, flagged, onFlag, masteryValue }:
           <DomainChip domain={question.domain} />
           {isPbq ? <span className="pill">{question.format ?? 'Simulation'}</span> : null}
           {question.type === 'multi' ? <span className="pill">Choose 2+</span> : null}
+          {question.source === 'authored' ? (
+            <span className="pill pill--authored" title="Written for this app, not from the practice PDF">
+              Added
+            </span>
+          ) : null}
           {flagged ? <span className="pill" style={{ color: 'var(--warn)' }}>⚑</span> : null}
           {masteryValue > 0 ? (
             <span className="pill mono" title="Review strength">

@@ -1,0 +1,1646 @@
+{
+ "questions": [
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician must ensure that a shared folder allows the Sales group to open and modify files but never delete them.",
+    "Which of the following should the technician configure?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "NTFS permissions granting Modify without Delete"
+    },
+    {
+     "letter": "B",
+     "text": "Share permissions set to Full Control"
+    },
+    {
+     "letter": "C",
+     "text": "The Everyone group with Read"
+    },
+    {
+     "letter": "D",
+     "text": "Inheritance disabled on the parent"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "NTFS permissions are granular enough to grant write access while denying delete, and they apply whether the folder is reached locally or over the network. Share permissions alone cannot express that distinction."
+   ],
+   "why": {
+    "B": "Full Control includes delete and take ownership.",
+    "C": "Read prevents the required modification.",
+    "D": "Breaking inheritance changes how permissions flow but does not itself set the rights."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A user reports that their browser opens a different search engine and shows constant pop-ups.",
+    "Which of the following should the technician remove first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Unwanted browser extensions and toolbars"
+    },
+    {
+     "letter": "B",
+     "text": "The network adapter driver"
+    },
+    {
+     "letter": "C",
+     "text": "The BIOS password"
+    },
+    {
+     "letter": "D",
+     "text": "The printer spooler"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Search hijacking and pop-ups are typically produced by malicious or unwanted browser extensions. Removing those add-ons addresses the actual mechanism before considering wider reimaging."
+   ],
+   "why": {
+    "B": "A network driver does not alter search behavior.",
+    "C": "A BIOS password protects firmware settings.",
+    "D": "The spooler manages print jobs."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "An organization requires that laptops remain usable if stolen but that their data stay unreadable.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "BitLocker full disk encryption with TPM"
+    },
+    {
+     "letter": "B",
+     "text": "A strong Windows logon password only"
+    },
+    {
+     "letter": "C",
+     "text": "A screensaver lock after 15 minutes"
+    },
+    {
+     "letter": "D",
+     "text": "File compression"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Full disk encryption tied to the TPM keeps the volume unreadable when the drive is removed or the device boots outside its expected state, which a logon password alone cannot achieve."
+   ],
+   "why": {
+    "B": "A logon password is bypassed by attaching the drive to another computer.",
+    "C": "A screensaver lock protects an unattended session only.",
+    "D": "Compression reduces size and provides no confidentiality."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A small office wants visitors to reach the internet without touching internal file shares.",
+    "Which of the following should be configured on the wireless router?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A guest network isolated from the LAN"
+    },
+    {
+     "letter": "B",
+     "text": "A shorter DHCP lease"
+    },
+    {
+     "letter": "C",
+     "text": "A hidden SSID on the main network"
+    },
+    {
+     "letter": "D",
+     "text": "WPS push-button setup"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A guest network places visitor devices on a separate segment with no route to internal resources, which is what enforces the separation regardless of what the visitor's device tries to reach."
+   ],
+   "why": {
+    "B": "Lease duration does not restrict access.",
+    "C": "Hiding an SSID conceals the name but grants the same access once joined.",
+    "D": "WPS simplifies joining and has known weaknesses."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician is asked to prevent employees from installing unapproved applications on Windows workstations.",
+    "Which of the following is the most effective control?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Remove local administrator rights from standard users"
+    },
+    {
+     "letter": "B",
+     "text": "Enable the guest account"
+    },
+    {
+     "letter": "C",
+     "text": "Disable User Account Control"
+    },
+    {
+     "letter": "D",
+     "text": "Set a screensaver timeout"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Most installers require administrative privilege, so removing local admin rights from standard users blocks unapproved installation at the point of enforcement rather than relying on policy alone."
+   ],
+   "why": {
+    "B": "Enabling the guest account weakens security.",
+    "C": "Disabling UAC removes a prompt that helps prevent silent elevation.",
+    "D": "A screensaver timeout addresses unattended sessions."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A company must dispose of hard drives containing patient records and cannot reuse the media.",
+    "Which of the following methods is most appropriate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Physical destruction such as shredding"
+    },
+    {
+     "letter": "B",
+     "text": "Quick format"
+    },
+    {
+     "letter": "C",
+     "text": "Deleting the partition"
+    },
+    {
+     "letter": "D",
+     "text": "Moving files to the recycle bin"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "When media will not be reused and the data is regulated, physical destruction guarantees the contents cannot be recovered. Logical methods leave recoverable remnants."
+   ],
+   "why": {
+    "B": "A quick format only clears the file table.",
+    "C": "Removing a partition leaves the underlying data intact.",
+    "D": "The recycle bin retains files until purged and is trivially reversible."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A user calls to say a website warns that its certificate is not trusted.",
+    "Which of the following should the technician check first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The workstation's date and time settings"
+    },
+    {
+     "letter": "B",
+     "text": "The printer queue"
+    },
+    {
+     "letter": "C",
+     "text": "The sound driver"
+    },
+    {
+     "letter": "D",
+     "text": "The page file size"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Certificate validity is evaluated against the system clock, so a workstation with a wrong date commonly reports otherwise valid certificates as untrusted. It is the quickest cause to confirm or rule out."
+   ],
+   "why": {
+    "B": "Print queues do not affect certificate validation.",
+    "C": "Audio drivers are unrelated.",
+    "D": "Page file size affects memory management."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following describes the security purpose of a screened subnet in a small business network?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It hosts internet-facing services separated from the internal LAN"
+    },
+    {
+     "letter": "B",
+     "text": "It increases wireless range"
+    },
+    {
+     "letter": "C",
+     "text": "It assigns static IP addresses"
+    },
+    {
+     "letter": "D",
+     "text": "It compresses outbound traffic"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A screened subnet places publicly reachable servers in their own segment so that compromising one does not give direct access to internal systems. That containment is its purpose."
+   ],
+   "why": {
+    "B": "Wireless range is a function of radios and antennas.",
+    "C": "Static addressing is an IP configuration choice.",
+    "D": "Compression affects bandwidth, not isolation."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "An employee props open a secure door for a person carrying boxes who has no badge.",
+    "Which of the following describes this security risk?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Tailgating"
+    },
+    {
+     "letter": "B",
+     "text": "Shoulder surfing"
+    },
+    {
+     "letter": "C",
+     "text": "Dumpster diving"
+    },
+    {
+     "letter": "D",
+     "text": "Whaling"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Tailgating is following an authorized person through a controlled door without presenting credentials. Politeness is the mechanism the attacker exploits."
+   ],
+   "why": {
+    "B": "Shoulder surfing observes a screen or keypad.",
+    "C": "Dumpster diving recovers discarded information.",
+    "D": "Whaling targets executives with phishing."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician must ensure a Windows workstation can only be accessed by a specific user during business hours.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Logon hours restrictions on the account"
+    },
+    {
+     "letter": "B",
+     "text": "A faster page file"
+    },
+    {
+     "letter": "C",
+     "text": "A second monitor"
+    },
+    {
+     "letter": "D",
+     "text": "Disk defragmentation"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Logon hour restrictions limit when an account may authenticate, enforcing a time-of-day boundary at the directory level rather than relying on the user to comply."
+   ],
+   "why": {
+    "B": "Page file settings affect memory.",
+    "C": "Monitors are unrelated to access control.",
+    "D": "Defragmentation affects disk performance."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following authentication factors does a fingerprint reader represent?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Something you are"
+    },
+    {
+     "letter": "B",
+     "text": "Something you know"
+    },
+    {
+     "letter": "C",
+     "text": "Something you have"
+    },
+    {
+     "letter": "D",
+     "text": "Somewhere you are"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Biometrics measure a physical characteristic of the person, which is the 'something you are' factor. Combining it with a password or token produces true multifactor authentication."
+   ],
+   "why": {
+    "B": "Something you know is a password or PIN.",
+    "C": "Something you have is a token, smart card or phone.",
+    "D": "Somewhere you are is a location attribute."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "After removing malware from a workstation, a technician wants to prevent the user from repeating the behavior that caused the infection.",
+    "Which of the following steps addresses this?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Educate the end user"
+    },
+    {
+     "letter": "B",
+     "text": "Disable System Restore"
+    },
+    {
+     "letter": "C",
+     "text": "Update the anti-malware definitions"
+    },
+    {
+     "letter": "D",
+     "text": "Quarantine the infected system"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "In the malware removal procedure the final step is educating the user, because the technical cleanup does not change the behavior that introduced the infection."
+   ],
+   "why": {
+    "B": "Disabling System Restore is an earlier step that prevents reinfection from restore points.",
+    "C": "Updating definitions precedes scanning and remediation.",
+    "D": "Quarantine isolates the machine during cleanup."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A company wants to require both a password and a code from an authenticator app before granting VPN access.",
+    "Which of the following is being implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Multifactor authentication"
+    },
+    {
+     "letter": "B",
+     "text": "Single sign-on"
+    },
+    {
+     "letter": "C",
+     "text": "Federation"
+    },
+    {
+     "letter": "D",
+     "text": "Role-based access control"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Requiring a password plus a time-based code from an app combines something you know with something you have, which satisfies multifactor authentication."
+   ],
+   "why": {
+    "B": "Single sign-on reduces repeated logons across systems.",
+    "C": "Federation extends identity across organizations.",
+    "D": "RBAC assigns permissions by job role."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician notices the default community string on a network printer's SNMP configuration is still 'public'.",
+    "Which of the following should the technician do?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Change the default credentials"
+    },
+    {
+     "letter": "B",
+     "text": "Disable the printer's paper tray sensor"
+    },
+    {
+     "letter": "C",
+     "text": "Increase the print spooler priority"
+    },
+    {
+     "letter": "D",
+     "text": "Enable duplex printing"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Default credentials, including SNMP community strings, are publicly documented and allow anyone on the network to query or alter the device. Changing them is basic device hardening."
+   ],
+   "why": {
+    "B": "Tray sensors affect paper handling.",
+    "C": "Spooler priority affects job order.",
+    "D": "Duplex printing is an output setting."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following best describes the risk of using an end-of-life operating system?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It no longer receives security patches for newly discovered flaws"
+    },
+    {
+     "letter": "B",
+     "text": "It cannot display modern fonts"
+    },
+    {
+     "letter": "C",
+     "text": "It requires more electricity"
+    },
+    {
+     "letter": "D",
+     "text": "It automatically encrypts all data"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Once a vendor ends support, newly discovered vulnerabilities are never fixed, so exposure accumulates permanently. That is why end-of-life systems must be replaced or tightly isolated."
+   ],
+   "why": {
+    "B": "Font rendering is a cosmetic concern.",
+    "C": "Power draw is unrelated to support status.",
+    "D": "End-of-life systems do not gain encryption."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A user's account is locked out repeatedly throughout the day even when they are not typing a password.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A stale cached credential on another device"
+    },
+    {
+     "letter": "B",
+     "text": "An expired display driver"
+    },
+    {
+     "letter": "C",
+     "text": "A full recycle bin"
+    },
+    {
+     "letter": "D",
+     "text": "A disabled firewall"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A mapped drive, phone mail client or service still presenting an old password will retry automatically and consume lockout attempts. Finding and updating that stored credential resolves the cycle."
+   ],
+   "why": {
+    "B": "Display drivers do not authenticate.",
+    "C": "Recycle bin contents do not trigger lockouts.",
+    "D": "A disabled firewall does not attempt logons."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "An organization wants to block employees from reaching gambling and adult websites on company laptops.",
+    "Which of the following should be implemented?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Content and URL filtering"
+    },
+    {
+     "letter": "B",
+     "text": "Port security"
+    },
+    {
+     "letter": "C",
+     "text": "Disk quotas"
+    },
+    {
+     "letter": "D",
+     "text": "A longer DHCP lease"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Content filtering evaluates requested URLs against category lists and blocks those in prohibited categories, which is the control that enforces an acceptable use policy on web browsing."
+   ],
+   "why": {
+    "B": "Port security restricts which devices attach to a switch port.",
+    "C": "Disk quotas limit storage consumption.",
+    "D": "Lease duration affects addressing."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following describes the principle of least privilege as applied to a help desk technician's account?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Grant only the rights needed to perform help desk duties"
+    },
+    {
+     "letter": "B",
+     "text": "Grant domain administrator rights for convenience"
+    },
+    {
+     "letter": "C",
+     "text": "Share one account among the whole team"
+    },
+    {
+     "letter": "D",
+     "text": "Disable auditing on the account"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Least privilege means each account carries only the permissions its role requires, which limits the damage if that account is misused or compromised."
+   ],
+   "why": {
+    "B": "Domain admin rights vastly exceed help desk needs.",
+    "C": "Shared accounts remove individual accountability.",
+    "D": "Disabling auditing removes oversight."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician must verify that a downloaded installer has not been altered since the vendor published it.",
+    "Which of the following should be checked?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The published file hash"
+    },
+    {
+     "letter": "B",
+     "text": "The file creation date"
+    },
+    {
+     "letter": "C",
+     "text": "The file size only"
+    },
+    {
+     "letter": "D",
+     "text": "The download folder permissions"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Comparing the computed hash of the downloaded file against the value the vendor published detects any modification, because even a single changed byte produces a completely different digest."
+   ],
+   "why": {
+    "B": "Timestamps are easily altered and prove nothing about content.",
+    "C": "Size alone can match while contents differ.",
+    "D": "Folder permissions govern access, not file integrity."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following best describes a rootkit?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Malware that hides itself and maintains privileged access"
+    },
+    {
+     "letter": "B",
+     "text": "Software that encrypts files for ransom"
+    },
+    {
+     "letter": "C",
+     "text": "A program that mines cryptocurrency"
+    },
+    {
+     "letter": "D",
+     "text": "An unsolicited advertising pop-up"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A rootkit conceals its presence, often by subverting operating system components, in order to retain privileged access over time. That stealth is its defining characteristic."
+   ],
+   "why": {
+    "B": "Ransomware encrypts data and demands payment.",
+    "C": "A cryptominer consumes resources to generate currency.",
+    "D": "Adware displays unwanted advertising."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A technician is setting up a workstation in a public lobby and must prevent booting from external media.",
+    "Which of the following should be configured?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A BIOS/UEFI password and restricted boot order"
+    },
+    {
+     "letter": "B",
+     "text": "A longer screensaver delay"
+    },
+    {
+     "letter": "C",
+     "text": "A larger page file"
+    },
+    {
+     "letter": "D",
+     "text": "Automatic logon"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Restricting the boot order and protecting firmware with a password stops someone from booting a live USB to bypass the installed operating system and read local data."
+   ],
+   "why": {
+    "B": "Screensaver delay affects idle locking only.",
+    "C": "Page file size affects memory management.",
+    "D": "Automatic logon removes authentication entirely."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following is the primary purpose of Windows User Account Control?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Prompt for consent before an action uses administrative privilege"
+    },
+    {
+     "letter": "B",
+     "text": "Encrypt the user's home folder"
+    },
+    {
+     "letter": "C",
+     "text": "Schedule automatic updates"
+    },
+    {
+     "letter": "D",
+     "text": "Defragment the system volume"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "User Account Control interrupts actions that require elevation and asks for confirmation, so software cannot quietly gain administrative privilege without the user knowing."
+   ],
+   "why": {
+    "B": "Encryption of user data is provided by EFS or BitLocker.",
+    "C": "Update scheduling is handled by Windows Update.",
+    "D": "Defragmentation is a disk maintenance task."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "An attacker sends an email that appears to come from the company CEO asking finance to wire funds urgently.",
+    "Which of the following describes this attack?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Business email compromise using whaling"
+    },
+    {
+     "letter": "B",
+     "text": "A logic bomb"
+    },
+    {
+     "letter": "C",
+     "text": "A rootkit"
+    },
+    {
+     "letter": "D",
+     "text": "An evil twin"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Impersonating a senior executive to trigger a fraudulent payment is business email compromise, and targeting or impersonating high-value individuals is whaling."
+   ],
+   "why": {
+    "B": "A logic bomb triggers malicious code on a condition.",
+    "C": "A rootkit hides privileged access.",
+    "D": "An evil twin is a rogue wireless access point."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "Which of the following is the best reason to disable AutoRun on removable media?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It prevents malware on a USB drive from executing automatically"
+    },
+    {
+     "letter": "B",
+     "text": "It increases USB transfer speed"
+    },
+    {
+     "letter": "C",
+     "text": "It enables drive encryption"
+    },
+    {
+     "letter": "D",
+     "text": "It extends battery life"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "AutoRun executes code from removable media without user interaction, which is a classic infection path. Disabling it forces the user to choose to open content."
+   ],
+   "why": {
+    "B": "AutoRun has no effect on transfer speed.",
+    "C": "Encryption is configured separately.",
+    "D": "Battery life is unaffected."
+   }
+  },
+  {
+   "domain": "2.0 Security",
+   "prompt": [
+    "A company requires that the same person cannot both create a vendor record and approve payments to it.",
+    "Which of the following is being enforced?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Separation of duties"
+    },
+    {
+     "letter": "B",
+     "text": "Implicit deny"
+    },
+    {
+     "letter": "C",
+     "text": "Least privilege"
+    },
+    {
+     "letter": "D",
+     "text": "Time-based access"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Separation of duties divides a sensitive workflow so no single person can complete it alone, which is the standard control against internal fraud."
+   ],
+   "why": {
+    "B": "Implicit deny blocks whatever is not explicitly allowed.",
+    "C": "Least privilege limits the extent of rights, not the split of a process.",
+    "D": "Time-based access restricts when access may be used."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician must replace RAM in a workstation.",
+    "Which of the following should the technician do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Attach an antistatic wrist strap and disconnect power"
+    },
+    {
+     "letter": "B",
+     "text": "Run a disk defragmentation"
+    },
+    {
+     "letter": "C",
+     "text": "Update the BIOS"
+    },
+    {
+     "letter": "D",
+     "text": "Install the latest OS patches"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Electrostatic discharge destroys memory modules, and working on a powered system risks both the technician and the hardware. Grounding and removing power are the first safety steps."
+   ],
+   "why": {
+    "B": "Defragmentation is unrelated to a hardware swap.",
+    "C": "A BIOS update is not required to change memory.",
+    "D": "OS patching does not protect hardware during service."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A customer becomes angry and raises their voice while describing a recurring issue.",
+    "Which of the following is the most appropriate response?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Listen without interrupting and avoid arguing"
+    },
+    {
+     "letter": "B",
+     "text": "Raise your voice to match theirs"
+    },
+    {
+     "letter": "C",
+     "text": "Tell them the issue is their fault"
+    },
+    {
+     "letter": "D",
+     "text": "End the call immediately"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Professional conduct calls for listening fully, not arguing or becoming defensive, and clarifying the problem. That de-escalates the interaction and gets to the technical issue faster."
+   ],
+   "why": {
+    "B": "Matching their volume escalates the conflict.",
+    "C": "Assigning blame damages the relationship and resolves nothing.",
+    "D": "Abandoning the customer fails the service obligation."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician discovers what appears to be illegal content on a user's company laptop during a repair.",
+    "Which of the following should the technician do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Stop work, preserve the device and report through the proper channel"
+    },
+    {
+     "letter": "B",
+     "text": "Delete the files immediately"
+    },
+    {
+     "letter": "C",
+     "text": "Email the files to a manager"
+    },
+    {
+     "letter": "D",
+     "text": "Continue the repair and say nothing"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Prohibited content requires preserving the device as found and escalating to the designated authority. Handling or altering the data compromises the evidence and may itself be unlawful."
+   ],
+   "why": {
+    "B": "Deleting destroys evidence.",
+    "C": "Copying and emailing spreads the material and breaks custody.",
+    "D": "Ignoring it fails the reporting obligation."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following documents tells a technician how to safely handle and dispose of a leaking laptop battery?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The safety data sheet"
+    },
+    {
+     "letter": "B",
+     "text": "The end user licence agreement"
+    },
+    {
+     "letter": "C",
+     "text": "The service level agreement"
+    },
+    {
+     "letter": "D",
+     "text": "The acceptable use policy"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A safety data sheet describes hazards, handling precautions and disposal requirements for a material. Batteries and toner are the common examples in an IT environment."
+   ],
+   "why": {
+    "B": "A licence agreement governs software use.",
+    "C": "An SLA defines service commitments.",
+    "D": "An acceptable use policy governs user behavior."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A change request must be submitted before a server is rebooted during business hours.",
+    "Which of the following belongs in that request?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Scope, risk level, rollback plan and affected systems"
+    },
+    {
+     "letter": "B",
+     "text": "The technician's home address"
+    },
+    {
+     "letter": "C",
+     "text": "The vendor's stock price"
+    },
+    {
+     "letter": "D",
+     "text": "The office floor plan"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A change request documents what will be changed, which systems are affected, the assessed risk and how the change will be reversed. Those fields are what allow a board to approve it."
+   ],
+   "why": {
+    "B": "Personal details are irrelevant and inappropriate.",
+    "C": "Financial data has no bearing on the change.",
+    "D": "A floor plan is facilities documentation."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "An organization performs a full backup every Sunday and backs up only changed data each weekday, requiring the full plus all weekday sets to restore.",
+    "Which of the following describes the weekday backups?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Incremental"
+    },
+    {
+     "letter": "B",
+     "text": "Differential"
+    },
+    {
+     "letter": "C",
+     "text": "Synthetic full"
+    },
+    {
+     "letter": "D",
+     "text": "Snapshot"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Incremental backups capture only what changed since the previous backup of any type, so a restore needs the last full set plus every incremental since. That chain requirement identifies them."
+   ],
+   "why": {
+    "B": "Differential backups capture changes since the last full, so only the full and the most recent differential are needed.",
+    "C": "A synthetic full is assembled from existing backups.",
+    "D": "A snapshot is a point-in-time image, usually at storage level."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician is told the office will lose utility power for two hours during scheduled maintenance.",
+    "Which of the following best protects a critical server during that window?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A generator with a UPS bridging the transfer"
+    },
+    {
+     "letter": "B",
+     "text": "A surge suppressor"
+    },
+    {
+     "letter": "C",
+     "text": "A power strip"
+    },
+    {
+     "letter": "D",
+     "text": "A higher wattage power supply"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A UPS carries the load instantly when utility power drops, and a generator sustains it for the extended outage. Together they cover both the transfer gap and the duration."
+   ],
+   "why": {
+    "B": "A surge suppressor protects against voltage spikes but supplies no power.",
+    "C": "A power strip only distributes power.",
+    "D": "A larger power supply does not help when input power is absent."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following best describes the purpose of an asset tag on company equipment?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It uniquely identifies the device for inventory and lifecycle tracking"
+    },
+    {
+     "letter": "B",
+     "text": "It improves wireless signal"
+    },
+    {
+     "letter": "C",
+     "text": "It encrypts the local drive"
+    },
+    {
+     "letter": "D",
+     "text": "It grants administrative rights"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "An asset tag ties physical hardware to an inventory record, which is what supports audits, warranty claims, assignment history and end-of-life planning."
+   ],
+   "why": {
+    "B": "Tags have no effect on radio performance.",
+    "C": "Encryption is configured in software.",
+    "D": "Tags confer no permissions."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician needs to document the resolution of a ticket so the next person can handle the same issue faster.",
+    "Which of the following should be updated?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "The knowledge base article"
+    },
+    {
+     "letter": "B",
+     "text": "The BIOS settings"
+    },
+    {
+     "letter": "C",
+     "text": "The DHCP scope"
+    },
+    {
+     "letter": "D",
+     "text": "The user's desktop wallpaper"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Recording the cause and the verified fix in the knowledge base turns a one-time solution into reusable guidance, which is the point of documenting after closure."
+   ],
+   "why": {
+    "B": "Firmware settings are device configuration.",
+    "C": "A DHCP scope governs address assignment.",
+    "D": "Wallpaper is cosmetic."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following is the correct order of the first two steps in the CompTIA troubleshooting methodology?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Identify the problem, then establish a theory of probable cause"
+    },
+    {
+     "letter": "B",
+     "text": "Implement the solution, then test the theory"
+    },
+    {
+     "letter": "C",
+     "text": "Document findings, then identify the problem"
+    },
+    {
+     "letter": "D",
+     "text": "Escalate, then verify functionality"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "The methodology begins by identifying the problem through questioning and information gathering, and only then forms a theory of probable cause to test."
+   ],
+   "why": {
+    "B": "Implementing before testing a theory risks unnecessary changes.",
+    "C": "Documentation is the final step.",
+    "D": "Escalation occurs when a theory cannot be established or resolved."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A company must ensure software is only used within the number of licences purchased.",
+    "Which of the following should be maintained?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A licence inventory reconciled against installations"
+    },
+    {
+     "letter": "B",
+     "text": "A list of preferred fonts"
+    },
+    {
+     "letter": "C",
+     "text": "A printer maintenance log"
+    },
+    {
+     "letter": "D",
+     "text": "A cable labelling scheme"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Comparing entitlements against actual installations is how an organization demonstrates compliance and avoids both penalties and unbudgeted true-up costs."
+   ],
+   "why": {
+    "B": "Font lists are a design concern.",
+    "C": "Printer logs track hardware servicing.",
+    "D": "Cable labelling aids physical tracing."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following describes personally identifiable information?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Data that can identify a specific individual, such as a national ID number"
+    },
+    {
+     "letter": "B",
+     "text": "Any file larger than one gigabyte"
+    },
+    {
+     "letter": "C",
+     "text": "Publicly posted marketing material"
+    },
+    {
+     "letter": "D",
+     "text": "Encrypted system logs"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "PII is information that alone or combined can identify a particular person. Regulations impose specific handling, storage and breach-notification duties on it."
+   ],
+   "why": {
+    "B": "File size has no bearing on classification.",
+    "C": "Published marketing material is public by design.",
+    "D": "Encryption is a protection, not a classification."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician is lifting a heavy UPS from the floor into a rack.",
+    "Which of the following is the correct technique?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Bend at the knees and keep the load close to the body"
+    },
+    {
+     "letter": "B",
+     "text": "Bend at the waist and twist while lifting"
+    },
+    {
+     "letter": "C",
+     "text": "Lift with straight legs and arms extended"
+    },
+    {
+     "letter": "D",
+     "text": "Lift alone regardless of weight"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Lifting with the legs while keeping the load close to the body keeps the spine neutral and reduces injury risk, which is the standard safe handling practice."
+   ],
+   "why": {
+    "B": "Bending at the waist and twisting is the motion most likely to cause injury.",
+    "C": "Extended arms increase leverage on the back.",
+    "D": "Heavy equipment should be lifted with assistance."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following environmental conditions most increases the risk of electrostatic discharge damage?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Low humidity"
+    },
+    {
+     "letter": "B",
+     "text": "High humidity"
+    },
+    {
+     "letter": "C",
+     "text": "Low altitude"
+    },
+    {
+     "letter": "D",
+     "text": "Bright lighting"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Dry air allows static charge to build and hold on people and surfaces, which is why low humidity raises the risk of discharge into sensitive components."
+   ],
+   "why": {
+    "B": "Higher humidity dissipates static charge.",
+    "C": "Altitude affects cooling, not static build-up.",
+    "D": "Lighting is irrelevant to ESD."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "A technician must remotely assist a user who is at home and needs to see and control their Windows desktop with the user present.",
+    "Which of the following tools is most appropriate?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A remote assistance or screen-sharing session"
+    },
+    {
+     "letter": "B",
+     "text": "A Telnet session"
+    },
+    {
+     "letter": "C",
+     "text": "An FTP transfer"
+    },
+    {
+     "letter": "D",
+     "text": "A ping sweep"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Remote assistance shares the user's existing desktop session with their consent, letting them observe and retain control, which suits interactive troubleshooting with the user present."
+   ],
+   "why": {
+    "B": "Telnet is an unencrypted text-only protocol.",
+    "C": "FTP transfers files without any desktop view.",
+    "D": "A ping sweep tests reachability."
+   }
+  },
+  {
+   "domain": "4.0 Operational Procedures",
+   "prompt": [
+    "Which of the following best explains why a technician should set and meet expectations with a customer?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "It builds trust and avoids surprises about timing and outcome"
+    },
+    {
+     "letter": "B",
+     "text": "It removes the need to document the ticket"
+    },
+    {
+     "letter": "C",
+     "text": "It eliminates the need for a rollback plan"
+    },
+    {
+     "letter": "D",
+     "text": "It guarantees the hardware will not fail"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Telling the customer what will happen and by when, then following through or updating them, is what maintains confidence even when the technical work takes longer than hoped."
+   ],
+   "why": {
+    "B": "Documentation remains required.",
+    "C": "Rollback planning is a change control requirement.",
+    "D": "No communication practice prevents hardware failure."
+   }
+  },
+  {
+   "domain": "3.0 Software Troubleshooting",
+   "prompt": [
+    "A Windows workstation shows a stop error referencing a driver immediately after a recent hardware installation.",
+    "Which of the following should the technician try first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Boot into Safe Mode and roll back the driver"
+    },
+    {
+     "letter": "B",
+     "text": "Reinstall Windows from scratch"
+    },
+    {
+     "letter": "C",
+     "text": "Replace the motherboard"
+    },
+    {
+     "letter": "D",
+     "text": "Defragment the disk"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Safe Mode loads a minimal driver set, which usually allows the system to start so the offending driver can be rolled back. It is the least invasive step that directly addresses the stated cause."
+   ],
+   "why": {
+    "B": "Reimaging discards user data and is disproportionate as a first action.",
+    "C": "Replacing hardware before identifying the software cause is premature.",
+    "D": "Defragmentation does not affect driver faults."
+   }
+  },
+  {
+   "domain": "3.0 Software Troubleshooting",
+   "prompt": [
+    "An Android phone reports that it is running out of storage, and apps close unexpectedly.",
+    "Which of the following should the technician do first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Clear cached app data and remove unused apps"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the battery"
+    },
+    {
+     "letter": "C",
+     "text": "Perform a factory reset immediately"
+    },
+    {
+     "letter": "D",
+     "text": "Disable the cellular radio"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "Reclaiming space by clearing caches and removing unused applications addresses the reported cause directly and preserves the user's data, which a factory reset would not."
+   ],
+   "why": {
+    "B": "Battery condition does not cause storage exhaustion.",
+    "C": "A factory reset erases user data and should not be the first action.",
+    "D": "Disabling cellular does not free storage."
+   }
+  },
+  {
+   "domain": "3.0 Software Troubleshooting",
+   "prompt": [
+    "A workstation takes several minutes to load the user profile after logon, while other machines on the same network log on quickly.",
+    "Which of the following is the most likely cause?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "A very large roaming profile being downloaded"
+    },
+    {
+     "letter": "B",
+     "text": "A failed switch uplink"
+    },
+    {
+     "letter": "C",
+     "text": "An incorrect subnet mask on the domain controller"
+    },
+    {
+     "letter": "D",
+     "text": "A missing printer driver"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A slow profile load affecting a single machine while others are fast points to profile size rather than the network. Large roaming profiles must transfer at every logon."
+   ],
+   "why": {
+    "B": "A failed uplink would affect all machines on that switch.",
+    "C": "A domain controller misconfiguration would affect many users.",
+    "D": "Printer drivers do not gate profile loading."
+   }
+  },
+  {
+   "domain": "3.0 Software Troubleshooting",
+   "prompt": [
+    "A user reports that a line-of-business application fails to launch with an error about a missing runtime component after a recent OS update.",
+    "Which of the following should the technician attempt first?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Repair or reinstall the application's runtime dependency"
+    },
+    {
+     "letter": "B",
+     "text": "Replace the hard drive"
+    },
+    {
+     "letter": "C",
+     "text": "Reset the BIOS to defaults"
+    },
+    {
+     "letter": "D",
+     "text": "Reseat the memory modules"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "A missing runtime component is a software dependency problem, so repairing or reinstalling that dependency restores what the update displaced without touching hardware."
+   ],
+   "why": {
+    "B": "Storage hardware is not implicated by a runtime error.",
+    "C": "Firmware defaults do not restore application dependencies.",
+    "D": "Memory reseating addresses hardware instability."
+   }
+  },
+  {
+   "domain": "3.0 Software Troubleshooting",
+   "prompt": [
+    "Which of the following should a technician do immediately after quarantining a system infected with malware?"
+   ],
+   "options": [
+    {
+     "letter": "A",
+     "text": "Disable System Restore and update anti-malware definitions"
+    },
+    {
+     "letter": "B",
+     "text": "Reconnect it to the production network"
+    },
+    {
+     "letter": "C",
+     "text": "Educate the end user"
+    },
+    {
+     "letter": "D",
+     "text": "Document the incident and close the ticket"
+    }
+   ],
+   "answer": [
+    "A"
+   ],
+   "explanation": [
+    "After isolating the machine, System Restore is disabled so infected restore points cannot reintroduce the malware, and definitions are updated so the scan can detect current threats."
+   ],
+   "why": {
+    "B": "Reconnecting before remediation risks spreading the infection.",
+    "C": "User education is the final step of the procedure.",
+    "D": "Documentation closes the process after remediation and verification."
+   }
+  }
+ ]
+}

@@ -62,6 +62,20 @@ export const MODES: Record<ModeId, ModeConfig> = {
     instantFeedback: false,
     accent: '#fbbf24',
   },
+  arcade: {
+    id: 'arcade',
+    name: 'Arcade',
+    tagline: 'Three right in a row unlocks a bonus round',
+    icon: '🕹️',
+    count: 20,
+    perQuestion: 45,
+    totalTime: null,
+    lives: null,
+    instantFeedback: true,
+    bonusEvery: 3,
+    bonusSeconds: 7,
+    accent: '#f97316',
+  },
   review: {
     id: 'review',
     name: 'Smart Review',
@@ -145,6 +159,7 @@ const BASE_BADGES: Badge[] = [
   { id: 'half-k', name: 'Marathoner', detail: 'Answer 500 questions', icon: '🎖️' },
   { id: 'sprinter', name: 'Speed Demon', detail: '15 correct in one Sprint', icon: '💨' },
   { id: 'survivor', name: 'Last One Standing', detail: 'Clear 25 in Survival', icon: '🛡️' },
+  { id: 'sharpshooter', name: 'Sharpshooter', detail: 'Neutralise 30 threats in one Arcade run', icon: '🎯' },
   { id: 'exam-pass', name: 'Certified Mindset', detail: 'Pass an Exam Simulation', icon: '📜' },
   { id: 'exam-ace', name: 'Top of the Curve', detail: 'Score 850+ on an Exam Simulation', icon: '👑' },
   { id: 'week-warrior', name: 'Seven Day Streak', detail: 'Study 7 days in a row', icon: '📆' },
@@ -201,6 +216,7 @@ export function evaluateBadges(
     if (mode === 'quick' && total >= 10 && correct === total) add('perfect-ten')
     if (mode === 'sprint' && correct >= 15) add('sprinter')
     if (mode === 'survival' && correct >= 25) add('survivor')
+    if (mode === 'arcade' && (lastSession.bonusHits ?? 0) >= 30) add('sharpshooter')
     if (mode === 'exam' && scaled !== null && scaled >= PASS_SCALED) add('exam-pass')
     if (mode === 'exam' && scaled !== null && scaled >= 850) add('exam-ace')
   }

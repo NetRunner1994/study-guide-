@@ -10,7 +10,7 @@ interface Props {
   onPlay: (mode: ModeId, domain?: string) => void
 }
 
-const ORDER: ModeId[] = ['quick', 'sprint', 'survival', 'domain', 'review', 'exam']
+const ORDER: ModeId[] = ['quick', 'arcade', 'sprint', 'survival', 'domain', 'review', 'exam']
 
 export function PlayScreen({ onPlay }: Props) {
   const { exam, questions, current } = useStore()
@@ -62,6 +62,11 @@ export function PlayScreen({ onPlay }: Props) {
           Every correct answer is worth 100 points, plus up to 60 for speed when a clock is
           running. Answer streaks multiply the total, up to 2× at ten in a row. Points convert to
           XP, XP raises your level, and milestones unlock badges.
+        </p>
+        <p className="small muted">
+          Arcade breaks the quiz up: every three correct answers in a row drops you into a
+          seven-second bonus round where you tap threats for extra points. Hitting a shield
+          costs you, so aim rather than mash.
         </p>
         <p className="small muted">
           Exam Simulation mirrors the real thing: 90 questions in 90 minutes, no feedback until
