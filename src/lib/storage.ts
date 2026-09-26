@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS: Settings = {
   timer: true,
   shuffleOptions: false,
   instantFeedback: true,
+  bonusRounds: true,
 }
 
 export function emptyExamProgress(): ExamProgress {

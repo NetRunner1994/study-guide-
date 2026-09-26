@@ -45,6 +45,9 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
   const [confirmExit, setConfirmExit] = useState(false)
   /* Arcade: a bonus round after every N correct in a row. */
   const [bonusOpen, setBonusOpen] = useState(false)
+  /* Earned on the third correct answer, but held until the learner has
+     finished with the explanation, so the round never covers it. */
+  const [bonusPending, setBonusPending] = useState(false)
   const [bonusHits, setBonusHits] = useState(0)
   const [bonusPoints, setBonusPoints] = useState(0)
   /* Bonus points live outside `score` so finish() can add them exactly once,
@@ -155,8 +158,14 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
         }
       }
 
-      if (right && config.bonusEvery && nextStreak > 0 && nextStreak % config.bonusEvery === 0) {
-        setBonusOpen(true)
+      if (
+        settings.bonusRounds &&
+        right &&
+        config.bonusEvery &&
+        nextStreak > 0 &&
+        nextStreak % config.bonusEvery === 0
+      ) {
+        setBonusPending(true)
       }
 
       const remainingLives = right ? lives : lives - 1
@@ -172,6 +181,7 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
       bestStreak,
       config.count,
       config.instantFeedback,
+      config.bonusEvery,
       config.lives,
       finish,
       lives,
@@ -181,6 +191,7 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
       question,
       recordAnswer,
       score,
+      settings.bonusRounds,
       settings.haptics,
       settings.sound,
       streak,
@@ -188,6 +199,11 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
   )
 
   const advance = useCallback(() => {
+    if (bonusPending) {
+      setBonusPending(false)
+      setBonusOpen(true)
+      return
+    }
     const isLast = config.count !== null && outcomes.length >= config.count
     if (isLast) {
       finish(outcomes, score, bestStreak)
@@ -199,7 +215,7 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
     setFlash(null)
     questionStart.current = Date.now()
     bodyRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [bestStreak, config.count, finish, outcomes, score])
+  }, [bestStreak, bonusPending, config.count, finish, outcomes, score])
 
   /* Time limits: a spent per-question clock scores zero, a spent run clock ends it. */
   useEffect(() => {
@@ -420,7 +436,11 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
       <footer className="quiz__foot">
         {locked && config.instantFeedback ? (
           <button type="button" className="btn btn--primary btn--block" onClick={advance}>
-            {config.count !== null && outcomes.length >= config.count ? 'See results' : 'Next question'}
+            {bonusPending
+              ? '⚡ Bonus round'
+              : config.count !== null && outcomes.length >= config.count
+                ? 'See results'
+                : 'Next question'}
           </button>
         ) : config.instantFeedback && !multi ? null : (
           <button
@@ -470,6 +490,8 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
             setBonusPoints(bonusScore.current)
             setBonusHits((n) => n + hits)
             setBonusOpen(false)
+            /* Carry on to the question the bonus interrupted. */
+            advance()
           }}
         />
       ) : null}

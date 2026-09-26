@@ -87,6 +87,7 @@ export interface Settings {
   timer: boolean
   shuffleOptions: boolean
   instantFeedback: boolean
+  bonusRounds: boolean
 }
 
 /** Everything tracked for a single exam. Each exam progresses independently. */
