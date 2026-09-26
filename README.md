@@ -36,17 +36,18 @@ bank is downloaded, so adding exams does not slow the app down.
 | Sprint | 90 seconds, as many as you can clear |
 | Survival | 3 lives, endless, 30s per question |
 | Domain Drill | 15 questions from one exam objective |
-| Arcade | Longer run with a faster clock and bonus rounds |
+| Arcade | 20 questions with a bonus round every 3 correct |
 | Smart Review | Whatever is due, flagged or previously missed |
 | Exam Simulation | 90 questions in 90 minutes, no feedback until the end, scaled 100–900 with 750 to pass |
 
-**Bonus rounds**
-- Every third consecutive correct answer opens a timed bonus round, in Quick Play,
-  Domain Drill, Survival, Smart Review and Arcade
-- It waits until you leave the explanation, so it never covers what you are reading
-- Off in Exam Simulation, which must mirror the real thing, and in Sprint, where it
-  would eat the 90-second clock
-- Turn it off entirely in Settings
+**Arcade mode**
+- Every third consecutive correct answer opens a seven-second bonus round
+- Tap threats for points with a combo multiplier; hitting a shield costs points
+- The round waits until you leave the explanation, so it never covers what you are reading
+- Number keys work as well as taps, so it is playable on a laptop
+- Bonus points count toward the run score, and 30 threats in a run earns a badge
+- Only Arcade has bonus rounds. Every other mode is a straight quiz, so picking a
+  different mode is how you turn the game layer off
 - Tap threats for points with a combo multiplier; hitting a shield costs points
 - Number keys work as well as taps, so it is playable on a laptop
 - Bonus points count toward the run score, and 30 threats in a run earns a badge

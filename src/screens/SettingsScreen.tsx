@@ -8,11 +8,6 @@ const TOGGLES: { key: keyof Settings; label: string; detail: string }[] = [
   { key: 'haptics', label: 'Haptics', detail: 'Vibration feedback on supported phones' },
   { key: 'timer', label: 'Per-question timer', detail: 'Turn off to remove the clock pressure' },
   {
-    key: 'bonusRounds',
-    label: 'Bonus rounds',
-    detail: 'Three correct in a row opens a short target round. Off in Exam Simulation and Sprint.',
-  },
-  {
     key: 'shuffleOptions',
     label: 'Shuffle answer options',
     detail: 'Stops you memorising positions. Letters stay attached to their text, so they may appear out of order.',
