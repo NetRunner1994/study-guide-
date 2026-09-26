@@ -5,13 +5,15 @@ export const MODES: Record<ModeId, ModeConfig> = {
   quick: {
     id: 'quick',
     name: 'Quick Play',
-    tagline: '10 questions · beat the clock',
+    tagline: '10 questions · beat the clock · bonus rounds',
     icon: '⚡',
     count: 10,
     perQuestion: 45,
     totalTime: null,
     lives: null,
     instantFeedback: true,
+    bonusEvery: 3,
+    bonusSeconds: 7,
     accent: '#22d3ee',
   },
   domain: {
@@ -24,6 +26,8 @@ export const MODES: Record<ModeId, ModeConfig> = {
     totalTime: null,
     lives: null,
     instantFeedback: true,
+    bonusEvery: 3,
+    bonusSeconds: 7,
     accent: '#a78bfa',
   },
   sprint: {
@@ -48,6 +52,8 @@ export const MODES: Record<ModeId, ModeConfig> = {
     totalTime: null,
     lives: 3,
     instantFeedback: true,
+    bonusEvery: 3,
+    bonusSeconds: 7,
     accent: '#34d399',
   },
   exam: {
@@ -65,7 +71,7 @@ export const MODES: Record<ModeId, ModeConfig> = {
   arcade: {
     id: 'arcade',
     name: 'Arcade',
-    tagline: 'Three right in a row unlocks a bonus round',
+    tagline: 'Longer run, faster clock, bonus rounds',
     icon: '🕹️',
     count: 20,
     perQuestion: 45,
@@ -86,6 +92,8 @@ export const MODES: Record<ModeId, ModeConfig> = {
     totalTime: null,
     lives: null,
     instantFeedback: true,
+    bonusEvery: 3,
+    bonusSeconds: 7,
     accent: '#f472b6',
   },
 }
