@@ -1,7 +1,11 @@
-name: Deploy to GitHub Pages
+name: Build, test and deploy
 
 on:
   push:
+    branches: [main]
+  # Pull requests run the same install, test and build, but never deploy, so a
+  # PR carries a real signal before it is merged.
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -11,8 +15,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  # Keyed per ref so a pull request run can never cancel a production deploy.
+  # Superseding only applies to pull requests; a main deploy always runs to
+  # completion, because cancelling one mid-flight leaves Pages half-updated.
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -24,22 +31,27 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # `npm run build` runs tsc before vite, so this covers the typecheck too.
       - run: npm test
       - run: npm run build
       # Ship the no-install single-file build alongside the site.
       - run: npm run build:standalone
       - run: cp dist-standalone/index.html dist/standalone.html
+
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
         # Switches the Pages source to GitHub Actions if it is still set to
         # "deploy from a branch", which would serve the unbuilt repo root.
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
