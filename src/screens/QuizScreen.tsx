@@ -159,7 +159,6 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
       }
 
       if (
-        settings.bonusRounds &&
         right &&
         config.bonusEvery &&
         nextStreak > 0 &&
@@ -191,7 +190,6 @@ export function QuizScreen({ run, onExit, onFinish }: Props) {
       question,
       recordAnswer,
       score,
-      settings.bonusRounds,
       settings.haptics,
       settings.sound,
       streak,
